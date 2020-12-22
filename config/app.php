@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Tokyo',
 
     /*
     |--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'ja',
 
     /*
     |--------------------------------------------------------------------------
@@ -225,7 +225,23 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        
 
+    ],
+    // 性別の配列を追記
+    'genders' => [
+        'female' => '女性',
+        'male' => '男性',
+        'other' => 'その他',
+        'none' => '未回答',
+    ],
+    
+    // ジャンルの配列を追記
+    'genres' => [
+        'classic' => 'クラシック',
+        'jazz' => 'ジャズ',
+        'pops' => 'ポップス',
+        'other' => 'その他',
     ],
 
 ];
