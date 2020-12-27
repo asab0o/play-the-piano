@@ -28,10 +28,10 @@
                             <a class="nav-link" href="{{ url('/') }}">HOME <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('request/index') }}">演奏場所を探す <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="{{ url('/request') }}">演奏場所を探す <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('plofile/index') }}">演奏者を探す <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="{{ url('/player') }}">演奏者を探す <span class="sr-only">(current)</span></a>
                         </li>
                         @guest
                         <li class="nab-item">

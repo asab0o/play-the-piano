@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Player;
+// use App\Genders;
 use Carbon\Carbon;
 use Storage;
 
@@ -13,15 +14,17 @@ class PlayerController extends Controller
     private $genders = [];
     // 調べる
     public function __construct() {
-        $this->genders = config('app.genders');
+        // 201223 Seederの初期値をどうもってくるか
+        // $this->genders = new PlayersTableSeed;
+        $this->genders = $this->getGenders();
     }
     
     public function add() {
-        // 外に出せないか
         $gendersList = [
                 'genders' => $this->genders,
                 ];
-            return view('admin.player.create', $gendersList);
+                
+        return view('admin.player.create', $gendersList);
     }
     
     public function create(Request $request){
@@ -80,5 +83,14 @@ class PlayerController extends Controller
         $player = Player::find($player->id);
         $player->delete();
         return redirect('admin/mypage/index');
+    }
+    
+    // クラス内だけで使う関数
+    private function getGenders()
+    {
+        $result = \DB::table('genders')->get();
+        dd($result);
+        return $result->items();
+        
     }
 }

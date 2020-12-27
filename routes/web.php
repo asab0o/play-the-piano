@@ -14,6 +14,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::get('request/delate', 'Admin\RequestController@delete');
 });
 
+
+
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
