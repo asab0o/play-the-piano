@@ -74,11 +74,12 @@
                     </div>
                     <div class="col-md-10 row">
                         <!--foreachの引数を強制的に配列-->
-                        @foreach ($genders as $key => $gender)
+                        @foreach ($genders as $gender)
                         <!--クラスを再確認-->
                         <div class="col-md-3">
-                            {{ Form::radio('gender', $key, false, ['class'=>'form-control','id'=>'gender-'.$key])}}
-                            {{ Form::label('gender-'.$key, $gender) }}
+                            <!--201227 訂正-->
+                            {{ Form::radio('gender', $gender->type, false, ['class'=>'form-control','id'=>'gender-'.$gender->type])}}
+                            {{ Form::label('gender-'.$gender->type, $gender->name) }}
                         </div>
                         @endforeach
                     </div>
@@ -98,7 +99,7 @@
                 <!--活動エリア-->
                 <div class="form-group row">
                     <div class="col-md-2">
-                        {{ Form::label('area', __('messages.area')) }}
+                        {{ Form::select('prefectures', $prefectures->name, null) }}
                         <!--選択にするか入力にするか-->
                     </div>
                     <div class="col-md-10">

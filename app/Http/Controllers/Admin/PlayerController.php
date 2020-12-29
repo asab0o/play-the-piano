@@ -11,20 +11,27 @@ use Storage;
 
 class PlayerController extends Controller
 {
-    private $genders = [];
+    // private $genders = [];
     // 調べる
-    public function __construct() {
+    public function __construct()
+    {
         // 201223 Seederの初期値をどうもってくるか
         // $this->genders = new PlayersTableSeed;
         $this->genders = $this->getGenders();
+        $this->prefectures = $this->getPrefectures();
     }
     
-    public function add() {
+    public function add()
+    {
         $gendersList = [
                 'genders' => $this->genders,
                 ];
                 
-        return view('admin.player.create', $gendersList);
+        $prefecturesList = [
+                'prefectures' => $this->prefectures,
+                ];
+                
+        return view('admin.player.create', $gendersList, $prefecturesList);
     }
     
     public function create(Request $request){
@@ -88,9 +95,14 @@ class PlayerController extends Controller
     // クラス内だけで使う関数
     private function getGenders()
     {
-        $result = \DB::table('genders')->get();
-        dd($result);
-        return $result->items();
-        
+        // 201227 訂正
+        $result = \DB::table('genders')->get()->all();
+        // dd($result);
+        return $result;
+    }
+    private function getPrefectures()
+    {
+        $result = \DB::table('prefectures')->get()->all();
+        return $result;
     }
 }
