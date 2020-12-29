@@ -13,13 +13,6 @@ class PlayersTableSeeder extends Seeder
      */
     public function run()
     {
-        // シーダーで初期値設定
-        // Player::create([
-        //     'female' => '女性',
-        //     'male' => '男性',
-        //     'other' => 'その他',
-        //     'none' => '未回答',
-        // ]);
         
         // 201227 訂正
         DB::table('genders')->insert([
@@ -29,7 +22,7 @@ class PlayersTableSeeder extends Seeder
             ['type' => 'none', 'name' => '未回答'],
          ]);
          
-        DB::table('area')->insert([
+        DB::table('prefectures')->insert([
             ['type' => 'hokkaido', 'name' => '北海道'],
             ['type' => 'aomori', 'name' => '青森'],
             ['type' => 'iwate', 'name' => '岩手'],

@@ -99,11 +99,11 @@
                 <!--活動エリア-->
                 <div class="form-group row">
                     <div class="col-md-2">
-                        {{ Form::select('prefectures', $prefectures->name, null) }}
+                        {{ Form::label('prefecture', '活動エリア', null) }}
                         <!--選択にするか入力にするか-->
                     </div>
                     <div class="col-md-10">
-                        {{Form::selectRange('area' , 1, 31, 1, ['class'=>'form-control'])}}
+                        {{ Form::select('prefecture', $prefectures, null, ['class'=>'form-control']) }}
                     </div>
                 </div>
                 <!--自己紹介-->

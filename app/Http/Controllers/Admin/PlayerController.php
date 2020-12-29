@@ -27,11 +27,14 @@ class PlayerController extends Controller
                 'genders' => $this->genders,
                 ];
                 
-        $prefecturesList = [
+        $prefList = [
                 'prefectures' => $this->prefectures,
                 ];
                 
-        return view('admin.player.create', $gendersList, $prefecturesList);
+        // $prefNameList = $prefList->pluck(“name”);
+        
+        // compact関数を使って配列渡せなかった        
+        return view('admin.player.create', $gendersList, $prefList);
     }
     
     public function create(Request $request){
@@ -102,7 +105,8 @@ class PlayerController extends Controller
     }
     private function getPrefectures()
     {
-        $result = \DB::table('prefectures')->get()->all();
+        $result = \DB::table('prefectures')->get()->pluck("name");
+        // dd($result);
         return $result;
     }
 }

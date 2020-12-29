@@ -6,16 +6,12 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreatePrefecturesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+    // テーブル名をareaに変更済み
     public function up()
     {
-        Schema::rename('prefectures', 'area');
+        // Schema::rename('area', 'prefectures');
         
-        Schema::create('area', function (Blueprint $table) {
+        Schema::create('prefectures', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('type');
             $table->string('name');
@@ -30,7 +26,7 @@ class CreatePrefecturesTable extends Migration
      */
     public function down()
     {
-        Schema::rename('area', 'prefectures');
+        // Schema::rename('prefectures', 'area');
         Schema::dropIfExists('prefectures');
     }
 }
