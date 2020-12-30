@@ -2,7 +2,7 @@
 @section('title', 'プロフィール画面の作成')
     
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-10 mx-auto">
                 <h2>演奏者として登録する</h2>
@@ -57,29 +57,29 @@
                     <div class="col-md-2">
                         {{ Form::label('birthday', __('messages.birthday')) }}
                     </div>
-                    <div class="col-md-4">
-                        {{ Form::selectRange('birth_year', 1920, 2020, old('birth_year'), ['class'=>'form-control'])}}
+                    <div class="col-md-10">
+                        {{ Form::text('birthday', old('birthday'), ['class'=>'form-control datepicker_1'])}}
                     </div>
-                    <div class="col-md-3">
-                        {{ Form::selectMonth('birth_month', old('birth_month'), ['class'=>'form-control'])}}
-                    </div>
-                    <div class="col-md-3">
-                        {{ Form::selectRange('birth_ day' , 1, 31, old('birth_day'), ['class'=>'form-control'])}}
-                    </div>
+                    {{--<!--<div class="col-md-3">-->
+                    <!--    {{ Form::selectMonth('birth_month', old('birth_month'), ['class'=>'form-control'])}}-->
+                    <!--</div>-->
+                    <!--<div class="col-md-3">-->
+                    <!--    {{ Form::selectRange('birth_ day' , 1, 31, old('birth_day'), ['class'=>'form-control'])}}-->
+                    <!--</div>-->--}}
                 </div>
                 <!--性別 -->
                 <div class="form-group row">
                     <div class="col-md-2">
                         {{ Form::label('gender', __('messages.gender')), ['class' => 'form-control'] }}
                     </div>
-                    <div class="col-md-10 row">
+                    <div class="col-md-10">
                         <!--foreachの引数を強制的に配列-->
                         @foreach ($genders as $gender)
                         <!--クラスを再確認-->
-                        <div class="col-md-3">
+                        <div class="form-group form-check form-check-inline">
                             <!--201227 訂正-->
-                            {{ Form::radio('gender', $gender->type, false, ['class'=>'form-control','id'=>'gender-'.$gender->type])}}
-                            {{ Form::label('gender-'.$gender->type, $gender->name) }}
+                            {{ Form::radio('gender', $gender->type, false, ['class'=>'form-check-input','id'=>'gender-'.$gender->type])}}
+                            {{ Form::label('gender-'.$gender->type, $gender->name, ['class' => 'form-check-label']) }}
                         </div>
                         @endforeach
                     </div>
@@ -103,7 +103,8 @@
                         <!--選択にするか入力にするか-->
                     </div>
                     <div class="col-md-10">
-                        {{ Form::select('prefecture', $prefectures, null, ['class'=>'form-control']) }}
+                        <!--初期値を東京にしたい-->
+                        {{ Form::select('prefecture', $prefectures, $prefectures[12], ['class'=>'form-control']) }}
                     </div>
                 </div>
                 <!--自己紹介-->

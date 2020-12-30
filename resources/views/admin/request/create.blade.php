@@ -2,9 +2,9 @@
 @section('title', '演奏依頼の投稿作成')
 
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-md-10">
+            <div class="col-md-10 mx-auto">
                 <h2>演奏を依頼する</h2>
                 {{ Form::open(['action' => 'Admin\RequestController@create', 'files' => true, 'class' => 'form-horizontal']) }}
                     @if (count($errors) > 0)
@@ -61,7 +61,7 @@
                             {{ Form::label('date_time', __('messages.date_time')) }}
                         </div>
                         <div class="col-md-10">
-                            {{ Form::text('date_time',  old('date_time'), ['class' => 'form-control']) }} 
+                            {{ Form::text('date_time',  old('date_time'), ['class' => 'form-control datepicker_2']) }} 
                         </div>
                     </div>
                     <!--場所-->
@@ -87,8 +87,8 @@
                         <div class="col-md-2">
                             {{ Form::label('parking_lot', __('messages.parking_lot')) }}
                         </div>
-                        <div class="col-md-10 row">
-                            <div class="form-group row form-check form-check-inline">
+                        <div class="col-md-10">
+                            <div class="form-group form-check form-check-inline">
                                 {{ Form::radio('parking_lot', 'あり', false, ['class' => 'form-check-input', 'id' => 'parking_lot_1']) }}
                                 {{ Form::label('parking_lot_1', 'あり', ['class' => 'form-check-label']) }}
                             </div>
@@ -103,7 +103,7 @@
                         <div class="col-md-2">
                             {{ Form::label('genres', __('messages.genre')) }}
                         </div>
-                        <div class="col-md-10 row">
+                        <div class="col-md-10">
                             @foreach ($genres as $key => $genre)
                             <!--横に並べたい-->
                             <div class="form-group form-check form-check-inline">
@@ -151,9 +151,9 @@
                         <div class="col-md-2">
                         {{ Form::label('display_term', __('messages.display_term')) }}
                         </div>
-                        <div class="col-md-10 row">
-                        {{ Form::text('display_from', 'null', ['class' => 'form-control', 'id' => 'datepicker']) }}
-                        {{ Form::text('display_to', 'null', ['class' => 'form-control', 'id' => 'datepicker']) }}
+                        <div class="col-md-10">
+                        {{ Form::text('display_from', 'null', ['class' => 'form-control datepicker_2']) }}
+                        {{ Form::text('display_to', 'null', ['class' => 'form-control datepicker_2']) }}
                         </div>
                     </div>
                     <!--応募期間-->
@@ -161,9 +161,9 @@
                         <div class="col-md-2">
                         {{ Form::label('application_term', __('messages.application_term')) }}
                         </div>
-                        <div class="col-md-10 row">
-                        {{ Form::text('application_from', 'null', ['class' => 'form-control', 'id' => 'datepicker']) }}
-                        {{ Form::text('application_to', 'null', ['class' => 'form-control', 'id' => 'datepicker']) }}
+                        <div class="col-md-10">
+                        {{ Form::text('application_from', 'null', ['class' => 'form-control datepicker_2']) }}
+                        {{ Form::text('application_to', 'null', ['class' => 'form-control datepicker_2']) }}
                         </div>
                     </div>
                 </form>  

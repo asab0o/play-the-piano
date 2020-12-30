@@ -95,7 +95,7 @@ return [
     'numeric' => 'The :attribute must be a number.',
     'present' => 'The :attribute field must be present.',
     'regex' => 'The :attribute format is invalid.',
-    'required' => 'The :attribute field is required.',
+    'required' => ':attribute に入力が必要です。',
     'required_if' => 'The :attribute field is required when :other is :value.',
     'required_unless' => 'The :attribute field is required unless :other is in :values.',
     'required_with' => 'The :attribute field is required when :values is present.',
@@ -145,6 +145,33 @@ return [
     |
     */
 
-    'attributes' => [],
+    // 201230 messages.phpの配列をもっと簡単に入れたい
+    'attributes' => [
+        'login' => 'ログイン',
+    'logout' => 'ログアウト',
+    'E-mail Adress' => 'メールアドレス',
+    'password' => 'パスワード',
+    'Remember Me' => 'ログイン情報を記憶する',
+    'home' => 'ホーム',
+    'image' => '画像',
+    'name_1' => '名前',
+    'name_2' => 'フリガナ',
+    'birthday' => '生年月日',
+    'gender' => '性別',
+    'experience' => 'ピアノ暦',
+    'area' => '活動範囲',
+    'introduction' => '紹介文',
+    'performance' => '演奏動画',
+    'register' => '登録',
+    'title' => 'タイトル',
+    'tel_number' => '電話番号',
+    'date_time' => '日時',
+    'rewards' => '報酬',
+    'parking_lot' => '駐車場',
+    'genre' => 'ジャンル',
+    'dress' => '衣装',
+    'display_term' => '表示期間',
+    'application_term' => '応募期間',
+        ],
 
 ];

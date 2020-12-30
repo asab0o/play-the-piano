@@ -3,6 +3,9 @@
 return [
     'login' => 'ログイン',
     'logout' => 'ログアウト',
+    'E-mail Adress' => 'メールアドレス',
+    'password' => 'パスワード',
+    'Remember Me' => 'ログイン情報を記憶する',
     'home' => 'ホーム',
     'image' => '画像',
     'name_1' => '名前',

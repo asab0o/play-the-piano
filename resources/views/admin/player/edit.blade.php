@@ -2,10 +2,10 @@
 @section('title', 'プロフィール画面の編集')
     
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-10 mx-auto">
-                <h2>プロフィールの編集</h2>
+                <h2>プロフィール編集</h2>
                 {{ Form::open(['action' => 'Admin\PlayerController@update', 'files' => true, 'class' => "form-horizontal"]) }}
                     @if (count($errors) > 0)
                         <ul>
@@ -19,25 +19,14 @@
                     <div class="col-md-2">
                         {{ Form::label('image', __('messages.image')) }}
                     </div>
+                    <div class="col-md-10">
                     @for ($i = 1; $i <= 3; $i++)
-                    <div class="col-md-4">
-                        <!--画像登録した時に表示-->
-                        <!--{{--@if ($post->image_path)-->
-                        <!--{{ HTML::image($post->image_path) }}-->
-                        <!--<div class="">-->
-                        <!--    <div class="btn btn-secondary">-->
-                        <!--        <a href="{{ action('Admin\NewsController@edit', ['id' => $profile->id]) }}">編集</a>-->
-                        <!--    </div>-->
-                        <!--    <div class="btn btn-secondary">-->
-                        <!--        <a href="{{ action('Admin\NewsController@edit', ['id' => $profile->id]) }}">削除</a>-->
-                        <!--    </div>-->
-                        <!--</div>-->
-                        <!--画像の登録がまだの時-->
-                        <!--@else-->
-                        <!--{{ Form::file('image', ['class' => 'form-control-file']) }}-->
-                        <!--@endif--}}-->
-                    </div>
+                        <div class="col-md-4">
+                            {{ Form::file('image', ['class' => 'form-control custom-file-input', 'id' => 'image'.$i]) }}
+                            {{ Form::label('image'.$i, '写真を選択', ['class' => 'custom-file-label']) }}
+                        </div>
                     @endfor
+                    </div>
                 </div>
                 <!--名前-->
                 <div class="form-group row">
@@ -83,13 +72,19 @@
                     <div class="col-md-2">
                         {{ Form::label('gender', __('messages.gender')), ['class' => 'form-control'] }}
                     </div>
-                    <div class="col-md-10 row">
+                    <div class="col-md-10">
                         <!--foreachの引数を強制的に配列-->
                         @foreach ($genders as $key => $gender)
                         <!--クラスを再確認-->
-                        <div class="col-md-2">
-                            {{ Form::radio('gender', $key, false, ['class'=>'form-control','id'=>'gender-'.$key])}}
-                            {{ Form::label('gender-'.$key, $gender) }}
+                        <div class="form-group form-check form-check-inline">
+                            <!--201227 訂正-->
+                            @if ($key == $player_form->gender)
+                                {{ Form::radio('gender', $gender->type, true, ['class'=>'form-check-input','id'=>'gender-'.$gender->type])}}
+                                {{ Form::label('gender-'.$gender->type, $gender->name, ['class' => 'form-check-label']) }}
+                            @else
+                                {{ Form::radio('gender', $gender->type, false, ['class'=>'form-check-input','id'=>'gender-'.$gender->type])}}
+                                {{ Form::label('gender-'.$gender->type, $gender->name, ['class' => 'form-check-label']) }}
+                            @endif
                         </div>
                         @endforeach
                     </div>
@@ -109,11 +104,12 @@
                 <!--活動エリア-->
                 <div class="form-group row">
                     <div class="col-md-2">
-                        {{ Form::label('area', __('messages.area')) }}
+                        {{ Form::label('prefecture', '活動エリア', null) }}
                         <!--選択にするか入力にするか-->
                     </div>
                     <div class="col-md-10">
-                        {{Form::selectRange('area' , 1, 31, 1, ['class'=>'form-control'])}}
+                        <!--初期値を東京にしたい-->
+                        {{ Form::select('prefecture', $prefectures, $prefectures[12], ['class'=>'form-control']) }}
                     </div>
                 </div>
                 <!--自己紹介-->

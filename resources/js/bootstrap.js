@@ -39,3 +39,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+// require("jquery-ui/ui/widgets/datepicker.js");
+require('jquery-ui/ui/i18n/datepicker-ja.js');
+

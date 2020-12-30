@@ -26,10 +26,14 @@ class RequestsTable extends Migration
             $table->string('genres');
             $table->string('dress');
             $table->string('introduction');
-            $table->dateTime('display_from');
-            $table->dateTime('display_to');
-            $table->dateTime('application_from');
-            $table->dateTime('application_to');
+            $table->dateTime('display_date_from');
+            $table->dateTime('display_time_from');
+            $table->dateTime('display_date_to');
+            $table->dateTime('display_time_to');
+            $table->dateTime('application_date_from');
+            $table->dateTime('application_time_from');
+            $table->dateTime('application_date_to');
+            $table->dateTime('application_time_to');
             $table->string('image_path_1')->nullable();
             $table->string('image_path_2')->nullable();
             $table->string('image_path_3')->nullable();

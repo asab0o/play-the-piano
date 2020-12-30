@@ -20,7 +20,7 @@ class PlayersTable extends Migration
             $table->integer('birth_day')->nullable();
             $table->string('gender');
             $table->integer('experience');
-            $table->string('prefecture');
+            $table->string('prefectures')->nullable();
             $table->string('introduction');
             $table->string('image_path_1')->nullable();
             $table->string('image_path_2')->nullable();
