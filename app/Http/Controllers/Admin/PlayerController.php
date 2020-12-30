@@ -33,6 +33,7 @@ class PlayerController extends Controller
                 
         // $prefNameList = $prefList->pluck(“name”);
         
+        
         // compact関数を使って配列渡せなかった        
         return view('admin.player.create', $gendersList, $prefList);
     }
@@ -40,22 +41,49 @@ class PlayerController extends Controller
     public function create(Request $request){
         $this->validate($request, Player::$rules);
         $player = new Player;
+        // 201230 user_idに値を入れる
+        $player->user_id = $request->user()->id;
         $form = $request->all();
         
         // for文使えるのか
-        for ($i = 1; $i <= 3; $i++) {
-            if (isset($form['image'.$i])) {
-                $path = Storage::disk('s3')->putFile('/', $form['image'], 'public');
-                $player->image_path_.$i = Storage::disk('s3')->url($path);
-            } else {
-                $player->image_path_.$i = null;
-            }
+        // for ($i = 1; $i <= 3; $i++) {
+        //     if (isset($form['image'.$i])) {
+        //         $path = Storage::disk('s3')->putFile('/', $form['image'], 'public');
+        //         $player->image_path_.$i = Storage::disk('s3')->url($path);
+        //     } else {
+        //         $player->image_path_.$i = null;
+        //     }
+        // }
+        
+        // for文使えないか
+        if (isset($form['image'])) {
+            $path = $request->file('image')->store('public/image');
+            $player->image_path_1 = basename($path);
+        } else {
+            $player->image_path_1 = null;
         }
+        if (isset($form['image'])) {
+            $path = $request->file('image')->store('public/image');
+            $player->image_path_2 = basename($path);
+        } else {
+            $player->image_path_2 = null;
+        }
+        if (isset($form['image'])) {
+            $path = $request->file('image')->store('public/image');
+            $player->image_path_3 = basename($path);
+        } else {
+            $player->image_path_3 = null;
+        }
+      
         
         unset($form['_token']);
         unset($form['image']);
         $player->fill($form)->save();
-        return redirect('admin/mypage/index');
+        
+        // 201229 users_idがnullでエラーが出るためその解消
+        // $player->fill($form)->user()->associate($user)->save();
+        
+        return redirect('/');
         
     }
     

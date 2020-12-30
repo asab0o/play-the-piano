@@ -22,8 +22,8 @@
                     <div class="col-md-10">
                     @for ($i = 1; $i <= 3; $i++)
                         <div class="col-md-4">
-                            {{ Form::file('image', ['class' => 'form-control custom-file-input', 'id' => 'image'.$i]) }}
-                            {{ Form::label('image'.$i, '写真を選択', ['class' => 'custom-file-label']) }}
+                            {{ Form::file('image', ['class' => 'form-control custom-file-input', 'id' => 'image'.'_'.$i]) }}
+                            {{ Form::label('image', '写真を選択', ['class' => 'custom-file-label']) }}
                         </div>
                     @endfor
                     </div>

@@ -166,11 +166,12 @@
                         {{ Form::text('application_to', 'null', ['class' => 'form-control datepicker_2']) }}
                         </div>
                     </div>
-                </form>  
+                    <!--登録ボタン-->
+                    {{ Form::submit(__('messages.register'), ['class' => 'btn btn-secondary']) }}
+                    @csrf
+                    {{ Form::close() }}
+                </div>
             </div>
         </div>
-    </div>
-
-
 
 @endsection

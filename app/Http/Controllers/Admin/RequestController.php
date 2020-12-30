@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-// use App\Request;
+use App\Request;
 use Carbon\Carbon;
 use Storage;
 
@@ -30,17 +30,27 @@ class RequestController extends Controller
         $request = new Request;
         $form = $request->all();
         
-        for ($i = 0; $i < 5; $i++) {
-            if (isset($form['image'])) {
-                $path = Storage::disk('s3')->putFile('/',$form['image'], 'public');
-                $request->image_path = Storage::disk('s3')->url($path);
-            } else {
-                $request->image_path = null;
-            }
+        // for ($i = 0; $i < 5; $i++) {
+        //     if (isset($form['image'])) {
+        //         $path = Storage::disk('s3')->putFile('/',$form['image'], 'public');
+        //         $request->image_path = Storage::disk('s3')->url($path);
+        //     } else {
+        //         $request->image_path = null;
+        //     }
+        // }
+        for ($i = 1; $i <= 5; $i++) {
+            if (isset($form['image'.$i])) {
+                $path = $request->file('image')->store('public/image');
+                $news->image_path = basename($path);
+              } else {
+                  $news->image_path = null;
+              }
         }
+        
         unset($form['_token']);
         unset($form['image']);
         $request->fill($form)->save();
+        
         return redirect('admin/mypage/index');
     }
     

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Player extends Model
 {
     protected $guarded = array('id');
+    
     public static $rules = array (
         
         'firstname_1' => 'required',
@@ -17,5 +18,10 @@ class Player extends Model
         'experience' => 'required',
         'introduction' => 'required',
         
-        );
+    );
+    // 201230 リレーションのため追記
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }
