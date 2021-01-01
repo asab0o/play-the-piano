@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Player;
+use App\User;
+use Auth;
 // use App\Genders;
 use Carbon\Carbon;
 use Storage;
@@ -93,14 +95,23 @@ class PlayerController extends Controller
                 'genders' => $this->genders,
                 ];
                 
-        $player = Player::find($request->id);
-        if(empty($player)) {
-            abort(404);
-      }
-       return view('admin.player.edit', ['player_form' => $player], $gendersList); 
+        $prefList = [
+                'prefectures' => $this->prefectures,
+                ];
+            // $requestはちゃんととれているみたい
+        // ここが絶対違う
+        $user = User::find($request->id);
+        // $user = Auth::user();
+        $player = Player::where('user_id', $user->id)->first();
+        // if(empty($player)) { 
+        //     abort(404);
+        //  } 
+        dd($player); 
+        return view('admin.player.edit', ['player_form' => $player], $gendersList, $prefList); 
     }
     
-    public function update() {
+    public function update()
+    {
         $this->validate($request, Player::$rules);
         $player = Player::find($request->id);
         $player_form = $request->all();
@@ -114,7 +125,7 @@ class PlayerController extends Controller
             $player_form['image_path'] = $player->image_path;
         }
         
-        return redirect('admin/mypage/index'); 
+        return redirect('/'); 
     }
     
     public function delete(Request $request) {
@@ -131,6 +142,7 @@ class PlayerController extends Controller
         // dd($result);
         return $result;
     }
+    
     private function getPrefectures()
     {
         $result = \DB::table('prefectures')->get()->pluck("name");

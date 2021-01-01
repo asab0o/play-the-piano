@@ -43,8 +43,8 @@
                                 演奏したい<span class="caret"></span>
                             </a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="{{ url('admin/player/create') }}">プロフィールの新規作成</a>
-                                <a class="dropdown-item" href="{{ url('admin/player/edit') }}">プロフィールの編集・削除</a>
+                                <a class="dropdown-item" href="{{ action('Admin\PlayerController@add') }}">プロフィールの新規作成</a>
+                                <a class="dropdown-item" href="{{ action('Admin\PlayerController@edit', ['id' => auth()->user()->id]) }}">プロフィールの編集・削除</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
@@ -53,7 +53,7 @@
                             </a>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="{{ url('admin/request/create') }}">演奏依頼を投稿</a>
-                                <a class="dropdown-item" href="{{ url('admin/request/create') }}">掲示中のものを編集・削除</a>
+                                <a class="dropdown-item" href="{{ url('admin/request/edit') }}">掲示中のものを編集・削除</a>
                             </div>
                         </li>
                     </ul>

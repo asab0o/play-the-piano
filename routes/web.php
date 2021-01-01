@@ -1,7 +1,7 @@
 <?php
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
-    Route::get('player/create', 'Admin\PlayerController@add');
+    Route::get('player/create/', 'Admin\PlayerController@add');
     Route::post('player/create', 'Admin\PlayerController@create');
     Route::get('player/edit', 'Admin\PlayerController@edit');
     Route::post('player/edit', 'Admin\PlayerController@update');

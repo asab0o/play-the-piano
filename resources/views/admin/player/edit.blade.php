@@ -22,8 +22,8 @@
                     <div class="col-md-10">
                     @for ($i = 1; $i <= 3; $i++)
                         <div class="col-md-4">
-                            {{ Form::file('image', ['class' => 'form-control custom-file-input', 'id' => 'image'.$i]) }}
-                            {{ Form::label('image'.$i, '写真を選択', ['class' => 'custom-file-label']) }}
+                            {{ Form::file('image', ['class' => 'form-control custom-file-input', 'id' => 'image'.'_'.$i]) }}
+                            {{ Form::label('image', '写真を選択', ['class' => 'custom-file-label']) }}
                         </div>
                     @endfor
                     </div>
@@ -57,15 +57,15 @@
                     <div class="col-md-2">
                         {{ Form::label('birthday', __('messages.birthday')) }}
                     </div>
-                    <div class="col-md-4">
-                        {{ Form::selectRange('birth_year', 1920, 2020, old('birth_year'), ['class'=>'form-control'])}}
+                    <div class="col-md-10">
+                        {{ Form::text('birthday', old('birthday'), ['class'=>'form-control datepicker_1'])}}
                     </div>
-                    <div class="col-md-3">
-                        {{ Form::selectMonth('birth_month', old('birth_month'), ['class'=>'form-control'])}}
-                    </div>
-                    <div class="col-md-3">
-                        {{ Form::selectRange('birth_ day' , 1, 31, old('birth_day'), ['class'=>'form-control'])}}
-                    </div>
+                    {{--<!--<div class="col-md-3">-->
+                    <!--    {{ Form::selectMonth('birth_month', old('birth_month'), ['class'=>'form-control'])}}-->
+                    <!--</div>-->
+                    <!--<div class="col-md-3">-->
+                    <!--    {{ Form::selectRange('birth_ day' , 1, 31, old('birth_day'), ['class'=>'form-control'])}}-->
+                    <!--</div>-->--}}
                 </div>
                 <!--性別 -->
                 <div class="form-group row">
@@ -74,17 +74,12 @@
                     </div>
                     <div class="col-md-10">
                         <!--foreachの引数を強制的に配列-->
-                        @foreach ($genders as $key => $gender)
+                        @foreach ($genders as $gender)
                         <!--クラスを再確認-->
                         <div class="form-group form-check form-check-inline">
                             <!--201227 訂正-->
-                            @if ($key == $player_form->gender)
-                                {{ Form::radio('gender', $gender->type, true, ['class'=>'form-check-input','id'=>'gender-'.$gender->type])}}
-                                {{ Form::label('gender-'.$gender->type, $gender->name, ['class' => 'form-check-label']) }}
-                            @else
-                                {{ Form::radio('gender', $gender->type, false, ['class'=>'form-check-input','id'=>'gender-'.$gender->type])}}
-                                {{ Form::label('gender-'.$gender->type, $gender->name, ['class' => 'form-check-label']) }}
-                            @endif
+                            {{ Form::radio('gender', $gender->type, false, ['class'=>'form-check-input','id'=>'gender-'.$gender->type])}}
+                            {{ Form::label('gender-'.$gender->type, $gender->name, ['class' => 'form-check-label']) }}
                         </div>
                         @endforeach
                     </div>
