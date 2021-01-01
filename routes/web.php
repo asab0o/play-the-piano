@@ -23,7 +23,7 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/mypage', 'MyPageController@index')->middleware('auth');
 
 Route::get('/player', 'PlayerController@index');
-Route::get('/player/{id}', 'PlayerController@showProfile');
+Route::get('/player/intro', 'PlayerController@showProfile');
 
 Route::get('/request', 'RequestController@index');
-Route::get('/request/{id}', 'RequestController@showProfile');
+Route::get('/request/article', 'RequestController@showProfile');

@@ -28,10 +28,10 @@
                             <a class="nav-link" href="{{ url('/') }}">HOME <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/request') }}">演奏場所を探す <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="{{ action('RequestController@index')}}">演奏場所を探す <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/player') }}">演奏者を探す <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="{{ action('PlayerController@index') }}">演奏者を探す <span class="sr-only">(current)</span></a>
                         </li>
                         @guest
                         <li class="nab-item">
@@ -63,7 +63,7 @@
                                 {{ Auth::user()->name }}
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ url('admin/mypage') }}">マイページ <span class="sr-only">(current)</span></a>
+                                {{--<!--<a class="dropdown-item" href="{{ action('Admin\MypageContraller@index', ['id' => auth()->user()->id]) }}">マイページ <span class="sr-only">(current)</span></a>-->--}}
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                 {{ __('messages.logout') }}
                                 </a>

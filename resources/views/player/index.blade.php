@@ -6,23 +6,25 @@
         <div class="col-md-10 mx-auto">
             <h1>演奏者の一覧</h1>
             <!--カードで表示したい-->
-            @foreach ($posts as $player)
                 <div class="post">
-                    <div class="row">
-                        <div class="col-md-4 col-sm-12">
-                            <div class="card">
-                              <svg class="bd-placeholder-img card-img-top" width="100%" height="180"></svg>
-                              <div class="card-body">
-                                <h5 class="card-title">{{ $player->name }}</h5>
-                                <p class="card-text">{{ $player->introduction }}</p>
-                                <a href="{{ action('コントローラー名とアクション名'), ['id' => $players->id] }}">詳細をみる</a>
-                              </div>
+                    <div class="row row-cols-2">
+                        @foreach ($posts as $player)
+                            <div class="card col-md-5 col-sm-12">
+                                @if($player->image_path_1)
+                                <img src="{{ $player->image_path_1 }}" class="card-image-top">
+                                @endif
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $player->firstname_1 }} {{ $player->lastname_1 }}</h5>
+                                    <p class="card-title">{{ $player->firstname_2 }} {{ $player->lastname_2 }}</p>
+                                    <p class="card-text">{{ $player->introduction }}</p>
+                                    
+                                    <a href="{{ action('PlayerController@showProfile', ['id' => $player->id]) }}" class="btn btn-outline-primary">詳細をみる</a>
+                                </div>
                             </div>
-                        </div>
-                        <!--カードここまで-->
+                        @endforeach
                     </div>
                 </div>
-            @endforeach
+            <!--カードここまで-->
         </div>
     </div>
 @endsection
