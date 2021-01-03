@@ -13,12 +13,7 @@ class RequestsHistoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('requests_histories', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('requests_id');
-            $table->string('edited_at');
-            $table->timestamps();
-        });
+        // Schema::drop('requests_histories');
     }
 
     /**
@@ -28,6 +23,6 @@ class RequestsHistoriesTable extends Migration
      */
     public function down()
     {
-        //
+        // Schema::dropIfExists('requests_histories');
     }
 }

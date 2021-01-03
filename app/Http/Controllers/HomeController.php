@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Player;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('index');
+        $players = Player::latest()->limit(6)->get();
+        // 投稿が新しい順に6つデータを取得したい
+        // dd($players);
+        return view('index', ['players' => $players]);
     }
 }

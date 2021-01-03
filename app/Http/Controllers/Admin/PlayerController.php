@@ -32,6 +32,7 @@ class PlayerController extends Controller
         $prefList = [
                 'prefectures' => $this->prefectures,
                 ];
+        
                 
         // $prefNameList = $prefList->pluck(“name”);
         
@@ -57,7 +58,6 @@ class PlayerController extends Controller
         //     }
         // }
         
-        // for文使えないか
         if (isset($form['image'])) {
             $path = $request->file('image')->store('public/image');
             $player->image_path_1 = basename($path);
@@ -85,29 +85,31 @@ class PlayerController extends Controller
         // 201229 users_idがnullでエラーが出るためその解消
         // $player->fill($form)->user()->associate($user)->save();
         
+        // 一人のユーザーが複数個プロフィールを作成できてしまう
+        // Request(演奏依頼)は問題ないが演奏者プロフィールは1人1つにしたい
+        
         return redirect('/');
         
     }
     
     public function edit(Request $request) {
         
-        $gendersList = [
-                'genders' => $this->genders,
-                ];
+        $genders = $this->genders;
                 
-        $prefList = [
-                'prefectures' => $this->prefectures,
-                ];
+        $prefectures = $this->prefectures;
             // $requestはちゃんととれているみたい
         // ここが絶対違う
         $user = User::find($request->id);
-        // $user = Auth::user();
         $player = Player::where('user_id', $user->id)->first();
         // if(empty($player)) { 
         //     abort(404);
         //  } 
-        dd($player); 
-        return view('admin.player.edit', ['player_form' => $player], $gendersList, $prefList); 
+        // dd($player);
+        return view('admin.player.edit', [
+            'player_form' => $player,
+            'genders' => $genders,
+            'prefectures' => $prefectures,
+        ]); 
     }
     
     public function update()

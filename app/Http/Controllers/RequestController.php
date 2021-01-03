@@ -12,4 +12,10 @@ class RequestController extends Controller
         return view('request.index', ['posts' => $posts]);
     }
     
+    public function showArticle($id)
+    {
+        
+        return view('request.article', ['posts' => $posts]);
+    }
+    
 }

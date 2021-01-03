@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class PlayersHistoriesTable extends Migration
+class CreateGendersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class PlayersHistoriesTable extends Migration
      */
     public function up()
     {
-        // Schema::drop('players_histories');
+        Schema::drop('genders');
     }
 
     /**
@@ -23,6 +23,6 @@ class PlayersHistoriesTable extends Migration
      */
     public function down()
     {
-        // Schema::dropIfExists('players_histories');
+        Schema::dropIfExists('genders');
     }
 }

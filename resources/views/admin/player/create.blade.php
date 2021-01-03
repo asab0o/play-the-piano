@@ -104,7 +104,7 @@
                     </div>
                     <div class="col-md-10">
                         <!--初期値を東京にしたい-->
-                        {{ Form::select('prefecture', $prefectures, $prefectures[12], ['class'=>'form-control']) }}
+                        {{ Form::select('prefecture', $prefectures, null, ['class'=>'form-control']) }}
                     </div>
                 </div>
                 <!--自己紹介-->

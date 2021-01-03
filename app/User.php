@@ -39,7 +39,7 @@ class User extends Authenticatable
     
     public function players()
     {
-        return $this->hasMany('App\Player');
+        return $this->hasOne('App\Player');
     }
     
 }

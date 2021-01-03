@@ -63,7 +63,7 @@
                                 {{ Auth::user()->name }}
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                {{--<!--<a class="dropdown-item" href="{{ action('Admin\MypageContraller@index', ['id' => auth()->user()->id]) }}">マイページ <span class="sr-only">(current)</span></a>-->--}}
+                                {{--<!--<a class="dropdown-item" href="{{ action('Admin\MypageController@index', ['id' => auth()->user()->id]) }}">マイページ <span class="sr-only">(current)</span></a>-->--}}
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                 {{ __('messages.logout') }}
                                 </a>

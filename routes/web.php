@@ -12,6 +12,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::get('request/edit', 'Admin\RequestController@edit');
     Route::post('request/edit', 'Admin\RequestController@update');
     Route::get('request/delate', 'Admin\RequestController@delete');
+    
+    Route::get('mypage', 'MyPageController@index');
 });
 
 
@@ -20,7 +22,6 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/mypage', 'MyPageController@index')->middleware('auth');
 
 Route::get('/player', 'PlayerController@index');
 Route::get('/player/intro', 'PlayerController@showProfile');

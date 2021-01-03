@@ -12,18 +12,49 @@
                     <a href="{{ url('request/index') }}">一覧をみる</a>
                 </div>
                 <!--<hr color=>-->
-                <div class="col-md-12">
-                    <div class="carousel slide" data-ride="carousel" style="midth:400px">
+                <div class="col-md-8 mx-auto">
+                    <div class="carousel slide" data-ride="carousel" data-interval="2000">
+                        <ol class="carousel-indicators">
+                            <li data-target="#example3" data-slide-to="0" class="ative"></li>
+                            <li data-target="#example3" data-slide-to="1"></li>
+                            <li data-target="#example3" data-slide-to="2"></li>
+                        </ol>
                         <div class="carousel-inner">
-                            @for ($i = 0; $i < 3; $i++)
                             <div class="carousel-item active">
-                                <img src="" alt="Slide".$i>
-                                <div class="carousel-caption" style="top:10px">
-                                    <!--{{--{{ str_limit($post->title, 20) }}--}}-->
-                                    <h6>タイトル表示させます</h6>
+                                <img src="../../images/carousel_test/IMG_4313.jpeg" alt="Slide" class="d-block w-100">
+                                <div class="carousel-caption d-none d-md-block" style="top:50px">
+                                    <h5 class="card-title">タイトル表示させます1</h5>
+                                    <p class="card-text">本文を表示させます1</p>
+                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                                 </div>
                             </div>
-                            @endfor
+                            <div class="carousel-item">
+                                <img src="./../images/carousel_test/IMG_4354.jpeg" alt="Slide" class="d-block w-100">
+                                <div class="carousel-caption d-none d-md-block" style="top:50px">
+                                    <h5>タイトル表示させます2</h5>
+                                    <p>本文を表示させます2</p>
+                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                </div>
+                            </div>
+                        </div>
+                            
+                            {{--@foreach($requests as $request)
+                            <!--<div class="carousel-item">-->
+                            <!--    <img src="" alt="Slide" width="50" height="70">-->
+                            <!--    <div class="carousel-caption" style="top:10px">-->
+                                    {{ str_limit($post->title, 20) }}
+                            <!--        <h6>タイトル表示させます3</h6>-->
+                            <!--    </div>-->
+                            <!--</div>-->
+                            <!--@endforeach--}}
+                            <a class="carousel-control-prev" href="#example2" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -32,9 +63,9 @@
         <div class="row">
             <div class="col-md-10 mx-auto">
                 <h2>演奏者</h2>
-                <a href="{{ url('player/index') }}">一覧をみる</a>
+                <a href="{{ action('PlayerController@index') }}">一覧をみる</a>
                 <div class="row">
-                    @for($i = 0; $i < 6; $i++)
+                    @foreach($players as $player)
                     <div class="col-md-4 col-sm-12">
                         <div class="card"　style="">
                             <img class="card-img-top" src="" >
@@ -45,7 +76,7 @@
                             </div>
                         </div>
                     </div>
-                    @endfor
+                    @endforeach
                 </div>
             </div>
         </div>

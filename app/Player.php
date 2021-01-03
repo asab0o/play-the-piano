@@ -15,6 +15,7 @@ class Player extends Model
         'firstname_2' => 'required',
         'lastname_2' => 'required',
         'gender' => 'required',
+        'prefecture' => 'required',
         'experience' => 'required',
         'introduction' => 'required',
         
