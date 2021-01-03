@@ -32,11 +32,7 @@ class PlayerController extends Controller
         $prefList = [
                 'prefectures' => $this->prefectures,
                 ];
-        
-                
         // $prefNameList = $prefList->pluck(“name”);
-        
-        
         // compact関数を使って配列渡せなかった        
         return view('admin.player.create', $gendersList, $prefList);
     }
@@ -95,7 +91,6 @@ class PlayerController extends Controller
     public function edit(Request $request) {
         
         $genders = $this->genders;
-                
         $prefectures = $this->prefectures;
             // $requestはちゃんととれているみたい
         // ここが絶対違う

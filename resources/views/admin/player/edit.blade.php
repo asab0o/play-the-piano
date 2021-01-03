@@ -14,6 +14,7 @@
                             @endforeach
                         </ul>
                     @endif
+                
                 <!--画像の設定-->
                 <div class="form-group row">
                     <div class="col-md-2">
@@ -46,10 +47,10 @@
                         {{ Form::label('name_2', __('messages.name_2')) }}
                     </div>
                     <div class="col-md-5">
-                        {{ Form::text('firstname_2', old('firstname_2'), ['class' => 'form-control', 'placeholder' => 'ヤマダ']) }}
+                        {{ Form::text('firstname_2', $player_form->firstname_2, ['class' => 'form-control', 'placeholder' => 'ヤマダ']) }}
                     </div>
                     <div class="col-md-5">
-                        {{ Form::text('lastname_2', old('lastname_2'), ['class' => 'form-control', 'placeholder' => 'タロウ']) }}
+                        {{ Form::text('lastname_2', $player_form->lastname_2, ['class' => 'form-control', 'placeholder' => 'タロウ']) }}
                     </div>
                 </div>
                 <!--生年月日-->
@@ -58,7 +59,7 @@
                         {{ Form::label('birthday', __('messages.birthday')) }}
                     </div>
                     <div class="col-md-10">
-                        {{ Form::text('birthday', old('birthday'), ['class'=>'form-control datepicker_1'])}}
+                        {{ Form::text('birthday', $player_form->birthday, ['class'=>'form-control datepicker_1'])}}
                     </div>
                     {{--<!--<div class="col-md-3">-->
                     <!--    {{ Form::selectMonth('birth_month', old('birth_month'), ['class'=>'form-control'])}}-->
@@ -68,29 +69,34 @@
                     <!--</div>-->--}}
                 </div>
                 <!--性別 -->
-                <div class="form-group row">
-                    <div class="col-md-2">
-                        {{ Form::label('gender', __('messages.gender')), ['class' => 'form-control'] }}
-                    </div>
-                    <div class="col-md-10">
+                {{--<!--<div class="form-group row">-->
+                <!--    <div class="col-md-2">-->
+                <!--        {{ Form::label('gender', __('messages.gender')), ['class' => 'form-control'] }}-->
+                <!--    </div>-->
+                <!--    <div class="col-md-10">-->
                         <!--foreachの引数を強制的に配列-->
-                        @foreach ($genders as $gender)
+                <!--        @foreach ($genders as $key as $gender)-->
                         <!--クラスを再確認-->
-                        <div class="form-group form-check form-check-inline">
+                <!--        <div class="form-group form-check form-check-inline">-->
                             <!--201227 訂正-->
-                            {{ Form::radio('gender', $gender->type, false, ['class'=>'form-check-input','id'=>'gender-'.$gender->type])}}
-                            {{ Form::label('gender-'.$gender->type, $gender->name, ['class' => 'form-check-label']) }}
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
+                <!--            @if ($key == $player_form->gender)-->
+                <!--            {{ Form::radio('gender', $gender->type, true, ['class'=>'form-check-input','id'=>'gender-'.$gender->type])}}-->
+                <!--            {{ Form::label('gender-'.$gender->type, $gender->name, ['class' => 'form-check-label']) }}-->
+                <!--            @else-->
+                <!--            {{ Form::radio('gender', $gender->type, false, ['class'=>'form-check-input','id'=>'gender-'.$gender->type])}}-->
+                <!--            {{ Form::label('gender-'.$gender->type, $gender->name, ['class' => 'form-check-label']) }}-->
+                <!--            @endif-->
+                <!--        </div>-->
+                <!--        @endforeach-->
+                <!--    </div>-->
+                <!--</div>-->--}}
                 <!--ピアノ暦-->
                 <div class="form-group row">
                     <div class="col-md-2">
                         {{ Form::label('experience', __('messages.experience')) }}
                     </div>
                     <div class="col-md-8">
-                        {{ Form::number('experience', old('experience'), ['class' => 'form-control', 'placeholder' => '半角数字で入力']) }}
+                        {{ Form::number('experience', $player_form->experience, ['class' => 'form-control', 'placeholder' => '半角数字で入力']) }}
                     </div>
                     <div class="col-md-2">
                         <label>年</label>
@@ -104,7 +110,7 @@
                     </div>
                     <div class="col-md-10">
                         <!--初期値を東京にしたい-->
-                        {{ Form::select('prefecture', $prefectures, null, ['class'=>'form-control']) }}
+                        {{ Form::select('prefecture', $prefectures, $player_form->prefecture, ['class'=>'form-control']) }}
                     </div>
                 </div>
                 <!--自己紹介-->
@@ -113,7 +119,7 @@
                         {{ Form::label('introduction', __('messages.introduction')) }}
                     </div>
                     <div class="col-md-10">
-                    {{ Form::textarea('introduction', null, ['class' => 'form-control', 'rows' => '5']) }}
+                    {{ Form::textarea('introduction', $player_form->introduction, ['class' => 'form-control', 'rows' => '5']) }}
                     </div>
                 </div>
                 <!--参考動画-->
@@ -122,11 +128,13 @@
                         {{ Form::label('performance', __('messages.performance')) }}
                     </div>
                     <div class="col-md-10">
-                        {{ Form::text('performance', null, ['class' => 'form-control', 'placeholder' => 'URL']) }}
+                        {{ Form::text('performance', $player_form->performance, ['class' => 'form-control', 'placeholder' => 'URL']) }}
                     </div>
                 </div>
                 <!--登録ボタン-->
-                {{ Form::submit(__('messages.register'), ['class' => 'btn btn-secondary']) }}
+                <!--hiddenについて-->
+                {{ Form::hidden('id', $player_form->id) }}
+                {{ Form::submit(__('messages.update'), ['class' => 'btn btn-secondary']) }}
                 @csrf
                 {{ Form::close() }}
             </div>

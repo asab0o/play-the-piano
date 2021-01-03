@@ -38,18 +38,18 @@
                             <a class="nav-link" href="{{ route('login') }}">{{ __('messages.login') }}</a>
                         </li>
                         @else
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                演奏したい<span class="caret"></span>
-                            </a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="{{ action('Admin\PlayerController@add') }}">プロフィールの新規作成</a>
-                                <a class="dropdown-item" href="{{ action('Admin\PlayerController@edit', ['id' => auth()->user()->id]) }}">プロフィールの編集・削除</a>
-                            </div>
+                        @if($playerJudge)
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ action('Admin\PlayerController@edit', ['id' => auth()->user()->id]) }}">プロフィールの編集・削除</a>    
                         </li>
+                        @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ action('Admin\PlayerController@add') }}">プロフィールの新規作成</a>
+                        </li>
+                        @endif
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                依頼したい<span class="caret"></span>
+                                依頼したい
                             </a>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="{{ url('admin/request/create') }}">演奏依頼を投稿</a>
