@@ -70,7 +70,7 @@
                             {{ Form::label('area', __('messages.area')) }}
                         </div>
                         <div class="col-md-10">
-                           {{Form::selectRange('area' , 1, 31, old('area'), ['class'=>'form-control'])}}
+                            {{ Form::select('area', $prefectures, old('area'), ['class' => 'form-control']) }}
                         </div>
                     </div>
                     <!--報酬-->
@@ -133,7 +133,7 @@
                                 {{ Form::radio('dress', '指定あり', false, ['class' => 'form-check-input', 'id' => 'dress-2']) }}
                                 {{ Form::label('dress-2', '指定あり',['class' => 'form-check-label text-nowrap']) }}
                                 <!--nameこれで良い？-->
-                                {{ Form::text('dress-2', null, ['class' => 'form-control', 'placeholder' => '衣装を入力']) }}
+                                {{ Form::text('dress-2', old('dress-2'), ['class' => 'form-control', 'placeholder' => '衣装を入力']) }}
                             </div>
                         </div>
                     </div>
@@ -143,7 +143,7 @@
                         {{ Form::label('introduction', __('messages.introduction')) }}
                         </div>
                         <div class="col-md-10">
-                        {{ Form::textarea('introduction', 'null', ['class' => 'form-control', 'rows' => '10']) }}
+                        {{ Form::textarea('introduction', old('introduction'), ['class' => 'form-control', 'rows' => '10']) }}
                         </div>
                     </div>
                     <!--表示期間-->
@@ -152,8 +152,8 @@
                         {{ Form::label('display_term', __('messages.display_term')) }}
                         </div>
                         <div class="col-md-10">
-                        {{ Form::text('display_from', 'null', ['class' => 'form-control datepicker_2']) }}
-                        {{ Form::text('display_to', 'null', ['class' => 'form-control datepicker_2']) }}
+                        {{ Form::text('display_from', old('display_from'), ['class' => 'form-control datepicker_2']) }}
+                        {{ Form::text('display_to', old('display_to'), ['class' => 'form-control datepicker_2']) }}
                         </div>
                     </div>
                     <!--応募期間-->
@@ -162,8 +162,8 @@
                         {{ Form::label('application_term', __('messages.application_term')) }}
                         </div>
                         <div class="col-md-10">
-                        {{ Form::text('application_from', 'null', ['class' => 'form-control datepicker_2']) }}
-                        {{ Form::text('application_to', 'null', ['class' => 'form-control datepicker_2']) }}
+                        {{ Form::text('application_from', old('application_from'), ['class' => 'form-control datepicker_2']) }}
+                        {{ Form::text('application_to', old('application_to'), ['class' => 'form-control datepicker_2']) }}
                         </div>
                     </div>
                     <!--登録ボタン-->

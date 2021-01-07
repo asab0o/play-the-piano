@@ -19,9 +19,9 @@ class PlayerController extends Controller
     {
         // データ受け渡しの変数定義が必要
         // 編集したらidが上書きされるようにしないと1人のuserが複数できてしまう
-        $posts = Player::find($request->id);
-        // dd($posts);
-        return view('player.show', ['posts' => $posts]);
+        $player = Player::find($request->id);
+        // dd($player);
+        return view('player.show', ['player' => $player]);
     }
     
     

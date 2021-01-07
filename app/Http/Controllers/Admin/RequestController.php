@@ -10,18 +10,23 @@ use Storage;
 
 class RequestController extends Controller
 {
-    // 配列の設定
+    // .で区切る
     private $genres = [];
     
-    public function __construct() {
+    public function __construct()
+    {
         $this->genres = config('app.genres');
+        $this->prefectures = $this->getPrefectures();
     }
-    // .で区切る
+    
     public function add(Request $request) {
-        $genresList = [
-            'genres' => $this->genres,
-            ];
-        return view('admin.request.create', $genresList);
+        $prefectures = $this->prefectures;
+        $genres = $this->genres;
+        
+        return view('admin.request.create', [
+            'genres' => $genres,
+            'prefectures' => $prefectures,
+            ]);
     }
     
     public function create(Request $request) {
@@ -73,6 +78,13 @@ class RequestController extends Controller
     
     public function delete(Request $request) {
         
+    }
+    
+    private function getPrefectures()
+    {
+        $result = \DB::table('prefectures')->get()->pluck("name");
+        // dd($result);
+        return $result;
     }
     
     

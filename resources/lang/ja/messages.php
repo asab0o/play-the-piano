@@ -27,6 +27,7 @@ return [
     'display_term' => '表示期間',
     'application_term' => '応募期間',
     'update' => '更新',
+    'updated_at' => '更新日',
     
     
     ];

@@ -92,14 +92,18 @@ class PlayerController extends Controller
         
         $genders = $this->genders;
         $prefectures = $this->prefectures;
-            // $requestはちゃんととれているみたい
-        // ここが絶対違う
+
         $user = User::find($request->id);
         $player = Player::where('user_id', $user->id)->first();
-        // if(empty($player)) { 
-        //     abort(404);
-        //  } 
-        // dd($player);
+        
+        // プロフィールを登録していなかったら新規作成画面に飛ぶようにしている
+        if(empty($player)) { 
+            return view('admin.player.create', [
+                'genders' => $genders,
+                'prefectures' => $prefectures,
+                ]);
+         } 
+        
         return view('admin.player.edit', [
             'player_form' => $player,
             'genders' => $genders,

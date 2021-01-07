@@ -38,15 +38,15 @@
                             <a class="nav-link" href="{{ route('login') }}">{{ __('messages.login') }}</a>
                         </li>
                         @else
-                        @if($playerJudge)
+                        {{--@if($playerJudge)--}}
                         <li class="nav-item">
                             <a class="nav-link" href="{{ action('Admin\PlayerController@edit', ['id' => auth()->user()->id]) }}">プロフィールの編集・削除</a>    
                         </li>
-                        @else
+                        
                         <li class="nav-item">
                             <a class="nav-link" href="{{ action('Admin\PlayerController@add') }}">プロフィールの新規作成</a>
                         </li>
-                        @endif
+                        {{--@endif--}}
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 依頼したい

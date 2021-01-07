@@ -31,18 +31,17 @@ class HomeController extends Controller
         // 投稿が新しい順に6つデータを取得したい
         $players = Player::latest()->limit(6)->get();
         // $requests = RequestModel::latest()->limit(3)->get();
-        
+        // ログイン状態かどうかを分ける必要があるので
         if ( Auth::check() ) {
             $auth = Auth::id();
-            $playerJudge = Player::find($auth)->get();
+            $exists = Player::where('user_id', $auth)->exists();
             return view('index', [
                 'players' => $players,
                 // 'requests' => $requests,
-                'playerJudge' => $playerJudge,
+                'exists' => $exists,
                 ]);
-                
+
         } else {
-            $playerJudge = null;
             return view('index', ['players' => $players]);
         }
     }
