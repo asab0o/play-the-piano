@@ -24,16 +24,16 @@
                     <div class="col-md-9">
                         {{ $player->experience }} 年
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         {{ __('messages.birthday') }}
                     </div>
-                    <div class="col-md-10">
+                    <div class="col-md-9">
                         {{ $player->birthday }}
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         {{ __('messages.introduction') }}
                     </div>
-                    <div class="col-md-10">
+                    <div class="col-md-9">
                         {{ str_limit($player->introduction, 300) }}
                     </div>
                 </div>

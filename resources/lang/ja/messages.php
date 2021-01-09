@@ -24,9 +24,10 @@ return [
     'parking_lot' => '駐車場',
     'genre' => 'ジャンル',
     'dress' => '衣装',
-    'display_term' => '表示期間',
+    'display_term' => '掲載期間',
     'application_term' => '応募期間',
     'update' => '更新',
+    'delete' => '削除',
     'updated_at' => '更新日',
     
     

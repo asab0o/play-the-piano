@@ -17,11 +17,8 @@ class PlayerController extends Controller
     
     public function showProfile(Request $request)
     {
-        // データ受け渡しの変数定義が必要
-        // 編集したらidが上書きされるようにしないと1人のuserが複数できてしまう
         $player = Player::find($request->id);
-        // dd($player);
-        return view('player.show', ['player' => $player]);
+        return view('player.profile', ['player' => $player]);
     }
     
     

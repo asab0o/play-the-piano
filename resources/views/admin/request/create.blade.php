@@ -22,8 +22,8 @@
                         <div class="col-md-10">
                             @for($i = 0; $i < 5; $i++)
                             <div class="col-md-4">
-                                {{ Form::file('image', ['class' => 'form-control custom-file-input', 'id' => 'image'.$i]) }}
-                                {{ Form::label('image'.$i, '写真を選択', ['class' => 'custom-file-label']) }}
+                                {{ Form::file('image_path_'.$i, ['class' => 'form-control custom-file-input', 'id' => 'image_path_'.$i]) }}
+                                {{ Form::label('image_path_'.$i, '写真を選択', ['class' => 'custom-file-label']) }}
                             </div>
                             @endfor
                         </div>
@@ -40,10 +40,10 @@
                     <!--名前-->
                     <div class="form-group row">
                         <div class="col-md-2">
-                            {{ Form::label('name_1', __('messages.name_1')) }}
+                            {{ Form::label('name', __('messages.name')) }}
                         </div>
                         <div class="col-md-10">
-                            {{ Form::text('name_1', old('name_1'), ['class' => 'form-control', 'placeholder' => '店名、施設名など']) }} 
+                            {{ Form::text('name', old('name'), ['class' => 'form-control', 'placeholder' => '店名、施設名など']) }} 
                         </div>
                     </div>
                     <!--連絡先-->
@@ -85,15 +85,15 @@
                     <!--駐車場-->
                     <div class="form-group row">
                         <div class="col-md-2">
-                            {{ Form::label('parking_lot', __('messages.parking_lot')) }}
+                            {{ Form::label('parking_lots', __('messages.parking_lot')) }}
                         </div>
                         <div class="col-md-10">
                             <div class="form-group form-check form-check-inline">
-                                {{ Form::radio('parking_lot', 'あり', false, ['class' => 'form-check-input', 'id' => 'parking_lot_1']) }}
+                                {{ Form::radio('parking_lots', 'あり', false, ['class' => 'form-check-input', 'id' => 'parking_lot_1']) }}
                                 {{ Form::label('parking_lot_1', 'あり', ['class' => 'form-check-label']) }}
                             </div>
                             <div class="form-group form-check form-check-inline">
-                                {{ Form::radio('parking_lot', 'なし', false, ['class' => 'form-check-input', 'id' => 'parking_lot_2']) }}
+                                {{ Form::radio('parking_lots', 'なし', false, ['class' => 'form-check-input', 'id' => 'parking_lot_2']) }}
                                 {{ Form::label('parking_lot_2', 'なし', ['class' => 'form-check-label']) }}
                             </div>
                         </div>
@@ -107,7 +107,7 @@
                             @foreach ($genres as $key => $genre)
                             <!--横に並べたい-->
                             <div class="form-group form-check form-check-inline">
-                            {{ Form::checkbox('genre[]', $key, false, ['class' => 'form-check-input', 'id' => 'genre-'.$key]) }}
+                            {{ Form::checkbox('genres', $key, false, ['class' => 'form-check-input', 'id' => 'genre-'.$key]) }}
                             {{ Form::label('genre-'.$key, $genre,  ['class' => 'form-check-label']) }}
                             </div>
                             @endforeach

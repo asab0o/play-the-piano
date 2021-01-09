@@ -61,35 +61,28 @@
                     <div class="col-md-10">
                         {{ Form::text('birthday', $player_form->birthday, ['class'=>'form-control datepicker_1'])}}
                     </div>
-                    {{--<!--<div class="col-md-3">-->
-                    <!--    {{ Form::selectMonth('birth_month', old('birth_month'), ['class'=>'form-control'])}}-->
-                    <!--</div>-->
-                    <!--<div class="col-md-3">-->
-                    <!--    {{ Form::selectRange('birth_ day' , 1, 31, old('birth_day'), ['class'=>'form-control'])}}-->
-                    <!--</div>-->--}}
                 </div>
-                <!--性別 -->
-                {{--<!--<div class="form-group row">-->
-                <!--    <div class="col-md-2">-->
-                <!--        {{ Form::label('gender', __('messages.gender')), ['class' => 'form-control'] }}-->
-                <!--    </div>-->
-                <!--    <div class="col-md-10">-->
-                        <!--foreachの引数を強制的に配列-->
-                <!--        @foreach ($genders as $key as $gender)-->
+                性別 
+                <div class="form-group row">
+                    <div class="col-md-2">
+                        {{ Form::label('gender', __('messages.gender')), ['class' => 'form-control'] }}
+                    </div>
+                    <div class="col-md-10">
+                        @foreach ($genders as $key => $gender)
                         <!--クラスを再確認-->
-                <!--        <div class="form-group form-check form-check-inline">-->
+                        <div class="form-group form-check form-check-inline">
                             <!--201227 訂正-->
-                <!--            @if ($key == $player_form->gender)-->
-                <!--            {{ Form::radio('gender', $gender->type, true, ['class'=>'form-check-input','id'=>'gender-'.$gender->type])}}-->
-                <!--            {{ Form::label('gender-'.$gender->type, $gender->name, ['class' => 'form-check-label']) }}-->
-                <!--            @else-->
-                <!--            {{ Form::radio('gender', $gender->type, false, ['class'=>'form-check-input','id'=>'gender-'.$gender->type])}}-->
-                <!--            {{ Form::label('gender-'.$gender->type, $gender->name, ['class' => 'form-check-label']) }}-->
-                <!--            @endif-->
-                <!--        </div>-->
-                <!--        @endforeach-->
-                <!--    </div>-->
-                <!--</div>-->--}}
+                            @if ($gender->type == $player_form->gender)
+                            {{ Form::radio('gender', $gender->type, true, ['class'=>'form-check-input','id'=>'gender-'.$gender->type])}}
+                            {{ Form::label('gender-'.$gender->type, $gender->name, ['class' => 'form-check-label']) }}
+                            @else
+                            {{ Form::radio('gender', $gender->type, false, ['class'=>'form-check-input','id'=>'gender-'.$gender->type])}}
+                            {{ Form::label('gender-'.$gender->type, $gender->name, ['class' => 'form-check-label']) }}
+                            @endif
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
                 <!--ピアノ暦-->
                 <div class="form-group row">
                     <div class="col-md-2">
@@ -135,6 +128,9 @@
                 <!--hiddenについて-->
                 {{ Form::hidden('id', $player_form->id) }}
                 {{ Form::submit(__('messages.update'), ['class' => 'btn btn-secondary']) }}
+                {{ Form::hidden('id', $player_form->id) }}
+                <div class="btn btn-secondary">
+                    <a href="{{ action('Admin\PlayerController@delete', ['id' => $player_form->id]) }}" style="color: #fff;">{{ __('messages.delete') }}</a>
                 @csrf
                 {{ Form::close() }}
             </div>

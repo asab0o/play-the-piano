@@ -31,8 +31,8 @@ class RequestController extends Controller
     
     public function create(Request $request) {
         // Repuestファザード？
-        $this->validate($request, Request::$rules);
-        $request = new Request;
+        $this->validate($request, RequestModel::$rules);
+        $request_record = new RequestModel;
         $form = $request->all();
         
         // for ($i = 0; $i < 5; $i++) {
@@ -44,19 +44,50 @@ class RequestController extends Controller
         //     }
         // }
         for ($i = 1; $i <= 5; $i++) {
-            if (isset($form['image'.$i])) {
+            if (isset($form['image_'.$i])) {
                 $path = $request->file('image')->store('public/image');
-                $news->image_path = basename($path);
+                $request_record->image_path_.$i = basename($path);
               } else {
-                  $news->image_path = null;
+                  $request_record->image_path_.$i = null;
               }
+        }
+        
+         if (isset($form['image'])) {
+            $path = $request->file('image')->store('public/image');
+            $request_record->image_path_1 = basename($path);
+        } else {
+            $request_record->image_path_1 = null;
+        }
+        if (isset($form['image'])) {
+            $path = $request->file('image')->store('public/image');
+            $request_record->image_path_2 = basename($path);
+        } else {
+            $request_record->image_path_2 = null;
+        }
+        if (isset($form['image'])) {
+            $path = $request->file('image')->store('public/image');
+            $request_record->image_path_3 = basename($path);
+        } else {
+            $request_record->image_path_3 = null;
+        }
+        if (isset($form['image'])) {
+            $path = $request->file('image')->store('public/image');
+            $request_record->image_path_4 = basename($path);
+        } else {
+            $request_record->image_path_4 = null;
+        }
+        if (isset($form['image'])) {
+            $path = $request->file('image')->store('public/image');
+            $request_record->image_path_5 = basename($path);
+        } else {
+            $request_record->image_path_5 = null;
         }
         
         unset($form['_token']);
         unset($form['image']);
-        $request->fill($form)->save();
+        $request_record->fill($form)->save();
         
-        return redirect('admin/mypage/index');
+        return redirect('/');
     }
     
     public function edit(Request $request) {

@@ -74,7 +74,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{ $player->firstname_1 }} {{ $player->lastname_1 }}</h5>
                                 <p class="card-text">{{ str_limit($player->introduction, 15) }}</p>
-                                <a href="" class="btn btn-secondary">詳細リンク</a>
+                                <a href="{{ action('PlayerController@showProfile', ['id' => $player->id]) }}" class="btn btn-secondary">詳細をみる</a>
                             </div>
                         </div>
                     </div>

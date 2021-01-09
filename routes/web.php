@@ -27,4 +27,4 @@ Route::get('/player', 'PlayerController@index');
 Route::get('/player/intro', 'PlayerController@showProfile');
 
 Route::get('/request', 'RequestController@index');
-Route::get('/request/article', 'RequestController@showProfile');
+Route::get('/request/article', 'RequestController@showArticle');

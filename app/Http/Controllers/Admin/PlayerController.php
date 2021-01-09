@@ -111,28 +111,33 @@ class PlayerController extends Controller
         ]); 
     }
     
-    public function update()
+    public function update(Request $request)
     {
         $this->validate($request, Player::$rules);
         $player = Player::find($request->id);
         $player_form = $request->all();
         
-        if ($request->remove == 'true') {
-            $player_form['image_path'] = null;
-        } elseif (isset($player_form["image"])) {
-            $path = Storage::disk('s3')->putFile('/', $player_form['image'], 'public');
-            $player_form['image_path'] = Storage::disk('s3')->url($path);
-        } else {
-            $player_form['image_path'] = $player->image_path;
-        }
+        // if ($request->remove == 'true') {
+        //     $player_form['image_path'] = null;
+        // } elseif (isset($player_form["image"])) {
+        //     $path = Storage::disk('s3')->putFile('/', $player_form['image'], 'public');
+        //     $player_form['image_path'] = Storage::disk('s3')->url($path);
+        // } else {
+        //     $player_form['image_path'] = $player->image_path;
+        // }
+        
+        unset($player_form['image']);
+        unset($player_form['remove']);
+        unset($player_form['_token']);
+        $player->fill($player_form)->save();
         
         return redirect('/'); 
     }
     
     public function delete(Request $request) {
-        $player = Player::find($player->id);
+        $player = Player::find($request->id);
         $player->delete();
-        return redirect('admin/mypage/index');
+        return redirect('/');
     }
     
     // クラス内だけで使う関数
