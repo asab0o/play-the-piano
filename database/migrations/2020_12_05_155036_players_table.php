@@ -12,6 +12,9 @@ class PlayersTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+            // foreignメソッドで外部キー設定,
+            // referencesメソッドで主テーブルのid指定,
+            // onメソッドで主テーブル指定(21/01/09)
             $table->string('firstname_1');
             $table->string('lastname_1');
             $table->string('firstname_2');

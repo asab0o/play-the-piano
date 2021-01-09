@@ -15,7 +15,8 @@ class RequestsTable extends Migration
     {
         Schema::create('requests', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('users_id');
+            $table->nsignedBigInteger('users_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->string('title');
             $table->string('name');
             $table->integer('tel_number')->nullable();

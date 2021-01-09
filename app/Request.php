@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Request extends Model
 {
+    protected $guarded = array('id');
+    
     public static $rules = array (
         
         'title' => 'required',
@@ -22,5 +24,11 @@ class Request extends Model
         'application_from' => 'required',
         'application_to' => 'required',
         
-        );
+    );
+    
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+    
 }

@@ -42,4 +42,9 @@ class User extends Authenticatable
         return $this->hasOne('App\Player');
     }
     
+    public function requests()
+    {
+        return $this->hasMany('App\Request');
+    }
+    
 }
