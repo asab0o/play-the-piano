@@ -44,6 +44,20 @@ $(".datepicker_2").datepicker({
     minDate: -1,
 });
 
+
+// 画像設定時の反応
+// $('#customFile').on('change',function(){
+//     $(this).next('.custom-file-label').html($(this)[0].file[0].name);
+// });
+
+$('#customFile').on('change', ':file', function() {
+    var input = $(this),
+    numFiles = input.get(0).files ? input.get(0).files.length : 1,
+    label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+    input.parent().parent().next(':text').val(label);
+});
+
+
 // from-toのdatepicker
 // $(".datepicker_3").datepicker({
 //     var dateFormat = 'yy/mm/dd',

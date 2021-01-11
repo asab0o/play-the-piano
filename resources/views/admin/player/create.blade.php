@@ -20,12 +20,14 @@
                         {{ Form::label('image', __('messages.image')) }}
                     </div>
                     <div class="col-md-10">
-                    @for ($i = 1; $i <= 3; $i++)
+                        <div class="custom-file">
+                        @for ($i = 1; $i <= 3; $i++)
                         <div class="col-md-4">
-                            {{ Form::file('image', ['class' => 'form-control custom-file-input', 'id' => 'image'.'_'.$i]) }}
-                            {{ Form::label('image', '写真を選択', ['class' => 'custom-file-label']) }}
+                            {{ Form::file('image['.$i.']', ['class' => 'form-control custom-file-input', 'id' => 'customFile']) }}
+                            {{ Form::label('customFile', '写真を選択', ['class' => 'custom-file-label', 'data-browse' => '参照']) }}
                         </div>
-                    @endfor
+                        @endfor
+                        </div>
                     </div>
                 </div>
                 <!--名前-->

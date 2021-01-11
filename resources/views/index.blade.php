@@ -9,7 +9,7 @@
             <div class="col-md-10 mx-auto">
                 <div class="boder-bottom" style="inline">
                     <h2>演奏場所</h2>
-                    <a href="{{ url('request/index') }}">一覧をみる</a>
+                    <a href="{{ action('RequestController@index') }}">一覧をみる</a>
                 </div>
                 <!--<hr color=>-->
                 <div class="col-md-8 mx-auto">
@@ -21,7 +21,7 @@
                         </ol>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="../../images/carousel_test/IMG_4313.jpeg" alt="Slide" class="d-block w-100">
+                                <img src="../../images/carousel_test/IMG_4313.jpeg" alt="Slide" class="d-block w-100" >
                                 <div class="carousel-caption d-none d-md-block" style="top:50px">
                                     <h5 class="card-title">タイトル表示させます1</h5>
                                     <p class="card-text">本文を表示させます1</p>
@@ -33,6 +33,13 @@
                                 <div class="carousel-caption d-none d-md-block" style="top:50px">
                                     <h5>タイトル表示させます2</h5>
                                     <p>本文を表示させます2</p>
+                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="carousel-cap" style="background: #000;">
+                                    <h5 style="color: #fff;">タイトル表示させます3</h5>
+                                    <p style="color: #fff;">本文を表示させます3</p>
                                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                                 </div>
                             </div>

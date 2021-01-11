@@ -17,9 +17,9 @@ class RequestController extends Controller
     public function showArticle(Request $request)
     {
         
-        $request = RequestModel::find($request->id);
+        $request_model = RequestModel::find($request->id);
         // return view('request.article', ['request' => $posts]);
-        return view('request.article');
+        return view('request.article', ['request' => $request_model]);
     }
     
 }

@@ -11,7 +11,7 @@
         <link rel="" href=""> 
         <link rel="" href="" type="">
         <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
-        <link href="{{ secure_asset('') }}" rel="stylesheet">
+        <link href="{{ secure_asset('css/org.css') }}" rel="stylesheet">
     </head>
     <body>
         <div id="app">

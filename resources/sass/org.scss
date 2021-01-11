@@ -1,0 +1,19 @@
+
+// カルーセルの設定
+.carousel-item {
+    height: 100%;
+}
+
+.carousel img {
+    max-height: 100px;
+    max-width: 80%;
+    object-fit: contain;
+}
+
+// 画像設定のときにファイル選択したかどうか
+.custom-file-input {
+    overflow: hidden;
+}
+.custom-file-label {
+  white-space: nowrap;
+}

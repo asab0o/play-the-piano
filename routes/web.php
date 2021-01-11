@@ -24,7 +24,7 @@ Route::get('/', 'HomeController@index')->name('home');
 
 
 Route::get('/player', 'PlayerController@index');
-Route::get('/player/intro', 'PlayerController@showProfile');
+Route::get('/player/profile', 'PlayerController@showProfile');
 
 Route::get('/request', 'RequestController@index');
 Route::get('/request/article', 'RequestController@showArticle');

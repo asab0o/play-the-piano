@@ -21,12 +21,14 @@
                         {{ Form::label('image', __('messages.image')) }}
                     </div>
                     <div class="col-md-10">
-                    @for ($i = 1; $i <= 3; $i++)
+                        <div class="custom-file">
+                        @for ($i = 1; $i <= 3; $i++)
                         <div class="col-md-4">
-                            {{ Form::file('image', ['class' => 'form-control custom-file-input', 'id' => 'image'.'_'.$i]) }}
-                            {{ Form::label('image', '写真を選択', ['class' => 'custom-file-label']) }}
+                            {{ Form::file('image['.$i.']', ['class' => 'form-control custom-file-input', 'id' => 'customFile']) }}
+                            {{ Form::label('customFile', '写真を選択', ['class' => 'custom-file-label', 'data-browse' => '参照']) }}
                         </div>
-                    @endfor
+                        @endfor
+                        </div>
                     </div>
                 </div>
                 <!--名前-->
@@ -115,7 +117,7 @@
                     {{ Form::textarea('introduction', $player_form->introduction, ['class' => 'form-control', 'rows' => '5']) }}
                     </div>
                 </div>
-                <!--参考動画-->
+                <!--参考動画-->z
                 <div class="form-group row">
                     <div class="col-md-2">
                         {{ Form::label('performance', __('messages.performance')) }}

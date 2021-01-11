@@ -51831,6 +51831,16 @@ $(".datepicker_2").datepicker({
   dateFormat: 'yy/mm/dd',
   changeMonth: true,
   minDate: -1
+}); // 画像設定時の反応
+// $('#customFile').on('change',function(){
+//     $(this).next('.custom-file-label').html($(this)[0].file[0].name);
+// });
+
+$('#customFile').on('change', ':file', function () {
+  var input = $(this),
+      numFiles = input.get(0).files ? input.get(0).files.length : 1,
+      label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+  input.parent().parent().next(':text').val(label);
 }); // from-toのdatepicker
 // $(".datepicker_3").datepicker({
 //     var dateFormat = 'yy/mm/dd',
@@ -51988,15 +51998,27 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/sass/org.scss":
+/*!*********************************!*\
+  !*** ./resources/sass/org.scss ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ 0:
-/*!*************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/app.scss ***!
-  \*************************************************************/
+/*!***************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/org.scss ***!
+  \***************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! /home/ec2-user/environment/playThePiano/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/ec2-user/environment/playThePiano/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/ec2-user/environment/playThePiano/resources/sass/app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! /home/ec2-user/environment/playThePiano/resources/sass/org.scss */"./resources/sass/org.scss");
 
 
 /***/ })

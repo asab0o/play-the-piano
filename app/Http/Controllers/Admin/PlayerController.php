@@ -46,32 +46,44 @@ class PlayerController extends Controller
         
         // for文使えるのか
         // for ($i = 1; $i <= 3; $i++) {
-        //     if (isset($form['image'.$i])) {
-        //         $path = Storage::disk('s3')->putFile('/', $form['image'], 'public');
+        //     if (isset($form['image'][$i])) {
+        //         $path = Storage::disk('s3')->putFile('/', $form['image'][$i], 'public');
         //         $player->image_path_.$i = Storage::disk('s3')->url($path);
         //     } else {
         //         $player->image_path_.$i = null;
         //     }
         // }
+        // dd($request->file('image'));
+        for ($i = 1; $i <= 3; $i++) {
+            if (isset($form['image'][$i])) {
+                $path = $request->file('image')[$i]->store('public/image');
+                $player->{"image_path_{$i}"} = basename($path);
+                // $player->{'image_path_'.$i} = basename($path);
+                // $player->image_path_.$i = basename($path);
+            } else {
+                $player->{"image_path_{$i}"} = null;
+            }
+        }
+        // dd($player->image_path_1);
         
-        if (isset($form['image'])) {
-            $path = $request->file('image')->store('public/image');
-            $player->image_path_1 = basename($path);
-        } else {
-            $player->image_path_1 = null;
-        }
-        if (isset($form['image'])) {
-            $path = $request->file('image')->store('public/image');
-            $player->image_path_2 = basename($path);
-        } else {
-            $player->image_path_2 = null;
-        }
-        if (isset($form['image'])) {
-            $path = $request->file('image')->store('public/image');
-            $player->image_path_3 = basename($path);
-        } else {
-            $player->image_path_3 = null;
-        }
+        // if (isset($form['image'])) {
+        //     $path = $request->file('image')->store('public/image');
+        //     $player->image_path_1 = basename($path);
+        // } else {
+        //     $player->image_path_1 = null;
+        // }
+        // if (isset($form['image'])) {
+        //     $path = $request->file('image')->store('public/image');
+        //     $player->image_path_2 = basename($path);
+        // } else {
+        //     $player->image_path_2 = null;
+        // }
+        // if (isset($form['image'])) {
+        //     $path = $request->file('image')->store('public/image');
+        //     $player->image_path_3 = basename($path);
+        // } else {
+        //     $player->image_path_3 = null;
+        // }
       
         
         unset($form['_token']);
@@ -117,6 +129,21 @@ class PlayerController extends Controller
         $player = Player::find($request->id);
         $player_form = $request->all();
         
+        // dd($file('image'));
+        // dd($player_form);
+        // dd($request->file('image'));
+        
+        for ($i = 1; $i <= 3; $i++) {
+            if (isset($player_form['image'][$i])) {
+                $path = $request->file('image')[$i]->store('public/image');
+                // dd($path);
+                $player_form['image_path_'.$i] = basename($path);
+            } elseif ($request->remove == 'true'){
+                $player_form['image_path_'.$i] = null;
+            } else {
+                $player_form['image_path_'.$i]  = $player->{"image_path_{$i}"};
+            }
+        }
         // if ($request->remove == 'true') {
         //     $player_form['image_path'] = null;
         // } elseif (isset($player_form["image"])) {
