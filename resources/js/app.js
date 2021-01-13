@@ -31,6 +31,7 @@ const app = new Vue({
     el: '#app',
 });
 
+// デイトピッカーの設定
 $(".datepicker_1").datepicker({
     dateFormat: 'yy/mm/dd',
     changeMonth: true,
@@ -43,6 +44,10 @@ $(".datepicker_2").datepicker({
     changeMonth: true,
     minDate: -1,
 });
+
+// タイムピッカーの設定
+// $('.timepicker').timepicker();
+
 
 
 // 画像設定時の反応

@@ -7,6 +7,9 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>@yield('title')</title>
         <script src="{{ secure_asset('js/app.js') }}" defer></script>
+        <!--timepicker表示されない-->
+        <script src="https://cdn.jsdelivr.net/npm/timepicker@1.13.16/jquery.timepicker.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/timepicker@1.13.16/jquery.timepicker.js"></script>
         <!--Fontの設定-->
         <link rel="" href=""> 
         <link rel="" href="" type="">
@@ -48,18 +51,18 @@
                         </li>
                         {{--@endif--}}
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 依頼したい
                             </a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="{{ url('admin/request/create') }}">演奏依頼を投稿</a>
-                                <a class="dropdown-item" href="{{ url('admin/request/edit') }}">掲示中のものを編集・削除</a>
+                                <a class="dropdown-item" href="{{ action('Admin\RequestController@add') }}">演奏依頼を投稿</a>
+                                <a class="dropdown-item" href="{{ action('Admin\RequestController@edit', ['id' => auth()->user()->id]) }}">掲示中のものを編集・削除</a>
                             </div>
                         </li>
                     </ul>
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 {{ Auth::user()->name }}
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">

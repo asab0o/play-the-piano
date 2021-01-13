@@ -15,7 +15,7 @@ class RequestsTable extends Migration
     {
         Schema::create('requests', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->nsignedBigInteger('users_id');
+            $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('title');
             $table->string('name');
@@ -28,13 +28,13 @@ class RequestsTable extends Migration
             $table->string('dress');
             $table->string('introduction');
             $table->dateTime('display_date_from');
-            $table->dateTime('display_time_from');
+            $table->dateTime('display_time_from')->nullable();
             $table->dateTime('display_date_to');
-            $table->dateTime('display_time_to');
+            $table->dateTime('display_time_to')->nullable();
             $table->dateTime('application_date_from');
-            $table->dateTime('application_time_from');
+            $table->dateTime('application_time_from')->nullable();
             $table->dateTime('application_date_to');
-            $table->dateTime('application_time_to');
+            $table->dateTime('application_time_to')->nullable();
             $table->string('image_path_1')->nullable();
             $table->string('image_path_2')->nullable();
             $table->string('image_path_3')->nullable();

@@ -133,9 +133,9 @@
                 {{ Form::hidden('id', $player_form->id) }}
                 <div class="btn btn-secondary">
                     <a href="{{ action('Admin\PlayerController@delete', ['id' => $player_form->id]) }}" style="color: #fff;">{{ __('messages.delete') }}</a>
+                </div>
                 @csrf
                 {{ Form::close() }}
-            </div>
         </div>
     </div>
 @endsection

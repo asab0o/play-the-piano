@@ -37,7 +37,7 @@ class PlayerController extends Controller
         return view('admin.player.create', $gendersList, $prefList);
     }
     
-    public function create(Request $request){
+    public function create(Request $request) {
         $this->validate($request, Player::$rules);
         $player = new Player;
         // 201230 user_idに値を入れる

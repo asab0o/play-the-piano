@@ -19,10 +19,10 @@ class Request extends Model
         'genres' => 'required',
         'dress' => 'required',
         'introduction' => 'required',
-        'display_from' => 'required',
-        'display_to' => 'required',
-        'application_from' => 'required',
-        'application_to' => 'required',
+        'display_date_from' => 'required',
+        'display_date_to' => 'required',
+        'application_date_from' => 'required',
+        'application_date_to' => 'required',
         
     );
     

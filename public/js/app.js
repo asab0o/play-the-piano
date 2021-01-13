@@ -51820,7 +51820,8 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 
 var app = new Vue({
   el: '#app'
-});
+}); // デイトピッカーの設定
+
 $(".datepicker_1").datepicker({
   dateFormat: 'yy/mm/dd',
   changeMonth: true,
@@ -51831,7 +51832,9 @@ $(".datepicker_2").datepicker({
   dateFormat: 'yy/mm/dd',
   changeMonth: true,
   minDate: -1
-}); // 画像設定時の反応
+}); // タイムピッカーの設定
+// $('.timepicker').timepicker();
+// 画像設定時の反応
 // $('#customFile').on('change',function(){
 //     $(this).next('.custom-file-label').html($(this)[0].file[0].name);
 // });

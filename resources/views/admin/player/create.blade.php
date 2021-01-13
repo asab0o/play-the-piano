@@ -101,7 +101,7 @@
                 <!--活動エリア-->
                 <div class="form-group row">
                     <div class="col-md-2">
-                        {{ Form::label('prefecture', '活動エリア', null) }}
+                        {{ Form::label('prefecture', '活動エリア') }}
                         <!--選択にするか入力にするか-->
                     </div>
                     <div class="col-md-10">
