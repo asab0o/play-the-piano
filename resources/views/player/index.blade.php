@@ -8,17 +8,17 @@
             <!--カードで表示したい-->
                 <div class="post">
                     <div class="row row-cols-2">
-                        @foreach ($posts as $player)
+                        @foreach ($posts as $post)
                             <div class="col-md-6 col-sm-12">
                                 <div class="card mr-1 mt-3">
-                                    @if($player->image_path_1)
-                                    <img src="{{ $player->image_path_1 }}" class="card-image-top">
+                                    @if($post->image_path_1)
+                                    <img src="{{ asset('image/'. $post->image_path_1) }}" class="card-image-top">
                                     @endif
                                     <div class="card-body">
-                                        <h5 class="card-title">{{ $player->firstname_1 }} {{ $player->lastname_1 }} </h5>
-                                        <p class="card-title">{{ $player->firstname_2 }} {{ $player->lastname_2 }}</p>
-                                        <p class="card-text">{{ $player->introduction }}</p>
-                                        <a href="{{ action('PlayerController@showProfile', ['id' => $player->id]) }}" class="btn btn-outline-primary">詳細をみる</a>
+                                        <h5 class="card-title">{{ $post->firstname_1 }} {{ $post->lastname_1 }} </h5>
+                                        <p class="card-title">{{ $post->firstname_2 }} {{ $post->lastname_2 }}</p>
+                                        <p class="card-text">{{ $post->introduction }}</p>
+                                        <a href="{{ action('PlayerController@showProfile', ['id' => $post->id]) }}" class="btn btn-outline-primary">詳細をみる</a>
                                     </div>
                                 </div>
                             </div>

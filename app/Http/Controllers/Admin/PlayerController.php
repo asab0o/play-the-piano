@@ -64,27 +64,6 @@ class PlayerController extends Controller
                 $player->{"image_path_{$i}"} = null;
             }
         }
-        // dd($player->image_path_1);
-        
-        // if (isset($form['image'])) {
-        //     $path = $request->file('image')->store('public/image');
-        //     $player->image_path_1 = basename($path);
-        // } else {
-        //     $player->image_path_1 = null;
-        // }
-        // if (isset($form['image'])) {
-        //     $path = $request->file('image')->store('public/image');
-        //     $player->image_path_2 = basename($path);
-        // } else {
-        //     $player->image_path_2 = null;
-        // }
-        // if (isset($form['image'])) {
-        //     $path = $request->file('image')->store('public/image');
-        //     $player->image_path_3 = basename($path);
-        // } else {
-        //     $player->image_path_3 = null;
-        // }
-      
         
         unset($form['_token']);
         unset($form['image']);

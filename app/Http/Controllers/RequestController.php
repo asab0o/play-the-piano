@@ -8,11 +8,13 @@ use App\Request as RequestModel;
 
 class RequestController extends Controller
 {
-     public function index() {
-        // $posts = Request::all()->sortByDesc('created_at');
-        // return view('request.index', ['posts' => $posts]);
-        return view('request.index');
-    }
+     public function index()
+     {
+         $posts = RequestModel::all()->sortByDesc('created_at');
+         dd($posts);
+         return view('request.index', ['posts' => $posts]);
+         
+     }
     
     public function showArticle(Request $request)
     {

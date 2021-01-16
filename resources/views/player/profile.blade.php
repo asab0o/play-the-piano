@@ -40,7 +40,7 @@
                 <div class="card-body col-md-6">
                     <div class="image col-md-4 text-right mt-4">
                         @if ($player->image_path_1)
-                            <img src="{{ $player->image_path_1 }}">
+                            <img src="{{ asset('public/image'.$player->image_path_1 }}">
                         @endif
                     </div>
                 </div>

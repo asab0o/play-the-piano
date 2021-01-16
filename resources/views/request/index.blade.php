@@ -6,29 +6,24 @@
             <div class="col-md-10 mx-auto">
                 <h1>依頼の一覧</h1>
                     <div class="post">
-                        @for ($i = 0; $i < 5; $i++)
+                        @foreach($posts as $post)
                         <div class="card mt-3">
                             <div class="card-header">
-                                21/01/09
+                                更新日: {{ $post->created_at->format('Y/m/d') }}
                             </div>
-                            {{--<!--imageを配列で取得するようにmigrate直す？-->
-                            <!--@foreach ($posts as $)-->
-                            <!--<div class="card-header"> 更新日: {{ $request->created_at }}</div>-->
-                            <!--@if($request->$images)-->
-                            <!--@for($i = 0; $i < 5; $i++)-->
-                            <!--<img src="{{ $images->image_.$i }}" class="card-img-top .justify-content-around">-->
-                            <!--@endfor-->
-                            <!--@endif-->--}}
+                            @if($post->$image)
+                            <img src="{{ $images->image_.1 }}" class="card-img-top .justify-content-around">
+                            @endif
                             <div class="card-body">
-                                <h5 class="card-title">テスト</h5>
-                                <p class="card-text">テストです</p>
+                                <h5 class="card-title">{{ str_limit($post->title, 10) }}</h5>
+                                <p class="card-text">{{ str_limit($post->introduction, 1500) }}</p>
                             </div>
                             <div class="card-footer">
-                                <a href="{{ action('RequestController@showArticle') }}" class="btn btn-outline-primary">詳細をみる</a>
+                                <a href="{{ action('RequestController@showArticle', ['id' => $poat->id]) }}" class="btn btn-outline-primary">詳細をみる</a>
                                 {{--<!--<a href="{{ action('RequestController@showArticle', ['id' => $request->id]) }}" class="btn btn-outline-primary">詳細をみる</a>----}}
                             </div>
                         </div>
-                        @endfor
+                        @endforeach
                     </div>
                 <!--カードここまで-->
             </div>
