@@ -4,79 +4,81 @@
 
 @section('content')
     <div class="container-fluid">
-        <div class="col-md-10 mx-auto">
-            <!--以下$playerを変える必要-->
-            <h3>{{ $player->title }}</h3>
+        <div class="col-md-10 mx-auto mt-3">
+
+            <h3>{{ $request->title }}</h3>
             <hr color="">
             <div class="card">
                 <div class="card-header">
-                        {{ __('messages.display_term') }}:{{ $player->display_date_from }} ~ {{ $player->display_date_to }}
+                        {{ __('messages.display_term') }} :{{ $request->display_date_from }} ~ {{ $request->display_date_to }}
                 </div>
                 <div class="card-body col-md-6 row">
                     <div class="col-md-3">
                         {{ __('messages.name') }}
                     </div>
                     <div class="col-md-9">
-                        {{ $player->name }}
+                        {{ $request->name }}
                     </div>
                     <div class="col-md-3">
                         {{ __('messages.date_time') }}
                     </div>
                     <div class="col-md-9">
-                        {{ $player->date_time }}
+                        {{ $request->date_time }}
                     </div>
                     <div class="col-md-3">
                         {{ __('messages.area') }}
                     </div>
                     <div class="col-md-9">
-                        {{ $player->area }}
+                        {{ $request->area }}
                     </div>
                     <div class="col-md-3">
                         {{ __('messages.rewards') }}
                     </div>
                     <div class="col-md-9">
-                        {{ $player->rewards }}
+                        {{ $request->rewards }}
                     </div>
                     <div class="col-md-3">
                         {{ __('messages.parking_lots') }}
                     </div>
                     <div class="col-md-9">
-                        {{ $player->parking_lots }}
+                        {{ $request->parking_lots }}
                     </div>
                     <div class="col-md-3">
                         {{ __('messages.genres') }}
                     </div>
                     <div class="col-md-9">
-                        {{ $player->genres }}
+                        {{ $request->genres }}
                     </div>
                     <div class="col-md-3">
                         {{ __('messages.dress') }}
                     </div>
                     <div class="col-md-9">
-                        {{ $player->dress }}
+                        {{ $request->dress }}
                     </div>
                     <div class="col-md-3">
                         {{ __('messages.introduction') }}
                     </div>
                     <div class="col-md-9">
-                        {{ str_limit($player->introduction, 300) }}
+                        {{ str_limit($request->introduction, 300) }}
                     </div>
-                    @if($player->tel_number)
+                    @if($request->tel_number)
                     <div class="col-md-3">
                         {{ __('messages.tel_number') }}
                     </div>
                     <div class="col-md-9">
-                        {{ $player->tel_number }}
+                        {{ $request->tel_number }}
                     </div>
                     @endif
                 </div>
+                @for($i = 1; $i <= 5; $i++)
+                @if($request->{"image_path_".$i})
                 <div class="card-body col-md-6">
                     <div class="image col-md-4 text-right mt-4">
-                        @if ($player->image_path_1)
-                            <img src="{{ $player->image_path_1 }}">
-                        @endif
+                        <img src="{{ asset('storage/image/'.$request->{'image_path_'.$i}) }}">
                     </div>
                 </div>
+                @endif
+                @endfor
              </div>   
         </div>
     </div>

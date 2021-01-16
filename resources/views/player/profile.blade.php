@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="container-fluid">
-        <div class="col-md-10 mx-auto">
+        <div class="col-md-10 mx-auto mt-3">
             <h3>{{ $player->firstname_1 }} {{ $player->lastname_1 }} さん</h3>
             <hr color="">
             <div class="card">
@@ -38,11 +38,13 @@
                     </div>
                 </div>
                 <div class="card-body col-md-6">
+                    @for($i = 1; $i <= 3; $i++)
+                    @if ($player->{"image_path_{$i}"})
                     <div class="image col-md-4 text-right mt-4">
-                        @if ($player->image_path_1)
-                            <img src="{{ asset('public/image'.$player->image_path_1 }}">
-                        @endif
+                        <img src="{{ asset('storage/image/'.$player->{"image_path_{$i}"}) }}">
                     </div>
+                    @endif
+                    @endfor
                 </div>
              </div>   
         </div>

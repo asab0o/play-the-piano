@@ -11,7 +11,7 @@ class RequestController extends Controller
      public function index()
      {
          $posts = RequestModel::all()->sortByDesc('created_at');
-         dd($posts);
+        //  dd($posts);
          return view('request.index', ['posts' => $posts]);
          
      }

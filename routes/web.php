@@ -13,7 +13,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::post('request/edit', 'Admin\RequestController@update');
     Route::get('request/delate', 'Admin\RequestController@delete');
     
-    Route::get('mypage', 'MyPageController@index');
+    Route::get('mypage', 'Admin\MypageController@index');
 });
 
 

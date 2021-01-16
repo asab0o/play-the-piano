@@ -14,7 +14,7 @@
         <link rel="" href=""> 
         <link rel="" href="" type="">
         <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
-        <link href="{{ secure_asset('css/org.css') }}" rel="stylesheet">
+        <link href="{{ secure_asset('css/home.css') }}" rel="stylesheet">
     </head>
     <body>
         <div id="app">
@@ -66,7 +66,7 @@
                                 {{ Auth::user()->name }}
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                {{--<!--<a class="dropdown-item" href="{{ action('Admin\MypageController@index', ['id' => auth()->user()->id]) }}">マイページ <span class="sr-only">(current)</span></a>-->--}}
+                                <a class="dropdown-item" href="{{ action('Admin\MypageController@index', ['id' => auth()->user()->id]) }}">マイページ <span class="sr-only">(current)</span></a>
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                 {{ __('messages.logout') }}
                                 </a>

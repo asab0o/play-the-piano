@@ -3,7 +3,7 @@
     
 @section('content')
     <div class="container-fluid">
-            <div class="col-md-10 mx-auto">
+            <div class="col-md-10 mx-auto mt-3">
                 <h1>依頼の一覧</h1>
                     <div class="post">
                         @foreach($posts as $post)
@@ -11,15 +11,19 @@
                             <div class="card-header">
                                 更新日: {{ $post->created_at->format('Y/m/d') }}
                             </div>
-                            @if($post->$image)
-                            <img src="{{ $images->image_.1 }}" class="card-img-top .justify-content-around">
-                            @endif
+                            <div class="card-image-top justify-content-around row">
+                            @for ($i = 1; $i <= 3; $i++)
+                                @if($post->{'image_path_'.$i})
+                                <img src="{{ asset('storage/image/'.$post->{'image_path_'.$i}) }}">
+                                @endif
+                            @endfor
+                            </div> 
                             <div class="card-body">
                                 <h5 class="card-title">{{ str_limit($post->title, 10) }}</h5>
                                 <p class="card-text">{{ str_limit($post->introduction, 1500) }}</p>
                             </div>
                             <div class="card-footer">
-                                <a href="{{ action('RequestController@showArticle', ['id' => $poat->id]) }}" class="btn btn-outline-primary">詳細をみる</a>
+                                <a href="{{ action('RequestController@showArticle', ['id' => $post->id]) }}" class="btn btn-outline-primary">詳細をみる</a>
                                 {{--<!--<a href="{{ action('RequestController@showArticle', ['id' => $request->id]) }}" class="btn btn-outline-primary">詳細をみる</a>----}}
                             </div>
                         </div>

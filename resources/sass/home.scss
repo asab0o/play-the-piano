@@ -1,0 +1,21 @@
+
+// カルーセル設定
+.carousel-item {
+  height: 100%;
+  background-color: #cb60b3;
+}
+
+.carousel img {
+  max-height: 400px;
+  max-width: 80%;
+  object-fit: contain;
+}
+
+.custom-file-input {
+  overflow: hidden;
+}
+
+.custom-file-label {
+  white-space: nowrap;
+}
+

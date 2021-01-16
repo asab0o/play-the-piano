@@ -46,12 +46,12 @@ class RequestController extends Controller
         //         $request->image_path = null;
         //     }
         // }
-        for ($i = 0; $i < 5; $i++) {
+        for ($i = 1; $i <= 5; $i++) {
             if (isset($form['image'][$i])) {
                 $path = $request->file('image')[$i]->store('public/image');
-                $request_model->{'image_path_'.($i + 1)} = basename($path);
+                $request_model->{'image_path_'.$i} = basename($path);
               } else {
-                  $request_model->{'image_path_'.($i + 1)} = null;
+                  $request_model->{'image_path_'.$i} = null;
               }
         }
         
@@ -90,15 +90,14 @@ class RequestController extends Controller
         $request_form = $request->all();
         // $request_formと$request_modelについて
         
-        for ($i = 0; $i < 5; $i++) {
-            $j += 1;
+        for ($i = 1; $i <= 5; $i++) {
             if ($request->remove) {
-                $request_form->{'image_path_'.$j} = null;
+                $request_form['image_path_'.$i] = null;
             } elseif (isset($request_form['image'][$i])) {
                 $path = $request->file('image')[$i]->store('public/image');
-                $request_form['image_path_'.$j] = basename($path);
+                $request_form['image_path_'.$i] = basename($path);
             } else {
-                $request_form['image_path_'.$j] = $request_model->{'image_path_'.$j};
+                $request_form['image_path_'.$i] = $request_model->{'image_path_'.$i};
             }
         }
         
