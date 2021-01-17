@@ -29,7 +29,7 @@
                                 <h5 class="card-title">{{ $requests[0]->title }}</h5>
                                 <p class="card-text">{{ str_limit($requests[0]->introduction, 20) }}</p>
                                 <p class="card-text"><small class="text-muted">{{ $requests[0]->updated_at->format('Y/m/d') }}</small></p>
-                                <a href="{{ action('RequestController@showArticle', ['id' => $requests[0]->id]) }}" class="btn btn-secondary">詳細をみる</a>
+                                <a href="{{ action('RequestController@showArticle', ['id' => $requests[0]->id]) }}" class="btn btn-outline-secondary">詳細をみる</a>
                             </div>
                         </div>
                         
@@ -77,7 +77,12 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{ $player->firstname_1 }} {{ $player->lastname_1 }} <small>さん</small></h5>
                                 <p class="card-text">{{ str_limit($player->introduction, 50) }}</p>
-                                <a href="{{ action('PlayerController@showProfile', ['id' => $player->id]) }}" class="btn btn-secondary">詳細をみる</a>
+                                <a href="{{ action('PlayerController@showProfile', ['id' => $player->id]) }}" class="btn btn-outline-primary">詳細をみる</a>
+                                <span class="btn-group-sm">
+                                    <button type="button" class="btn btn-secondary bmd-btn-fab float-right">
+                                        <i class="material-icons">★</i>
+                                    </button>
+                                </span>
                             </div>
                         </div>
                     </div>

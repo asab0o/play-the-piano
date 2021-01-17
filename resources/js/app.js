@@ -46,7 +46,7 @@ $(".datepicker_2").datepicker({
 });
 
 // タイムピッカーの設定
-// $('.timepicker').timepicker();
+$('.timepicker').timepicker();
 
 
 
@@ -91,3 +91,4 @@ $('#customFile').on('change', ':file', function() {
 //         return date;
 //     } 
 // } );
+

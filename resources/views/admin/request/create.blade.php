@@ -154,11 +154,11 @@
                         </div>
                         <div class="col-md-10">
                         {{ Form::text('display_date_from', old('display_date_from'), ['class' => 'form-control datepicker_2']) }}
-                        {{--<!--{{ Form::selectRange('display_time_from', 1, 12, ['class' => 'form-control']) }}-->
-                        <!--{{ Form::text('display_time_from', old('display_time_from'), ['class' => 'form-control timepicker']) }}-->--}}
+                        {{ Form::text('display_time_from', old('display_time_from'), ['class' => 'form-control timepicker']) }}
+                        {{--<!--{{ Form::selectRange('display_time_from', 1, 12, ['class' => 'form-control']) }}-->--}}
                         {{ Form::text('display_date_to', old('display_date_to'), ['class' => 'form-control datepicker_2']) }}
-                        {{--<!--{{ Form::selectRange('display_time_to', 1, 12, ['class' => 'form-control']) }}-->
-                        <!--{{ Form::text('display_time_to', old('display_time_to'), ['class' => 'form-control timepicker']) }}-->--}}
+                        {{--{{ Form::selectRange('display_time_to', 1, 12, ['class' => 'form-control']) }}
+                        {{--<!--{{ Form::text('display_time_to', old('display_time_to'), ['class' => 'form-control timepicker']) }}-->--}}
                         </div>
                     </div>
                     <!--応募期間-->

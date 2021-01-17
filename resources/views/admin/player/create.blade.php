@@ -21,8 +21,9 @@
                     </div>
                     <div class="col-md-10">
                         <div class="custom-file">
+                            <!--リストにしたい-->
                         @for ($i = 1; $i <= 3; $i++)
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             {{ Form::file('image['.$i.']', ['class' => 'form-control custom-file-input', 'id' => 'customFile']) }}
                             {{ Form::label('customFile', '写真を選択', ['class' => 'custom-file-label', 'data-browse' => '参照']) }}
                         </div>
@@ -128,7 +129,7 @@
                     </div>
                 </div>
                 <!--登録ボタン-->
-                {{ Form::submit(__('messages.register'), ['class' => 'btn btn-secondary']) }}
+                {{ Form::submit(__('messages.register'), ['class' => 'btn btn-outline-primary']) }}
                 @csrf
                 {{ Form::close() }}
             </div>

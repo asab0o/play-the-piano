@@ -1,4 +1,4 @@
-@extends('layouts.front')
+@extends('layouts.mypage')
 
 @section('title', 'マイページ')
 
@@ -7,7 +7,7 @@
         <!--コメント表示画面-->
         <div class="chat-area col-md-10 mx-auto mt-3">
             <div class="card">
-                <div class="card-header">コメント</div>
+                <div class="card-header">通知</div>
                 <div class="card-body chat-card">
                     
                 </div>
@@ -23,40 +23,42 @@
                 <div class="card-header">
                         {{ __('messages.updated_at') }}:{{ $player->updated_at }}
                 </div>
-                <div class="card-body col-md-6 row">
-                    <div class="col-md-3">
-                        {{ __('messages.area') }}
+                <div class="card-body row">
+                    <div class="col-md-4 row">
+                        <p class="col-md-3">
+                            {{ __('messages.area') }}
+                        </p>
+                        <div class="col-md-9">
+                            {{ $player->prefecture }}
+                        </div>
+                        <div class="col-md-3">
+                            {{ __('messages.experience') }}
+                        </div>
+                        <div class="col-md-9">
+                            {{ $player->experience }} 年
+                        </div>
+                        <div class="col-md-3">
+                            {{ __('messages.birthday') }}
+                        </div>
+                        <div class="col-md-9">
+                            {{ $player->birthday }}
+                        </div>
+                        <div class="col-md-3">
+                            {{ __('messages.introduction') }}
+                        </div>
+                        <div class="col-md-9">
+                            {{ str_limit($player->introduction, 300) }}
+                        </div>
                     </div>
-                    <div class="col-md-9">
-                        {{ $player->prefecture }}
+                    <div class="col-md-8 row">
+                        @for($i = 1; $i <= 3; $i++)
+                        @if ($player->{"image_path_{$i}"})
+                        <div class="image col-auto mt-4">
+                            <img src="{{ asset('storage/image/'.$player->{"image_path_{$i}"}) }}">
+                        </div>
+                        @endif
+                        @endfor
                     </div>
-                    <div class="col-md-3">
-                        {{ __('messages.experience') }}
-                    </div>
-                    <div class="col-md-9">
-                        {{ $player->experience }} 年
-                    </div>
-                    <div class="col-md-3">
-                        {{ __('messages.birthday') }}
-                    </div>
-                    <div class="col-md-9">
-                        {{ $player->birthday }}
-                    </div>
-                    <div class="col-md-3">
-                        {{ __('messages.introduction') }}
-                    </div>
-                    <div class="col-md-9">
-                        {{ str_limit($player->introduction, 300) }}
-                    </div>
-                </div>
-                <div class="card-body col-md-6">
-                    @for($i = 1; $i <= 3; $i++)
-                    @if ($player->{"image_path_{$i}"})
-                    <div class="image col-md-4 text-right mt-4">
-                        <img src="{{ asset('storage/image/'.$player->{"image_path_{$i}"}) }}">
-                    </div>
-                    @endif
-                    @endfor
                 </div>
             </div>
         </div>

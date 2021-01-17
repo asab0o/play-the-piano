@@ -1,23 +1,24 @@
-@extends('layouts.front')
+@extends('layouts.serching')
 @section('title', '依頼の一覧')
     
 @section('content')
     <div class="container-fluid">
             <div class="col-md-10 mx-auto mt-3">
                 <h1>依頼の一覧</h1>
-                    <div class="post">
+                    <div class="request-post">
                         @foreach($posts as $post)
                         <div class="card mt-3">
                             <div class="card-header">
                                 更新日: {{ $post->created_at->format('Y/m/d') }}
                             </div>
                             <div class="card-image-top justify-content-around row">
-                            @for ($i = 1; $i <= 3; $i++)
+                                @for ($i = 1; $i <= 3; $i++)
                                 @if($post->{'image_path_'.$i})
-                                <img src="{{ asset('storage/image/'.$post->{'image_path_'.$i}) }}">
+                                    <img src="{{ asset('storage/image/'.$post->{'image_path_'.$i}) }}">
                                 @endif
-                            @endfor
-                            </div> 
+                                @endfor
+                                <!--<hr color="">-->
+                            </div>
                             <div class="card-body">
                                 <h5 class="card-title">{{ str_limit($post->title, 10) }}</h5>
                                 <p class="card-text">{{ str_limit($post->introduction, 1500) }}</p>
