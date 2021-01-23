@@ -24,6 +24,7 @@
                         {{ __('messages.updated_at') }}:{{ $player->updated_at }}
                 </div>
                 <div class="card-body row">
+                    <i class="material-icons">inbox</i>
                     <div class="col-md-4 row">
                         <p class="col-md-3">
                             {{ __('messages.area') }}

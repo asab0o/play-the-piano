@@ -13,8 +13,8 @@ class RequestController extends Controller
      {
          //  $posts = RequestModel::all()->sortByDesc('created_at');
          $today = Carbon::today('Asia/Tokyo');
-         // 今日以降のデータを取得
-         $posts = RequestModel::whereDate('display_date_to', '<=', $today)->get()->sortByDesc('created_at');
+         // 掲示期間の末日が今日以降
+         $posts = RequestModel::whereDate('display_date_to', '>=', $today)->get()->sortByDesc('created_at');
          //  dd($posts);
          return view('request.index', ['posts' => $posts]);
          
