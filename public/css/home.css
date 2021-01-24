@@ -1,6 +1,6 @@
 .carousel-item {
   height: 100%;
-  background-color: #cb60b3;
+  background-color: #009688;
 }
 
 .carousel img {
@@ -16,5 +16,9 @@
 
 .custom-file-label {
   white-space: nowrap;
+}
+
+.card .image img {
+  width: 200px;
 }
 

@@ -2,7 +2,7 @@
 // カルーセル設定
 .carousel-item {
   height: 100%;
-  background-color: #cb60b3;
+  background-color: #009688;
 }
 
 .carousel img {
@@ -19,3 +19,13 @@
   white-space: nowrap;
 }
 
+
+// 詳細画像のサイズ
+
+.card {
+  .image {
+    img {
+      width: 200px;
+    }
+  }
+}

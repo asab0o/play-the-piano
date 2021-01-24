@@ -64,7 +64,7 @@
                                 {{ Form::label('date_time', __('messages.date_time')) }}
                             </div>
                             <div class="col-md-8">
-                                {{ Form::text('date_time',  old('date_time'), ['class' => 'form-control', 'id' => 'datetimepicker']) }} 
+                                {{ Form::text('date_time',  old('date_time'), ['class' => 'form-control datetimepicker']) }} 
                             </div>
                         </div>
                         <!--場所-->
@@ -156,8 +156,8 @@
                             {{ Form::label('display_term', __('messages.display_term')) }}
                             </div>
                             <div class="col-md-8"> 
-                            {{ Form::text('display_date_from', old('display_date_from'), ['class' => 'form-control', 'id' => 'datetimepicker1']) }}
-                            {{ Form::text('display_date_to', old('display_date_to'), ['class' => 'form-control', 'id' => 'datetimepicker2']) }}
+                            {{ Form::text('display_date_from', old('display_date_from'), ['class' => 'form-control datetimepicker']) }}
+                            {{ Form::text('display_date_to', old('display_date_to'), ['class' => 'form-control datetimepicker']) }}
                             </div>
                         </div>
                         <!--応募期間-->
@@ -166,8 +166,8 @@
                             {{ Form::label('application_term', __('messages.application_term')) }}
                             </div>
                             <div class="col-md-8">
-                            {{ Form::text('application_date_from', old('application_date_from'), ['class' => 'form-control', 'id' => 'datetimepicker3']) }}
-                            {{ Form::text('application_date_to', old('application_date_to'), ['class' => 'form-control', 'id' => 'datetimepicker4']) }}
+                            {{ Form::text('application_date_from', old('application_date_from'), ['class' => 'form-control datetimepicker']) }}
+                            {{ Form::text('application_date_to', old('application_date_to'), ['class' => 'form-control datetimepicker']) }}
                             </div>
                         </div>
                     <!--登録ボタン-->

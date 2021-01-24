@@ -4,49 +4,52 @@
 
 @section('content')
     <div class="container-fluid">
-        <div class="col-md-10 mx-auto mt-3">
-            <h3>{{ $player->firstname_1 }} {{ $player->lastname_1 }} さん</h3>
-            <hr color="">
-            <div class="card">
-                <div class="card-header">
-                        {{ __('messages.updated_at') }}:{{ $player->updated_at }}
+        <div class="card col-md-10 mx-auto mt-3">
+            <div class="card-header">
+                <h3>{{ $player->firstname_1 }} {{ $player->lastname_1 }} さん</h3>
+                <p>{{ __('messages.updated_at') }}:{{ $player->updated_at }}</p>
+            </div>
+            <div class="card-body row">
+                <div class="col-md-6">
+                   <ul class="list-group">
+                       <li class="list-group-item">
+                           <p>{{ __('messages.area') }}</p>
+                           <p>{{ $player->prefecture }}</p>
+                       </li>
+                       <li class="list-group-item">
+                           <p>{{ __('messages.experience') }}</p>
+                           <p>{{ $player->experience }} 年</p>
+                       </li>
+                       <li class="list-group-item">
+                           <p>{{ __('messages.introduction') }}</p>
+                           <p>{{ str_limit($player->introduction, 300) }}</p>
+                       </li>
+                       <li class="list-group-item">
+                           <p>{{ __('messages.performance') }}</p>
+                           @if ($player->performance)
+                           <p>{{ $player->performance }}</p>
+                           @else
+                           <p>登録なし</p>
+                           @endif
+                       </li>
+                   </ul> 
                 </div>
-                <div class="card-body col-md-6 row">
-                    <div class="col-md-3">
-                        {{ __('messages.area') }}
-                    </div>
-                    <div class="col-md-9">
-                        {{ $player->prefecture }}
-                    </div>
-                    <div class="col-md-3">
-                        {{ __('messages.experience') }}
-                    </div>
-                    <div class="col-md-9">
-                        {{ $player->experience }} 年
-                    </div>
-                    <div class="col-md-3">
-                        {{ __('messages.birthday') }}
-                    </div>
-                    <div class="col-md-9">
-                        {{ $player->birthday }}
-                    </div>
-                    <div class="col-md-3">
-                        {{ __('messages.introduction') }}
-                    </div>
-                    <div class="col-md-9">
-                        {{ str_limit($player->introduction, 300) }}
-                    </div>
-                </div>
-                <div class="card-body col-md-6">
+                <!--要確認-->
+                <div class="col-md-6">
                     @for($i = 1; $i <= 3; $i++)
                     @if ($player->{"image_path_{$i}"})
-                    <div class="image col-md-4 text-right mt-4">
+                    <div class="image mt-4">
                         <img src="{{ asset('storage/image/'.$player->{"image_path_{$i}"}) }}">
                     </div>
                     @endif
                     @endfor
                 </div>
-             </div>   
+            </div>
+            <div class="card-footer">
+                <button type="button" class="btn btn-danger bmd-btn-fab float-right">
+                    <i class="material-icons"></i>
+                </button>
+            </div>
         </div>
     </div>
 @endsection
