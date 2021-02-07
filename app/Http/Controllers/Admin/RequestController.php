@@ -37,7 +37,6 @@ class RequestController extends Controller
         $request_model = new RequestModel;
         $request_model->user_id = $request->user()->id;
         $form = $request->all();
-        
         // for ($i = 0; $i < 5; $i++) {
         //     if (isset($form['image'])) {
         //         $path = Storage::disk('s3')->putFile('/',$form['image'], 'public');
@@ -57,9 +56,11 @@ class RequestController extends Controller
         
         unset($form['_token']);
         unset($form['image']);
+        
         $request_model->fill($form);
         // dd($request_model);
         $request_model->fill($form)->save();
+        
         
         return redirect('/');
     }
@@ -110,9 +111,9 @@ class RequestController extends Controller
     }
     
     public function delete(Request $request) {
-        $request_model = RequestModel::find($request_model->id);
+        $request_model = RequestModel::find($request->id);
         $request_model->delete();
-        return redirect('/');
+        return redirect('admin/mypage/index');
     }
     
     private function getPrefectures()

@@ -27,8 +27,8 @@ class MypageController extends Controller
         $genres = $this->genres;
         
         $user = User::find($request->id);
-        $player = Player::where('user_id', $user->id)->first();
-        $request_model = RequestModel::where('user_id', $user->id)->get();
+        $player = Player::where('user_id', $request->id)->first();
+        $request_model = RequestModel::where('user_id', $request->id)->get();
         
         // dd($player); 
         // dd($request_model); 

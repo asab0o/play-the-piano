@@ -5,7 +5,7 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-10 mx-auto mt-3">
+            <div class="col-md-12 mx-auto mt-3">
                 <div class="boder-bottom" style="inline">
                     <h2>演奏場所</h2>
                     <a href="{{ action('RequestController@index') }}">一覧をみる</a>
@@ -62,10 +62,10 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-10 mx-auto mt-5">
+            <div class="col-md-12 mx-auto mt-5">
                 <h2>演奏者</h2>
                 <a href="{{ action('PlayerController@index') }}">一覧をみる</a>
-                <div class="mt-2 mx-auto row">
+                <div class="col-md-10 mt-2 mx-auto row">
                     @foreach($players as $player)
                     <div class="col-md-4 col-sm-12">
                         <div class="card h-100">

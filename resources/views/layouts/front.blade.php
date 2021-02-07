@@ -26,7 +26,6 @@
             <!--ここからナビゲーションバー-->
             <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
                 <a href="#" class="navbar-brand">playThePiano</a>
-                {{--<!--下記buttonタグが不明-->--}}
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -45,36 +44,21 @@
                         <li class="nab-item">
                             <a class="nav-link" href="{{ route('login') }}">{{ __('messages.login') }}</a>
                         </li>
-                        @else
-                        {{--@if($playerJudge)--}}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ action('Admin\PlayerController@edit', ['id' => auth()->user()->id]) }}">プロフィールの編集・削除</a>    
-                        </li>
                         
+                        @else
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ action('Admin\PlayerController@add') }}">プロフィールの新規作成</a>
+                            <a class="nav-link" href="{{ action('Admin\PlayerController@add') }}">演奏したい</a>
                         </li>
-                        {{--@endif--}}
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                依頼したい
-                            </a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="{{ action('Admin\RequestController@add') }}">演奏依頼を投稿</a>
-                                <a class="dropdown-item" href="{{ action('Admin\RequestController@edit', ['id' => auth()->user()->id]) }}">掲示中のものを編集・削除</a>
-                            </div>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ action('Admin\RequestController@add') }}">演奏依頼したい</a>
                         </li>
-                    </ul>
-                    <ul class="navbar-nav ml-auto">
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 {{ Auth::user()->name }}
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ action('Admin\MypageController@index', ['id' => auth()->user()->id]) }}">マイページ <span class="sr-only">(current)</span></a>
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                                {{ __('messages.logout') }}
-                                </a>
+                                <a class="dropdown-item" href="{{ action('Admin\MypageController@index', ['id' => auth()->user()->id]) }}">マイページ<span class="sr-only">(current)</span></a>
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">ログアウト</a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
                                 </form>

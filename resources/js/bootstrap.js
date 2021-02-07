@@ -10,7 +10,7 @@ try {
     window.Popper = require('popper.js').default;
     window.$ = window.jQuery = require('jquery');
 
-    require('bootstrap');
+    // require('bootstrap');
     // Material Design for Bootstrap
     require('bootstrap-material-design');
 } catch (e) {}
@@ -45,8 +45,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 // require("jquery-ui/ui/widgets/datepicker.js");
 require('jquery-ui/ui/i18n/datepicker-ja.js');
 
-require('jquery-datetimepicker/build/jquery.datetimepicker.full.min.js');
+// require('jquery-datetimepicker/build/jquery.datetimepicker.full.min.js');
 
-// require("bootstrap-material-design/dist/js/bootstrap-material-design.js");
+require("bootstrap-material-design/dist/js/bootstrap-material-design.js");
 
 

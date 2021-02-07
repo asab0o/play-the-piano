@@ -1,4 +1,4 @@
-@extends('layouts.mypage')
+@extends('layouts.front')
 
 @section('title', 'マイページ')
 
@@ -21,7 +21,7 @@
             <hr color="">
             <div class="card">
                 <div class="card-header">
-                        {{ __('messages.updated_at') }}:{{ $player->updated_at }}
+                    {{ __('messages.updated_at') }}:{{ $player->updated_at }}
                 </div>
                 <div class="card-body row">
                     <i class="material-icons">inbox</i>
@@ -60,6 +60,10 @@
                         @endif
                         @endfor
                     </div>
+                </div>
+                <div class="card-footer">
+                    <button type="button", class="btn btn-primary" href="{{ action('Admin\PlayerController@edit', ['id' => $player->id]) }}">update</button>
+                    <button type="button", class="btn btn-danger" href="{{ action('Admin\PlayerController@delete', ['id' => $player->id]) }}">delete</button>
                 </div>
             </div>
         </div>
@@ -142,6 +146,10 @@
                 </div>
                 @endif
                 @endfor
+                <div class="card-footer">
+                    <button type="button", class="btn btn-primary", shref="{{ action('Admin\RequestController@edit', ['id' => $request->id]) }}">update</button>
+                    <button type="button", class="btn btn-danger", shref="{{ action('Admin\RequestController@delete', ['id' => $request->id]) }}">delete</button>
+                </div>
             </div>  
         </div>
         @endforeach

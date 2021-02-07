@@ -1,4 +1,4 @@
-@extends('layouts.serching')
+@extends('layouts.front')
 @section('title', '演奏者の一覧')
     
 @section('content')

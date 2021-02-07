@@ -15,6 +15,26 @@
   overflow: hidden;
 }
 
+body {
+    
+}
+
+.player-post {
+    .card {
+        .card-img-top {
+            width: 200px;
+        }
+    }
+}
+
+.request-post {
+    .card-image-top {
+        img {
+            width: 300px;
+        }
+    }
+}
+
 .custom-file-label {
   white-space: nowrap;
 }
