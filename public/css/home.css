@@ -30,3 +30,11 @@
   width: 200px;
 }
 
+.card .fa-stack .fa-circle {
+  color: #009688;
+}
+
+.card .fa-stack .fa-comment {
+  color: #fff;
+}
+

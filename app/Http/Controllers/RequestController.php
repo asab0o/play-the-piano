@@ -15,6 +15,7 @@ class RequestController extends Controller
          $today = Carbon::now()->format('Y-m-d H:i');
          // 掲示期間の末日が今日以降
          $posts = RequestModel::whereDate('display_date_to', '>=', $today)->get()->sortByDesc('created_at');
+         
          return view('request.index', ['posts' => $posts]);
          
      }

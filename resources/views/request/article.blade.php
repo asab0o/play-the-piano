@@ -14,48 +14,56 @@
                 </div>
                 <div class="card-body col-md-6 row">
                     <div class="col-md-3">
+                        <i class="fas fa-store-alt"></i>
                         {{ __('messages.name') }}
                     </div>
                     <div class="col-md-9">
                         {{ $request->name }}
                     </div>
                     <div class="col-md-3">
+                        <i class="far fa-calendar-alt"></i>
                         {{ __('messages.date_time') }}
                     </div>
                     <div class="col-md-9">
                         {{ $request->date_time }}
                     </div>
                     <div class="col-md-3">
+                        <i class="fas fa-map-marked-alt"></i>
                         {{ __('messages.area') }}
                     </div>
                     <div class="col-md-9">
                         {{ $request->area }}
                     </div>
                     <div class="col-md-3">
+                        <i class="fas fa-gifts"></i>
                         {{ __('messages.rewards') }}
                     </div>
                     <div class="col-md-9">
                         {{ $request->rewards }}
                     </div>
                     <div class="col-md-3">
+                        <i class="fas fa-parking"></i>
                         {{ __('messages.parking_lots') }}
                     </div>
                     <div class="col-md-9">
                         {{ $request->parking_lots }}
                     </div>
                     <div class="col-md-3">
+                        <i class="fas fa-music"></i>
                         {{ __('messages.genres') }}
                     </div>
                     <div class="col-md-9">
                         {{ $request->genres }}
                     </div>
                     <div class="col-md-3">
+                        <i class="fas fa-user-tie"></i>
                         {{ __('messages.dress') }}
                     </div>
                     <div class="col-md-9">
                         {{ $request->dress }}
                     </div>
                     <div class="col-md-3">
+                        <i class="far fa-address-card"></i>
                         {{ __('messages.introduction') }}
                     </div>
                     <div class="col-md-9">

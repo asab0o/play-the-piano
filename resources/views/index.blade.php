@@ -78,10 +78,9 @@
                                 <h5 class="card-title">{{ $player->firstname_1 }} {{ $player->lastname_1 }} <small>さん</small></h5>
                                 <p class="card-text">{{ str_limit($player->introduction, 50) }}</p>
                                 <a href="{{ action('PlayerController@showProfile', ['id' => $player->id]) }}" class="btn btn-outline-primary">詳細をみる</a>
-                                <span class="btn-group-sm">
-                                    <button type="button" class="btn btn-secondary bmd-btn-fab float-right">
-                                        <i class="material-icons">★</i>
-                                    </button>
+                                <span class="fa-stack fa-3x">
+                                    <i class="fas fa-circle fa-stack-2x"></i>
+                                    <i class="fas fa-comment fa-stack-1x"></i>
                                 </span>
                             </div>
                         </div>
