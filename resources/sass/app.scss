@@ -22,3 +22,8 @@
 @import '~@fortawesome/fontawesome-free/scss/solid';
 @import '~@fortawesome/fontawesome-free/scss/regular';
 @import '~@fortawesome/fontawesome-free/scss/brands';
+
+// 新規scss読み込む
+@import "home";
+@import "create";
+@import "view";

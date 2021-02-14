@@ -58,3 +58,12 @@ body {
   }
 }
 
+// ファイル選択
+.filePreview {
+  margin: 0 auto;
+    display: none;
+    text-align: center;
+    &.is-active {
+      display: block;
+    }
+}

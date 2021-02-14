@@ -2,6 +2,7 @@
 @section('title', 'プロフィール画面の編集')
     
 @section('content')
+<div class="playerPages">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-10 mx-auto">
@@ -138,4 +139,5 @@
                 {{ Form::close() }}
         </div>
     </div>
+</div>
 @endsection

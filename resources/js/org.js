@@ -67,3 +67,40 @@ $(".datepicker_2").datepicker({
 //         return date;
 //     } 
 // } );
+
+// ファイルのプレビュー機能実装
+// function previewFile(e) {
+//     for (var i = 0; i <= 5; i++) {
+//         if (e.target.files.length) {
+//             var file = document.getElementById('filePreview'&i);
+            
+//             // 読み込み成功
+//             let reader = new FileReader();
+//             reader.onload = function(e) {
+//                 let imgUrl = e.target.result;
+//                 let userPreview;
+//                 userPreview = document.getElementById('filePreview');
+//                 userPreview.setAttribute('src', imgUrl);
+//             }
+//         }
+        
+//     }
+// }
+
+// うまくいってない
+$(document).on("change", ".inputFile", function(e) {
+  let reader;
+  if (e.target.files.length) {
+    reader = new FileReader;
+    reader.onload = function(e) {
+      let userThumbnail;
+      userThumbnail = document.getElementsByClassName('outputFile');
+      $("#filePreview").addClass("is-active");
+      userThumbnail.setAttribute('src', e.target.result);
+    };
+    return reader.readAsDataURL(e.target.files[0]);
+  }
+});
+
+
+

@@ -2,6 +2,7 @@
 @section('title', 'プロフィール画面の作成')
     
 @section('content')
+<div class="playerPages">
     <div class="container-fluid">
         <div class="row">
              <div class="card col-md-8 mx-auto my-3">
@@ -140,4 +141,5 @@
             </div>
         </div>
     </div>
+</div>
 @endsection

@@ -2,6 +2,7 @@
 @section('title', '演奏依頼の投稿作成')
 
 @section('content')
+<div class="requestPages">  
     <div class="container">
         <div class="row">
             <div class="col-md-10">
@@ -173,4 +174,5 @@
             </div>
         </div>
     </div>
+</div>
 @endsection

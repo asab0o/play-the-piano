@@ -3,91 +3,83 @@
 @section('title', '演奏依頼')
 
 @section('content')
-    <div class="container-fluid">
+<div class="requestView">
+    <div class="container">
         <div class="col-md-10 mx-auto mt-3">
-
-            <h3>{{ $request->title }}</h3>
-            <hr color="">
-            <div class="card">
-                <div class="card-header">
-                        {{ __('messages.display_term') }} :{{ $request->display_date_from }} ~ {{ $request->display_date_to }}
-                </div>
-                <div class="card-body col-md-6 row">
-                    <div class="col-md-3">
-                        <i class="fas fa-store-alt"></i>
-                        {{ __('messages.name') }}
-                    </div>
-                    <div class="col-md-9">
-                        {{ $request->name }}
-                    </div>
-                    <div class="col-md-3">
-                        <i class="far fa-calendar-alt"></i>
-                        {{ __('messages.date_time') }}
-                    </div>
-                    <div class="col-md-9">
-                        {{ $request->date_time }}
-                    </div>
-                    <div class="col-md-3">
-                        <i class="fas fa-map-marked-alt"></i>
-                        {{ __('messages.area') }}
-                    </div>
-                    <div class="col-md-9">
-                        {{ $request->area }}
-                    </div>
-                    <div class="col-md-3">
-                        <i class="fas fa-gifts"></i>
-                        {{ __('messages.rewards') }}
-                    </div>
-                    <div class="col-md-9">
-                        {{ $request->rewards }}
-                    </div>
-                    <div class="col-md-3">
-                        <i class="fas fa-parking"></i>
-                        {{ __('messages.parking_lots') }}
-                    </div>
-                    <div class="col-md-9">
-                        {{ $request->parking_lots }}
-                    </div>
-                    <div class="col-md-3">
-                        <i class="fas fa-music"></i>
-                        {{ __('messages.genres') }}
-                    </div>
-                    <div class="col-md-9">
-                        {{ $request->genres }}
-                    </div>
-                    <div class="col-md-3">
-                        <i class="fas fa-user-tie"></i>
-                        {{ __('messages.dress') }}
-                    </div>
-                    <div class="col-md-9">
-                        {{ $request->dress }}
-                    </div>
-                    <div class="col-md-3">
-                        <i class="far fa-address-card"></i>
-                        {{ __('messages.introduction') }}
-                    </div>
-                    <div class="col-md-9">
-                        {{ str_limit($request->introduction, 300) }}
-                    </div>
-                    @if($request->tel_number)
-                    <div class="col-md-3">
-                        {{ __('messages.tel_number') }}
-                    </div>
-                    <div class="col-md-9">
-                        {{ $request->tel_number }}
-                    </div>
-                    @endif
-                </div>
+            <div class="card-header">
+                <h3>{{ $request->title }}</h3>
+            </div>
+            <div class="card-body">
+                <ul class="list-group fa-ul">
+                    <li class="list-group-item">
+                        <span class="fa-li"><i class="fas fa-store-alt fa-2x"></i></span>
+                        <div class="bmd-list-group-col">
+                            <p class="list-group-item-heading">{{ __('messages.name') }}</p>
+                            <p class="list-group-item-text">{{ $request->name }}</p>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="fa-li"><i class="far fa-calendar-alt fa-2x"></i></span>
+                        <div class="bmd-list-group-col">
+                            <p class="list-group-item-heading">{{ __('messages.date_time') }}</p>
+                            <p class="list-group-item-text">{{ $request->date_time }}</p>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="fa-li"><i class="fas fa-map-marked-alt fa-2x"></i></span>
+                        <div class="bmd-list-group-col">
+                            <p class="list-group-item-heading">{{ __('messages.area') }}</p>
+                            <p class="list-group-item-text">{{ $request->area }}</p>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="fa-li"><i class="fas fa-gifts fa-2x"></i></span>
+                        <div class="bmd-list-group-col">
+                            <p class="list-group-item-heading">{{ __('messages.rewards') }}</p>
+                            <p class="list-group-item-text">{{ $request->rewards }}</p>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="fa-li"> <i class="fas fa-parking fa-2x"></i></span>
+                        <div class="bmd-list-group-col">
+                            <p class="list-group-item-heading">{{ __('messages.parking_lots') }}</p>
+                            <p class="list-group-item-text">{{ $request->parking_lots }}</p>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="fa-li"><i class="fas fa-music fa-2x"></i></span>
+                        <div class="bmd-list-group-col">
+                            <p class="list-group-item-heading">{{ __('messages.genres') }}</p>
+                            <p class="list-group-item-text"> {{ $request->genres }}</p>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="fa-li"> <i class="fas fa-user-tie fa-2x"></i></span>
+                        <div class="bmd-list-group-col">
+                            <p class="list-group-item-heading">{{ __('messages.dress') }}</p>
+                            <p class="list-group-item-text">{{ $request->dress }}</p>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="fa-li"><i class="far fa-address-card fa-2x"></i></span>
+                        <div class="bmd-list-group-col">
+                            <p class="list-group-item-heading">{{ __('messages.introduction') }}</p>
+                            <p class="list-group-item-text">{{ str_limit($request->introduction, 300) }}</p>
+                        </div>
+                    </li>
+                </ul>
                 @for($i = 1; $i <= 5; $i++)
                 @if($request->{"image_path_".$i})
-                <div class="card-body col-md-6">
-                    <div class="image col-md-4 text-right mt-4">
-                        <img src="{{ asset('storage/image/'.$request->{'image_path_'.$i}) }}">
-                    </div>
+                <div class="image col-md-4 text-right mt-4">
+                    <img src="{{ asset('storage/image/'.$request->{'image_path_'.$i}) }}">
                 </div>
                 @endif
                 @endfor
-             </div>   
+            </div>
+            <div class="card-footer">
+                {{ __('messages.display_term') }} :{{ $request->display_date_from }} ~ {{ $request->display_date_to }}
+            </div>
         </div>
     </div>
+</div>
 @endsection

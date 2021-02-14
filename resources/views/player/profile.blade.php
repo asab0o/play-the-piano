@@ -3,39 +3,51 @@
 @section('title', 'プロフィール画面')
 
 @section('content')
-    <div class="container-fluid">
+<div class="profileView">
+    <div class="container">
         <div class="card col-md-10 mx-auto mt-3">
-            <div class="card-header">
+            <div class="card-header row">
                 <h3>{{ $player->firstname_1 }} {{ $player->lastname_1 }} さん</h3>
-                <p>{{ __('messages.updated_at') }}:{{ $player->updated_at }}</p>
+                <div class="goToChat ">
+                    <i class="fas fa-comment fa-2x"></i>
+                </div>
             </div>
+            
             <!--要確認-->
             <div class="card-body row">
                 <div class="col-md-6">
                    <ul class="list-group fa-ul">
                        <li class="list-group-item">
-                           <span class="fa-li"><i class="fas fa-map-marker-alt"></i></span>
-                           <p>{{ __('messages.area') }}</p>
-                           <p>{{ $player->prefecture }}</p>
+                           <span class="fa-li"><i class="fas fa-map-marker-alt fa-2x"></i></span>
+                           <div class="bmd-list-group-col">
+                               <p class="list-group-item-heading">{{ __('messages.area') }}</p>
+                               <p class="list-group-item-text">{{ $player->prefecture }}</p>
+                           </div>
                        </li>
                        <li class="list-group-item">
-                           <span class="fa-li"><i class="fas fa-music"></i></span>
-                           <p>{{ __('messages.experience') }}</p>
-                           <p>{{ $player->experience }} 年</p>
+                           <span class="fa-li"><i class="fas fa-music fa-2x"></i></span>
+                           <div class="bmd-list-group-col">
+                               <p class="list-group-item-heading">{{ __('messages.experience') }}</p>
+                               <p class="list-group-item-text">{{ $player->experience }} 年</p>
+                           </div>
                        </li>
                        <li class="list-group-item">
-                           <span class="fa-li"><i class="far fa-id-badge"></i></span>
-                           <p>{{ __('messages.introduction') }}</p>
-                           <p>{{ str_limit($player->introduction, 300) }}</p>
+                           <span class="fa-li"><i class="far fa-id-badge fa-2x"></i></span>
+                           <div class="bmd-list-group-col">
+                               <p class="list-group-item-heading">{{ __('messages.introduction') }}</p>
+                               <p class="list-group-item-text">{{ str_limit($player->introduction, 300) }}</p>
+                           </div>
                        </li>
                        <li class="list-group-item">
-                           <span class="fa-li"><i class="fas fa-play-circle"></i></span>
-                           <p>{{ __('messages.performance') }}</p>
-                           @if ($player->performance)
-                           <p>{{ $player->performance }}</p>
-                           @else
-                           <p>登録なし</p>
-                           @endif
+                           <span class="fa-li"><i class="fas fa-play-circle fa-2x"></i></span>
+                           <div class="bmd-list-group-col">
+                               <p class="list-group-item-heading">{{ __('messages.performance') }}</p>
+                               @if ($player->performance)
+                               <p class="list-group-item-text">{{ $player->performance }}</p>
+                               @else
+                               <p class="list-group-item-text">登録なし</p>
+                               @endif
+                            </div>
                        </li>
                    </ul> 
                 </div>
@@ -51,10 +63,12 @@
                 </div>
             </div>
             <div class="card-footer">
-                <button type="button" class="btn btn-danger bmd-btn-fab float-right">
-                    <i class="material-icons"></i>
-                </button>
+                <div class="upDateTime row">
+                    <i class="fas fa-clock"></i>
+                    <p>{{ $player->updated_at->format('Y/m/d') }}</p>
+                </div>
             </div>
         </div>
     </div>
+</div>
 @endsection

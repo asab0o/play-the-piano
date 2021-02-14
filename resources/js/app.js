@@ -35,3 +35,5 @@ const app = new Vue({
 $(document).ready(function() { $('body').bootstrapMaterialDesign(); });
 
 
+// org.jsファイル読み込み
+require('./org');

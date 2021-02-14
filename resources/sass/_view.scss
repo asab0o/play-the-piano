@@ -1,0 +1,29 @@
+$main: #fd7f14;
+$sub: #fff;
+
+.profileView {
+    
+    
+    .goToChat {
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        background-color: $main;
+        margin: 0 0 0 auto;
+        color : $sub;
+        display: flex;
+        // なかのアイコンの位置
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .upDateTime {
+        .fa-clock {
+            margin: 0 auto 3px ;
+        }
+        &>P {
+            margin: auto 0 0 5px;
+        }
+    }
+    
+}
