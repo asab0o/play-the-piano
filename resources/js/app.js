@@ -37,3 +37,6 @@ $(document).ready(function() { $('body').bootstrapMaterialDesign(); });
 
 // org.jsファイル読み込み
 require('./org');
+
+// ajax通信のためのjsファイル
+require('./chat');

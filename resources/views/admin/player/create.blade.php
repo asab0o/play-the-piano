@@ -130,7 +130,7 @@
                             {{ Form::label('performance', __('messages.performance')) }}
                         </div>
                         <div class="col-md-8">
-                            {{ Form::text('performance', null, ['class' => 'form-control', 'placeholder' => 'URL']) }}
+                            {{ Form::url('performance', null, ['class' => 'form-control', 'placeholder' => 'URL']) }}
                         </div>
                     </div>
                     <!--登録ボタン-->

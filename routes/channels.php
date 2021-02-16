@@ -14,3 +14,8 @@
 Broadcast::channel('App.User.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
 });
+
+// チャンネルをつなげる
+Broadcast::channel('chatRoomChannel', function() {
+    return true;
+});

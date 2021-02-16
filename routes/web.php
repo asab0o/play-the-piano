@@ -14,6 +14,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::get('request/delate', 'Admin\RequestController@delete');
     
     Route::get('mypage', 'Admin\MypageController@index');
+    
+    // Route::post('chat', 'Admin\ChatController@chat')->name('chat');
+    Route::post('chat', 'Admin\ChatController@chat')->name('chat');
 });
 
 
