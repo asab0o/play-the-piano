@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class ChatUser extends Model
 {
+    protected $fillable = ['chat_id', 'user_id'];
+    
     public function chat() {
         return $this->belongsTo('App\Chat');
     }

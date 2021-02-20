@@ -5,11 +5,13 @@
 @import 'variables';
 
 // Bootstrap
-// @import '~bootstrap/scss/bootstrap';
+@import '~bootstrap/scss/bootstrap';
+
+// honoka
+@import '~bootstrap-honoka/dist/css/bootstrap.min.css';
 
 // Material Design for Bootstrap
-@import '~bootstrap-material-design/dist/css/bootstrap-material-design.min.css';
-
+// @import '~bootstrap-material-design/dist/css/bootstrap-material-design.min.css';
 
 // datetimepicker
 // @import '~jquery-datetimepicker/jquery.datetimepicker.css';

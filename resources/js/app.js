@@ -6,6 +6,7 @@
 
 require('./bootstrap');
 
+
 window.Vue = require('vue');
 
 /**
@@ -32,7 +33,7 @@ const app = new Vue({
 });
 
 // materialDesign導入
-$(document).ready(function() { $('body').bootstrapMaterialDesign(); });
+// $(document).ready(function() { $('body').bootstrapMaterialDesign(); });
 
 
 // org.jsファイル読み込み

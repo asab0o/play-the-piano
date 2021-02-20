@@ -5,12 +5,19 @@
 @section('content')
 <div class="requestView">
     <div class="container">
-        <div class="col-md-10 mx-auto mt-3">
-            <div class="card-header">
+        <div class="card col-md-10 mx-auto mt-3">
+            <div class="card-header row">
                 <h3>{{ $request->title }}</h3>
+                <div class="goToChat">
+                    @guest
+                    <a href="{{ route('login') }}"><span class="fas fa-comment fa-2x"></span></a>
+                    @else
+                    <a href="{{ action('Admin\ChatController@show', ['id' => $request->id, 'user_id' => $request->user_id]) }}"><span class="fas fa-comment fa-2x"></span></a>
+                    @endguest
+                </div>
             </div>
             <div class="card-body">
-                <ul class="list-group fa-ul">
+                <ul class="list-group list-group-flush fa-ul">
                     <li class="list-group-item">
                         <span class="fa-li"><i class="fas fa-store-alt fa-2x"></i></span>
                         <div class="bmd-list-group-col">
@@ -68,14 +75,14 @@
                         </div>
                     </li>
                 </ul>
-                @for($i = 1; $i <= 5; $i++)
-                @if($request->{"image_path_".$i})
-                <div class="image col-md-4 text-right mt-4">
-                    <img src="{{ asset('storage/image/'.$request->{'image_path_'.$i}) }}">
-                </div>
-                @endif
-                @endfor
             </div>
+            @for($i = 1; $i <= 5; $i++)
+            @if($request->{"image_path_".$i})
+            <div class="image col-md-4">
+                <img src="{{ asset('storage/image/'.$request->{'image_path_'.$i}) }}">
+            </div>
+            @endif
+            @endfor
             <div class="card-footer">
                 {{ __('messages.display_term') }} :{{ $request->display_date_from }} ~ {{ $request->display_date_to }}
             </div>

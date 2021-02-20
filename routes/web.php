@@ -15,8 +15,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     
     Route::get('mypage', 'Admin\MypageController@index');
     
-    // Route::post('chat', 'Admin\ChatController@chat')->name('chat');
-    Route::post('chat', 'Admin\ChatController@chat')->name('chat');
+    Route::get('chat/show', 'Admin\ChatController@show');
+    Route::post('chat/chat', 'Admin\ChatController@chat');
 });
 
 

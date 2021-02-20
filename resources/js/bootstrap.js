@@ -10,9 +10,9 @@ try {
     window.Popper = require('popper.js').default;
     window.$ = window.jQuery = require('jquery');
 
-    // require('bootstrap');
+    require('bootstrap');
     // Material Design for Bootstrap
-    require('bootstrap-material-design');
+    // require('bootstrap-material-design');
 } catch (e) {}
 
 /**

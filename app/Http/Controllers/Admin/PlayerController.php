@@ -44,16 +44,6 @@ class PlayerController extends Controller
         $player->user_id = $request->user()->id;
         $form = $request->all();
         
-        // for文使えるのか
-        // for ($i = 1; $i <= 3; $i++) {
-        //     if (isset($form['image'][$i])) {
-        //         $path = Storage::disk('s3')->putFile('/', $form['image'][$i], 'public');
-        //         $player->image_path_.$i = Storage::disk('s3')->url($path);
-        //     } else {
-        //         $player->image_path_.$i = null;
-        //     }
-        // }
-        // dd($request->file('image'));
         for ($i = 1; $i <= 3; $i++) {
             if (isset($form['image'][$i])) {
                 $path = $request->file('image')[$i]->store('public/image');

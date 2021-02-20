@@ -23,11 +23,6 @@
                                     </div>
                                     <div class="card-footer">
                                         <a href="{{ action('PlayerController@showProfile', ['id' => $post->id]) }}" class="btn btn-outline-primary">詳細をみる</a>
-                                        <span class="btn-group-sm">
-                                            <button type="button" class="btn btn-secondary bmd-btn-fab float-right">
-                                                <i class="material-icons"></i>
-                                            </button>
-                                        </span>
                                     </div>
                                 </div>
                             </div>

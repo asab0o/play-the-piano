@@ -48,7 +48,7 @@ class HomeController extends Controller
         //         'requests' => $request_model,
         //         ]);
         // dd($request_model);
-        return view('index', [
+        return view('home', [
             'players' => $players,
             'requests' => $request_model,
             ]);

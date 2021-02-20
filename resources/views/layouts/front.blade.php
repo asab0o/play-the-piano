@@ -17,32 +17,30 @@
         <link rel="" href="" type="">
         
         <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
-        <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+        
+        
     </head>
     <body>
         <div id="app">
             <!--ここからナビゲーションバー-->
             <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-                <a href="#" class="navbar-brand">playThePiano</a>
+                <a class="navbar-brand" href="{{ url('/') }}">playThePiano</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{{ url('/') }}">HOME <span class="sr-only">(current)</span></a>
-                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ action('RequestController@index')}}">演奏場所を探す <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ action('PlayerController@index') }}">演奏者を探す <span class="sr-only">(current)</span></a>
                         </li>
+                        
                         @guest
                         <li class="nab-item">
                             <a class="nav-link" href="{{ route('login') }}">{{ __('messages.login') }}</a>
                         </li>
-                        
                         @else
                         <li class="nav-item">
                             <a class="nav-link" href="{{ action('Admin\PlayerController@add') }}">演奏したい</a>
@@ -51,19 +49,17 @@
                             <a class="nav-link" href="{{ action('Admin\RequestController@add') }}">演奏依頼したい</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {{ Auth::user()->name }}
-                            </a>
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>{{ Auth::user()->name }} さん<span class="caret"></span></a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ action('Admin\MypageController@index', ['id' => auth()->user()->id]) }}">マイページ<span class="sr-only">(current)</span></a>
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">ログアウト</a>
+                                <a class="dropdown-item" href="{{ action('Admin\MypageController@index', ['id' => Auth::user()->id] )}}">マイページ</a>
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">{{ __('messages.logout') }}</a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
+                                @csrf
                                 </form>
                             </div>
                         </li>
+                        @endguest
                     </ul>
-                    @endguest
                 </div>
             </nav>
             <!--ここまでナビゲーションバー-->
@@ -72,5 +68,4 @@
             </main>
         </div>
     </body>
-    
 </html>
