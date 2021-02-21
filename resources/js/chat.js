@@ -1,3 +1,4 @@
+// お決まり
 $(document).ready(function() {
     $.ajaxSetup({
         headers: {
@@ -5,44 +6,34 @@ $(document).ready(function() {
         }
     });
     
-    $('#submit').click(function (event) {
-        // Enter = 13;
-        // if(event.which === 13){
-            // event.preventDefault();
+    // submitボタン押すイベント発火
+    $("#submit").click( function() {
+        const url = "/admin/chat/chat";
         $.ajax({
-            type: 'POST',
-            url: '/chat',
+            url: url,
+            type: "POST",
             data: {
-                chat_room_id: chat_room_id,
+                chat_id: chat_id,
                 user_id: user_id,
-                message: $('.messageInputForm_input').val(),
+                message: $('#messageInput').val(),
             },
-        })
-        
-        .done(function(data){
-            //console.log(data);
-            event.target.value = '';
         });
-        // }
+        return false;
     });
 
-    window.Echo.channel('chatRoomChannel')
-    .listen('ChatPusher', (e) => {
+    // 表示させる処理
+    window.Echo.channel('chatRoomChannel').listen('ChatPusher', (e) => {
         console.log(e, e.message.user_id);
         if(e.message.user_id === user_id){
             console.log(true);
-        $('.messages').append(
-            '<div class="message"><span>' + current_user_name + 
-            ':</span><div class="commonMessage"><div>' +
-            e.message.message + '</div></div></div>');
-        }else{
+            $('.messages').append(
+                '<div class="message"><span>' + current_user_name + ':</span><div class="commonMessage"><div>' +e.message.message + '</div></div></div>'
+                );
+        } else {
             console.log(false);
-        $('.messages').append(
-            '<div class="message"><span>' + chat_room_user_name + 
-            ':</span><div class="commonMessage"><div>' +
-            e.message.message + '</div></div></div>');    
+            $('.messages').append(
+                '<div class="message"><span>' + chat_room_user_name + ':</span><div class="commonMessage"><div>' + e.message.message + '</div></div></div>'
+                );    
         }
     });
-
-
 });

@@ -29,12 +29,12 @@ class ChatController extends Controller
         $chat_room_id = ChatUser::whereIn('chat_id', $current_chat_rooms)
             ->where('user_id', $chat_partner_id)
             ->pluck('chat_id');
-        if (empty($chat_room_id)) {
+        
+        if ($chat_room_id->isEmpty()) {
             // $chat_room = new ChatRoom;
-            ChatRoom::create();
-            $latest_chat_room = ChatRoom::orderBy('created_at', 'desc')->first();
+            Chat::create();
+            $latest_chat_room = Chat::orderBy('created_at', 'desc')->first();
             $chat_room_id = $latest_chat_room->id;
-            dd($chat_room_id);
             ChatUser::create ([
                 'chat_id' => $chat_room_id,
                 'user_id' => Auth::id()
@@ -44,8 +44,7 @@ class ChatController extends Controller
                 'user_id' => $chat_partner_id
                 ]);
         }
-        
-        // チャットルーム取得時はオブジェクト型なので数値に変換
+        // チャットルーム取得時はオブジェクト型(配列)なので数値に変換
         if(is_object($chat_room_id)) {
             $chat_room_id = $chat_room_id->first();
         }
@@ -62,14 +61,13 @@ class ChatController extends Controller
         return view('admin.chat.show', compact('chat_room_id', 'chat_room_user', 'chat_room_user_name', 'chat_msg'));
     }
     
-    public static function chat(Request $request) {
+    public function chat(Request $request) {
         $message = new ChatMessage();
-        $message->chat_room_id = $request->chat_room_id;
+        $message->chat_id = $request->chat_id;
         $message->user_id = $request->user_id;
-        // 入力した文字列
-        $message->message = $request->request;
+        $message->message = $request->message;
         
-        $chat->save();
+        $message->save();
         
         event(new ChatPusher($message));
     }

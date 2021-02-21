@@ -64809,29 +64809,28 @@ __webpack_require__(/*! bootstrap-material-design/dist/js/bootstrap-material-des
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+// お決まり
 $(document).ready(function () {
   $.ajaxSetup({
     headers: {
       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
-  });
-  $('#submit').click(function (event) {
-    // Enter = 13;
-    // if(event.which === 13){
-    // event.preventDefault();
+  }); // submitボタン押すイベント発火
+
+  $("#submit").click(function () {
+    var url = "/admin/chat/chat";
     $.ajax({
-      type: 'POST',
-      url: '/chat',
+      url: url,
+      type: "POST",
       data: {
-        chat_room_id: chat_room_id,
+        chat_id: chat_id,
         user_id: user_id,
-        message: $('.messageInputForm_input').val()
+        message: $('#messageInput').val()
       }
-    }).done(function (data) {
-      //console.log(data);
-      event.target.value = '';
-    }); // }
-  });
+    });
+    return false;
+  }); // 表示させる処理
+
   window.Echo.channel('chatRoomChannel').listen('ChatPusher', function (e) {
     console.log(e, e.message.user_id);
 
