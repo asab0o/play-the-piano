@@ -9,7 +9,19 @@
             <div class="card">
                 <div class="card-header">通知</div>
                 <div class="card-body chat-card">
-                    
+                    <ul class="list-group list-group-flush">
+                    @foreach($chats as $chat)
+                        <li class="list-group-item">
+                            <div class="bmd-list-group-col">
+                                <p>{{ $chat->updated_at->format('Y/m/d') }}</p>
+                                <p>{{ $chat->name }}</p>
+                            </div>
+                            <div class="goToChat">
+                                <a href="{{ action('Admin\ChatController@show', ['user_id' => $chat->id]) }}"><span class="fas fa-comment fa-2x"></span></a>
+                            </div>
+                        </li>
+                    @endforeach
+                    </ul>
                 </div>
             </div>
         </div>
