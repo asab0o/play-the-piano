@@ -5,6 +5,9 @@
     <div class="container-fluid">
             <div class="col-md-10 mx-auto mt-3">
                 <h1>依頼の一覧</h1>
+                @if($posts->isEmpty())
+                    <h3>現在の募集はありません</h3>
+                @else
                     <div class="request-post">
                         @foreach($posts as $post)
                         <div class="card mt-3">
@@ -31,6 +34,7 @@
                         @endforeach
                     </div>
                 <!--カードここまで-->
+                @endif
             </div>
         </div>
 

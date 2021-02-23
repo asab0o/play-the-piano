@@ -4,6 +4,12 @@
 // Variables
 @import 'variables';
 
+$theme-colors: (
+    primary: #ce6168,
+    secondary: #e7c88f,
+    test: #a6714f,
+);
+
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
@@ -26,6 +32,5 @@
 @import '~@fortawesome/fontawesome-free/scss/brands';
 
 // 新規scss読み込む
-@import "home";
 @import "create";
 @import "view";

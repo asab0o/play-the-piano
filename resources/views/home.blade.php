@@ -1,5 +1,5 @@
 @extends('layouts.front')
-@section('title', 'playThePiano')
+@section('title', 'pia-match')
 
 @section('content')
 
@@ -29,7 +29,7 @@
                                 <h5 class="card-title">{{ $requests[0]->title }}</h5>
                                 <p class="card-text">{{ str_limit($requests[0]->introduction, 20) }}</p>
                                 <p class="card-text"><small class="text-muted">{{ $requests[0]->updated_at->format('Y/m/d') }}</small></p>
-                                <a href="{{ action('RequestController@showArticle', ['id' => $requests[0]->id]) }}" class="btn btn-outline-secondary">詳細をみる</a>
+                                <a href="{{ action('RequestController@showArticle', ['id' => $requests[0]->id]) }}" class="btn btn-primary">詳細をみる</a>
                             </div>
                         </div>
                         
@@ -44,7 +44,7 @@
                                 <h5 class="card-title">{{ $requests[$i]->title }}</h5>
                                 <p class="card-text">{{ str_limit($requests[$i]->introduction, 20) }}</p>
                                 <p class="card-text"><small class="text-muted">{{ $requests[$i]->updated_at->format('Y/m/d') }}</small></p>
-                                <a href="{{ action('RequestController@showArticle', ['id' => $requests[$i]->id]) }}" class="btn btn-secondary">詳細をみる</a>
+                                <a href="{{ action('RequestController@showArticle', ['id' => $requests[$i]->id]) }}" class="btn btn-primary">詳細をみる</a>
                             </div>
                         </div>
                         @endfor

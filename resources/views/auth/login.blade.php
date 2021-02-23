@@ -1,7 +1,7 @@
-@extends('layouts.welcome')
+@extends('layouts.app')
 
 @section('content')
-<div class="container-fluid">
+<div class="loginPage container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="login-box card">
@@ -62,9 +62,7 @@
                             <div class="col-md-8 offset-md-4">
                                 {{ Form::submit(__('messages.login'), ['class' => 'btn btn-primary']) }}
                                 @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
+                                    <a class="btn btn-link" href="{{ route('password.request') }}">パスワードをお忘れですか？</a>
                                 @endif
                             </div>
                         </div>
