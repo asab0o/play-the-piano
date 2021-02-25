@@ -69,26 +69,17 @@ class PlayerController extends Controller
         
     }
     
-    public function edit(Request $request) {
+    public function edit() {
         
         $genders = $this->genders;
         $prefectures = $this->prefectures;
-
-        $player = Player::where('user_id', $request->id)->first();
+        $player = Player::where('user_id', Auth::id())->first();
         
-        // プロフィールを登録していなかったら新規作成画面に飛ぶようにしている
-        if(empty($player)) { 
-            return view('admin.player.create', [
-                'genders' => $genders,
-                'prefectures' => $prefectures,
-                ]);
-         } else {
-            return view('admin.player.edit', [
-                'player_form' => $player,
-                'genders' => $genders,
-                'prefectures' => $prefectures,
-            ]); 
-         }
+        return view('admin.player.edit', [
+            'player_form' => $player,
+            'genders' => $genders,
+            'prefectures' => $prefectures,
+        ]); 
     }
     
     public function update(Request $request)
@@ -96,10 +87,6 @@ class PlayerController extends Controller
         $this->validate($request, Player::$rules);
         $player = Player::find($request->id);
         $player_form = $request->all();
-        
-        // dd($file('image'));
-        // dd($player_form);
-        // dd($request->file('image'));
         
         for ($i = 1; $i <= 3; $i++) {
             if (isset($player_form['image'][$i])) {
