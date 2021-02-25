@@ -3,19 +3,20 @@
     
 @section('content')
 <div class="playerPages">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-10 mx-auto">
+    <div class="container">
+        <div class="card col-md-10 mx-auto mt-3">
+            <div class="card-header row">
                 <h2>プロフィール編集</h2>
+            </div>
+            <div class="card-body">
                 {{ Form::open(['action' => 'Admin\PlayerController@update', 'files' => true, 'class' => "form-horizontal"]) }}
-                    @if (count($errors) > 0)
-                        <ul>
-                            @foreach($errors->all() as $e)
-                                <li>{{ $e }}</li>
-                            @endforeach
-                        </ul>
-                    @endif
-                
+                @if (count($errors) > 0)
+                    <ul>
+                        @foreach($errors->all() as $e)
+                            <li>{{ $e }}</li>
+                        @endforeach
+                    </ul>
+                @endif
                 <!--画像の設定-->
                 <div class="form-group row">
                     <div class="col-md-2">
@@ -62,7 +63,7 @@
                         {{ Form::label('birthday', __('messages.birthday')) }}
                     </div>
                     <div class="col-md-10">
-                        {{ Form::text('birthday', $player_form->birthday, ['class'=>'form-control datepicker_1'])}}
+                        {{ Form::text('birthday', $player_form->birthday, ['class'=>'form-control datepicker'])}}
                     </div>
                 </div>
                 性別 
@@ -128,16 +129,14 @@
                     </div>
                 </div>
                 <!--登録ボタン-->
-                <!--hiddenについて-->
                 {{ Form::hidden('id', $player_form->id) }}
-                {{ Form::submit(__('messages.update'), ['class' => 'btn btn-secondary']) }}
-                {{ Form::hidden('id', $player_form->id) }}
-                <div class="btn btn-secondary">
-                    <a href="{{ action('Admin\PlayerController@delete', ['id' => $player_form->id]) }}" style="color: #fff;">{{ __('messages.delete') }}</a>
-                </div>
+                <a href="{{ action('Admin\RequestController@edit', ['id' => $player_form->id]) }}" class="updateBtn btn btn-secondary">更新</a>
+                <a href="{{ action('Admin\RequestController@delete', ['id' => $player_form->id]) }}" class="deleteBtn btn btn-primary">削除</a>
                 @csrf
                 {{ Form::close() }}
+            </div>
         </div>
     </div>
 </div>
+
 @endsection

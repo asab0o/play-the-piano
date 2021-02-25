@@ -4,9 +4,11 @@
 @section('content')
 <div class="requestPages">  
     <div class="container">
-        <div class="row">
-            <div class="col-md-10">
+        <div class="card col-md-10 mx-auto mt-3">
+            <div class="card-header row">
                 <h2>投稿を編集する</h2>
+            </div>
+            <div class="card-body">
                 {{ Form::open(['action' => 'Admin\RequestController@create', 'files' => true, 'class' => 'form-horizontal']) }}
                 @if (count($errors) > 0)
                     <ul>
@@ -164,11 +166,8 @@
                 <!--登録ボタン-->
                 <!--hiddenについて-->
                 {{ Form::hidden('id', $request_form->id) }}
-                {{ Form::submit(__('messages.update'), ['class' => 'btn btn-secondary']) }}
-                {{ Form::hidden('id', $request_form->id) }}
-                <div class="btn btn-secondary">
-                    <a href="{{ action('Admin\PlayerController@delete', ['id' => $request_form->id]) }}" style="color: #fff;">{{ __('messages.delete') }}</a>
-                </div>
+                <a href="{{ action('Admin\RequestController@edit', ['id' => $request_form->id]) }}" class="updateBtn btn btn-secondary">更新</a>
+                <a href="{{ action('Admin\RequestController@delete', ['id' => $request_form->id]) }}" class="deleteBtn btn btn-primary">削除</a>
                 @csrf
                 {{ Form::close() }}
             </div>
