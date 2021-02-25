@@ -5,7 +5,10 @@
     <div class="container-fluid">
         <div class="col-md-10 mx-auto mt-3">
             <h1>演奏者の一覧</h1>
-            <!--カードで表示したい-->
+            @if($posts->isEmpty())
+                    <h3>現在の登録者はいません</h3>
+                @else
+                <!--カードで表示したい-->
                 <div class="player-post">
                     <div class="row row-cols-2">
                         @foreach ($posts as $post)
@@ -30,6 +33,7 @@
                     </div>
                 </div>
             <!--カードここまで-->
+            @endif
         </div>
     </div>
 @endsection

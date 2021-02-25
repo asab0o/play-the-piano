@@ -9,19 +9,26 @@
             <div class="card">
                 <div class="card-header">通知</div>
                 <div class="card-body chat-card">
-                    <ul class="list-group list-group-flush">
-                    @foreach($chats as $chat)
-                        <li class="list-group-item">
-                            <div class="bmd-list-group-col">
-                                <p>{{ $chat->updated_at->format('Y/m/d') }}</p>
-                                <p>{{ $chat->name }}</p>
-                            </div>
-                            <div class="goToChat">
-                                <a href="{{ action('Admin\ChatController@show', ['user_id' => $chat->id]) }}"><span class="fas fa-comment fa-2x"></span></a>
-                            </div>
-                        </li>
-                    @endforeach
-                    </ul>
+                    @if(empty($chats))
+                    <p>現在メッセージはありません</p>
+                    @else
+                        <ul class="list-group list-group-flush">
+                        @foreach($chats as $chat)
+                            <li class="list-group-item">
+                                <div class="bmd-list-group-col">
+                                    <p>{{ $chat->updated_at->format('Y/m/d') }}</p>
+                                    <p>{{ $chat->name }}</p>
+                                    @if($chat->request_name)
+                                    <p>{{ $chat->request_name }}</p>
+                                    @endif
+                                </div>
+                                <div class="goToChat">
+                                    <a href="{{ action('Admin\ChatController@show', ['user_id' => $chat->id]) }}"><span class="fas fa-comment fa-2x"></span></a>
+                                </div>
+                            </li>
+                        @endforeach
+                        </ul>
+                    @endif
                 </div>
             </div>
         </div>
@@ -74,8 +81,8 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <button type="button", class="btn btn-primary" href="{{ action('Admin\PlayerController@edit', ['id' => $player->id]) }}">update</button>
-                    <button type="button", class="btn btn-danger" href="{{ action('Admin\PlayerController@delete', ['id' => $player->id]) }}">delete</button>
+                    <a href="{{ action('Admin\PlayerController@edit', ['id' => $player->id]) }}" class="updateBtn btn btn-secondary">なおす</a>
+                    <a href="{{ action('Admin\PlayerController@delete', ['id' => $player->id]) }}" class="deleteBtn btn btn-primary">けす</a>
                 </div>
             </div>
         </div>
@@ -159,8 +166,8 @@
                 @endif
                 @endfor
                 <div class="card-footer">
-                    <button type="button", class="btn btn-primary", shref="{{ action('Admin\RequestController@edit', ['id' => $request->id]) }}">update</button>
-                    <button type="button", class="btn btn-danger", shref="{{ action('Admin\RequestController@delete', ['id' => $request->id]) }}">delete</button>
+                    <a href="{{ action('Admin\RequestController@edit', ['id' => $request->id]) }}" class="updateBtn btn btn-secondary">なおす</a>
+                    <a href="{{ action('Admin\RequestController@delete', ['id' => $request->id]) }}" class="deleteBtn btn btn-primary">けす</a>
                 </div>
             </div>  
         </div>

@@ -74,8 +74,7 @@ class PlayerController extends Controller
         $genders = $this->genders;
         $prefectures = $this->prefectures;
 
-        $user = User::find($request->id);
-        $player = Player::where('user_id', $user->id)->first();
+        $player = Player::where('user_id', $request->id)->first();
         
         // プロフィールを登録していなかったら新規作成画面に飛ぶようにしている
         if(empty($player)) { 
@@ -83,13 +82,13 @@ class PlayerController extends Controller
                 'genders' => $genders,
                 'prefectures' => $prefectures,
                 ]);
-         } 
-        
-        return view('admin.player.edit', [
-            'player_form' => $player,
-            'genders' => $genders,
-            'prefectures' => $prefectures,
-        ]); 
+         } else {
+            return view('admin.player.edit', [
+                'player_form' => $player,
+                'genders' => $genders,
+                'prefectures' => $prefectures,
+            ]); 
+         }
     }
     
     public function update(Request $request)
@@ -127,13 +126,13 @@ class PlayerController extends Controller
         unset($player_form['_token']);
         $player->fill($player_form)->save();
         
-        return redirect('/'); 
+        return redirect('admin/mypage'); 
     }
     
     public function delete(Request $request) {
         $player = Player::find($request->id);
         $player->delete();
-        return redirect('/');
+        return redirect('admin/mypage');
     }
     
     // クラス内だけで使う関数

@@ -70,8 +70,7 @@
                         {{ Form::label('date_time', __('messages.date_time')) }}
                     </div>
                     <div class="col-md-8">
-                        {{ Form::text('date_time',  old('date_time'), ['class' => 'form-control datepicker']) }} 
-                        {{ Form::time('date_time',  old('date_time'), ['class' => 'form-control']) }} 
+                        {{ Form::text('date_time',  old('date_time'), ['class' => 'form-control', 'id' => 'datepicker']) }} 
                         
                     </div>
                 </div>

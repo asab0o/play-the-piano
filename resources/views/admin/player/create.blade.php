@@ -63,7 +63,7 @@
                         {{ Form::label('birthday', __('messages.birthday')) }}
                     </div>
                     <div class="col-md-8">
-                        {{ Form::text('birthday', old('birthday'), ['class'=>'form-control', 'id' => 'datepicker'])}}
+                        {{ Form::text('birthday', old('birthday'), ['class'=>'form-control datepicker'])}}
                     </div>
                     {{--<!--<div class="col-md-3">-->
                     <!--    {{ Form::selectMonth('birth_month', old('birth_month'), ['class'=>'form-control'])}}-->

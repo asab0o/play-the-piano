@@ -66,22 +66,26 @@
                 <h2>演奏者</h2>
                 <a href="{{ action('PlayerController@index') }}">一覧をみる</a>
                 <div class="col-md-10 mt-2 mx-auto row">
-                    @foreach($players as $player)
-                    <div class="col-md-4 col-sm-12">
-                        <div class="card h-100">
-                            @if($player->image_path_1)
-                            <img class="card-img-top" src="{{ asset('storage/image/'.$player->image_path_1) }}" >
-                            @else
-                            <img class="card-img-top" src="{{ asset('images/non_image/animal_hamster.png') }}" >
-                            @endif
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $player->firstname_1 }} {{ $player->lastname_1 }} <small>さん</small></h5>
-                                <p class="card-text">{{ str_limit($player->introduction, 50) }}</p>
-                                <a href="{{ action('PlayerController@showProfile', ['id' => $player->id]) }}" class="btn btn-outline-primary">詳細をみる</a>
+                    @if($players->isEmpty())
+                        <P>現在の登録者はいません</P>
+                    @else
+                        @foreach($players as $player)
+                        <div class="col-md-4 col-sm-12">
+                            <div class="card h-100">
+                                @if($player->image_path_1)
+                                <img class="card-img-top" src="{{ asset('storage/image/'.$player->image_path_1) }}" >
+                                @else
+                                <img class="card-img-top" src="{{ asset('images/non_image/animal_hamster.png') }}" >
+                                @endif
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $player->firstname_1 }} {{ $player->lastname_1 }} <small>さん</small></h5>
+                                    <p class="card-text">{{ str_limit($player->introduction, 50) }}</p>
+                                    <a href="{{ action('PlayerController@showProfile', ['id' => $player->id]) }}" class="btn btn-outline-primary">詳細をみる</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    @endforeach
+                        @endforeach
+                    @endif
                 </div>
             </div>
         </div>

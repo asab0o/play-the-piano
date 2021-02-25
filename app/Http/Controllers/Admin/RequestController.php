@@ -72,17 +72,17 @@ class RequestController extends Controller
 
         $genres = $this->genres;
         $prefectures = $this->prefectures;
-        
         $request_model = RequestModel::find($request->id);
-        if (empty($request_model)) {
-            abort(404);
-        }
         
-        return view('admin.request.edit', [
-            'request_form' => $request_model,
-            'genres' => $genres,
-            'prefectures' => $prefectures,
-            ]);
+        if (empty($request_model)) {
+            return view('admin.request.create');
+        } else {
+            return view('admin.request.edit', [
+                'request_form' => $request_model,
+                'genres' => $genres,
+                'prefectures' => $prefectures,
+                ]);
+        }
     }
     
     public function update(Request $request) {
@@ -107,13 +107,13 @@ class RequestController extends Controller
         unset($request_form['_token']);
         $request_model->fill($request_form)->save();
         
-        return redirect('/');
+        return redirect('admin/mypage');
     }
     
     public function delete(Request $request) {
         $request_model = RequestModel::find($request->id);
         $request_model->delete();
-        return redirect('admin/mypage/index');
+        return redirect('admin/mypage');
     }
     
     private function getPrefectures()

@@ -13,7 +13,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::post('request/edit', 'Admin\RequestController@update');
     Route::get('request/delate', 'Admin\RequestController@delete');
     
-    Route::get('mypage', 'Admin\MypageController@index');
+    Route::get('mypage', 'Admin\MypageController@index')->name('mypage');
     
     Route::get('chat/show', 'Admin\ChatController@show');
     Route::post('chat/chat', 'Admin\ChatController@chat');

@@ -10,9 +10,11 @@
                 <h3>{{ $request->title }}</h3>
                 <div class="goToChat">
                     @guest
-                    <a href="{{ route('login') }}"><span class="fas fa-comment fa-2x"></span></a>
+                        <a href="{{ action('Admin\ChatController@show', ['request_name' => $request->name, 'user_id' => $request->user_id]) }}"><span class="fas fa-comment fa-2x"></span></a>
                     @else
-                    <a href="{{ action('Admin\ChatController@show', ['id' => $request->id, 'user_id' => $request->user_id]) }}"><span class="fas fa-comment fa-2x"></span></a>
+                        @if($request->user_id != Auth::user()->id)
+                        <a href="{{ action('Admin\ChatController@show', ['request_name' => $request->name, 'user_id' => $request->user_id]) }}"><span class="fas fa-comment fa-2x"></span></a>
+                        @endif
                     @endguest
                 </div>
             </div>

@@ -27,14 +27,18 @@ class MypageController extends Controller
         $prefectures = $this->prefectures;
         $genres = $this->genres;
         
-        $user = User::find($request->id);
-        $player = Player::where('user_id', $request->id)->first();
-        $request_model = RequestModel::where('user_id', $request->id)->get();
+        $user = User::find(Auth::id());
+        $player = Player::where('user_id', Auth::id())->first();
+        $request_model = RequestModel::where('user_id', Auth::id())->get();
         
-        $chat_id = ChatUser::where('user_id', $request->id)->pluck('chat_id');
-        $chat_user_id = ChatUser::where('chat_id', $chat_id)->pluck('user_id');
+        $chat_id = ChatUser::where('user_id', Auth::id())->pluck('chat_id');
         
-        $chat_partner = User::find($chat_user_id);
+        if ($chat_id->isEmpty()) { 
+            $chat_partner = null;
+        } else {
+            $chat_user_id = ChatUser::where('chat_id', $chat_id)->pluck('user_id');
+            $chat_partner = User::find($chat_user_id);
+        }
         
         return view('admin.mypage.index', [
             'player' => $player,
