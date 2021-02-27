@@ -20,17 +20,15 @@
                 <!--画像の設定-->
                 <div class="form-group row">
                     <div class="col-md-2">
-                        {{ Form::label('image', __('messages.image')) }}
+                        {{ __('messages.image') }}
                     </div>
                     <div class="col-md-10">
-                        <div class="custom-file">
                         @for ($i = 1; $i <= 3; $i++)
-                        <div class="col-md-4">
-                            {{ Form::file('image['.$i.']', ['class' => 'form-control custom-file-input', 'id' => 'customFile']) }}
-                            {{ Form::label('customFile', '写真を選択', ['class' => 'custom-file-label', 'data-browse' => '参照']) }}
+                        <div class="col-md-6">
+                            {{Form::file('image['.$i.']', ['class'=>'form-control custom-file-input','id'=>'fileImage-'.$i])}}
+                            {{ Form::label('file-'.$i, '写真を選択', ['class' => 'custom-file-label', 'data-browse' => '参照']) }}
                         </div>
                         @endfor
-                        </div>
                     </div>
                 </div>
                 <!--名前-->
@@ -38,10 +36,10 @@
                     <div class="col-md-2">
                         {{ Form::label('name_1', __('messages.name_1')) }}
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-md-4">
                         {{ Form::text('firstname_1', $player_form->firstname_1, ['class' => 'form-control', 'placeholder' => '山田']) }}
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-md-4">
                         {{ Form::text('lastname_1', $player_form->lastname_1, ['class' => 'form-control', 'placeholder' => '太郎']) }}
                     </div>
                 </div>
@@ -50,10 +48,10 @@
                     <div class="col-md-2">
                         {{ Form::label('name_2', __('messages.name_2')) }}
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-md-4">
                         {{ Form::text('firstname_2', $player_form->firstname_2, ['class' => 'form-control', 'placeholder' => 'ヤマダ']) }}
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-md-4">
                         {{ Form::text('lastname_2', $player_form->lastname_2, ['class' => 'form-control', 'placeholder' => 'タロウ']) }}
                     </div>
                 </div>
@@ -62,17 +60,17 @@
                     <div class="col-md-2">
                         {{ Form::label('birthday', __('messages.birthday')) }}
                     </div>
-                    <div class="col-md-10">
+                    <div class="col-md-8">
                         {{ Form::text('birthday', $player_form->birthday, ['class'=>'form-control datepicker'])}}
                     </div>
                 </div>
-                性別 
+                <!--性別 -->
                 <div class="form-group row">
                     <div class="col-md-2">
                         {{ Form::label('gender', __('messages.gender')), ['class' => 'form-control'] }}
                     </div>
-                    <div class="col-md-10">
-                        @foreach ($genders as $key => $gender)
+                    <div class="col-md-8">
+                        @foreach ($genders as $gender)
                         <!--クラスを再確認-->
                         <div class="form-group form-check form-check-inline">
                             <!--201227 訂正-->
@@ -92,7 +90,7 @@
                     <div class="col-md-2">
                         {{ Form::label('experience', __('messages.experience')) }}
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-6">
                         {{ Form::number('experience', $player_form->experience, ['class' => 'form-control', 'placeholder' => '半角数字で入力']) }}
                     </div>
                     <div class="col-md-2">
@@ -105,7 +103,7 @@
                         {{ Form::label('prefecture', '活動エリア', null) }}
                         <!--選択にするか入力にするか-->
                     </div>
-                    <div class="col-md-10">
+                    <div class="col-md-6">
                         <!--初期値を東京にしたい-->
                         {{ Form::select('prefecture', $prefectures, $player_form->prefecture, ['class'=>'form-control']) }}
                     </div>
@@ -115,17 +113,17 @@
                     <div class="col-md-2">
                         {{ Form::label('introduction', __('messages.introduction')) }}
                     </div>
-                    <div class="col-md-10">
+                    <div class="col-md-8">
                     {{ Form::textarea('introduction', $player_form->introduction, ['class' => 'form-control', 'rows' => '5']) }}
                     </div>
                 </div>
-                <!--参考動画-->z
+                <!--参考動画-->
                 <div class="form-group row">
                     <div class="col-md-2">
                         {{ Form::label('performance', __('messages.performance')) }}
                     </div>
-                    <div class="col-md-10">
-                        {{ Form::text('performance', $player_form->performance, ['class' => 'form-control', 'placeholder' => 'URL']) }}
+                    <div class="col-md-8">
+                        {{ Form::url('performance', $player_form->performance, ['class' => 'form-control', 'placeholder' => 'URL']) }}
                     </div>
                 </div>
                 <!--登録ボタン-->

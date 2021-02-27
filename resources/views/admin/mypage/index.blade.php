@@ -12,22 +12,17 @@
                     @if(empty($chats))
                     <p>現在メッセージはありません</p>
                     @else
-                        <ul class="list-group list-group-flush">
+                        <div class="list-group">
                         @foreach($chats as $chat)
-                            <li class="list-group-item">
-                                <div class="bmd-list-group-col">
-                                    <p>{{ $chat->updated_at->format('Y/m/d') }}</p>
-                                    <p>{{ $chat->name }}</p>
-                                    @if($chat->request_name)
-                                    <p>{{ $chat->request_name }}</p>
-                                    @endif
-                                </div>
-                                <div class="goToChat">
-                                    <a href="{{ action('Admin\ChatController@show', ['user_id' => $chat->id]) }}"><span class="fas fa-comment fa-2x"></span></a>
-                                </div>
-                            </li>
+                            <a href="{{ action('Admin\ChatController@show', ['user_id' => $chat->id]) }}" class="list-group-item list-group-item-action">
+                                <p>{{ $chat->updated_at->format('Y/m/d') }}</p>
+                                <p>{{ $chat->name }}</p>
+                                @if($chat->request_name)
+                                <p>{{ $chat->request_name }}</p>
+                                @endif
+                            </a>
                         @endforeach
-                        </ul>
+                        </div>
                     @endif
                 </div>
             </div>
@@ -36,41 +31,44 @@
         <!--プロフィール表示-->
         @if($player)
         <div class="col-md-10 mx-auto mt-5">
-            <h3>{{ $player->firstname_1 }} {{ $player->lastname_1 }} さん</h3>
+            <h3>演奏者プロフィール</h3>
             <hr color="">
             <div class="card">
                 <div class="card-header">
                     {{ __('messages.updated_at') }}:{{ $player->updated_at }}
                 </div>
-                <div class="card-body row">
-                    <i class="material-icons">inbox</i>
-                    <div class="col-md-4 row">
-                        <p class="col-md-3">
-                            {{ __('messages.area') }}
-                        </p>
-                        <div class="col-md-9">
-                            {{ $player->prefecture }}
-                        </div>
-                        <div class="col-md-3">
-                            {{ __('messages.experience') }}
-                        </div>
-                        <div class="col-md-9">
-                            {{ $player->experience }} 年
-                        </div>
-                        <div class="col-md-3">
-                            {{ __('messages.birthday') }}
-                        </div>
-                        <div class="col-md-9">
-                            {{ $player->birthday }}
-                        </div>
-                        <div class="col-md-3">
-                            {{ __('messages.introduction') }}
-                        </div>
-                        <div class="col-md-9">
-                            {{ str_limit($player->introduction, 300) }}
-                        </div>
-                    </div>
-                    <div class="col-md-8 row">
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="bmg-list-group-col">
+                                <p class="list-group-item-heading">名前</p>
+                                <p class="list-group-item-text">{{ $player->firstname_1 }} {{ $player->lastname_1 }}</p>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="bmg-list-group-col">
+                                <p class="list-group-item-heading">{{ __('messages.area') }}</p>
+                                <p class="list-group-item-text">{{ $player->prefecture }}</p>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="bmg-list-group-col">
+                                <p class="list-group-item-heading">{{ __('messages.experience') }}</p>
+                                <p class="list-group-item-text">{{ $player->experience }} 年</p>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="bmg-list-group-col">
+                                <p class="list-group-item-heading">{{ __('messages.birthday') }}</p>
+                                <p class="list-group-item-text">{{ $player->birthday }}</p>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="bmg-list-group-col">
+                                <p class="list-group-item-heading">{{ __('messages.introduction') }}</p>
+                                <p class="list-group-item-text">{{ str_limit($player->introduction, 300) }}</p>
+                            </div>
+                        </li>
                         @for($i = 1; $i <= 3; $i++)
                         @if ($player->{"image_path_{$i}"})
                         <div class="image col-auto mt-4">
@@ -78,7 +76,7 @@
                         </div>
                         @endif
                         @endfor
-                    </div>
+                    </ul>
                 </div>
                 <div class="card-footer">
                     <a href="{{ action('Admin\PlayerController@edit', ['id' => $player->id]) }}" class="updateBtn btn btn-secondary">なおす</a>
@@ -90,13 +88,14 @@
         
         <!--演奏依頼表示-->
         @if($requests)
-        @foreach($requests as $request)
-        <div class="col-md-10 mx-auto mt-3">
-        <h3>{{ $request->title }}</h3>
-        <hr color="">
-            <div class="card">
+        <div class="col-md-10 mx-auto mt-5">
+            <h3>演奏依頼の投稿一覧</h3>
+            <hr color="">
+            @foreach($requests as $request)
+            <div class="card mb-3">
                 <div class="card-header">
-                        {{ __('messages.display_term') }} :{{ $request->display_date_from }} ~ {{ $request->display_date_to }}
+                    <h3>{{ $request->title }}</h3>
+                    <small>{{ __('messages.display_term') }} :{{ $request->display_date_from }} ~ {{ $request->display_date_to }}</small>
                 </div>
                 <div class="card-body row">
                     <div class="col-md-3">
@@ -155,7 +154,6 @@
                         {{ $request->tel_number }}
                     </div>
                     @endif
-                </div>
                 @for($i = 1; $i <= 5; $i++)
                 @if($request->{"image_path_".$i})
                 <div class="card-body col-md-6">
@@ -165,13 +163,13 @@
                 </div>
                 @endif
                 @endfor
+                </div>
                 <div class="card-footer">
                     <a href="{{ action('Admin\RequestController@edit', ['id' => $request->id]) }}" class="updateBtn btn btn-secondary">なおす</a>
                     <a href="{{ action('Admin\RequestController@delete', ['id' => $request->id]) }}" class="deleteBtn btn btn-primary">けす</a>
                 </div>
             </div>  
-        </div>
-        @endforeach
+            @endforeach
         @endif
     </div>
 @endsection

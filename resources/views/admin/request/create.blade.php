@@ -9,6 +9,7 @@
                 <h2>演奏を依頼する</h2>
             </div>
             <div class="card-body">
+                <!--フォームタグ-->
                 {{ Form::open(['action' => 'Admin\RequestController@create', 'files' => true, 'class' => 'form-horizontal']) }}
                 @if (count($errors) > 0)
                     <ul>
@@ -24,9 +25,9 @@
                     </div>
                     <div class="col-md-10">
                         @for ($i = 1; $i <= 5; $i++)
-                        <div class="col-md-4">
-                            {{ Form::file('image['.$i.']', ['class' => 'form-control inputFile', 'id' => 'file-'.$i]) }}
-                            {{ Form::label('file-'.$i, '写真を選択', ['class' => 'inputFile']) }}
+                        <div class="col-md-6">
+                            {{Form::file('image['.$i.']', ['class'=>'form-control custom-file-input','id'=>'fileImage-'.$i])}}
+                            {{ Form::label('file-'.$i, '写真を選択', ['class' => 'custom-file-label', 'data-browse' => '参照']) }}
                         </div>
                         @endfor
                     </div>
@@ -70,7 +71,7 @@
                         {{ Form::label('date_time', __('messages.date_time')) }}
                     </div>
                     <div class="col-md-8">
-                        {{ Form::text('date_time',  old('date_time'), ['class' => 'form-control', 'id' => 'datepicker']) }} 
+                        {{ Form::text('date_time', old('date_time'), ['class' => 'form-control datepicker']) }} 
                         
                     </div>
                 </div>
@@ -180,7 +181,7 @@
                 </div>
                 <!--登録ボタン-->
                 <div>
-                    {{ Form::submit('register', ['class' => 'btn btn-primary']) }}
+                    {{ Form::submit( __('messages.register'), ['class' => 'btn btn-primary']) }}
                     @csrf
                     {{ Form::close() }}
                 </div>

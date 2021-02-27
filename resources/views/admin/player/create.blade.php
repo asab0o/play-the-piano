@@ -9,6 +9,7 @@
                 <h2>演奏者として登録する</h2>
             </div>
             <div class="card-body">
+                <!--フォームタグ-->
                 {{ Form::open(['action' => 'Admin\PlayerController@create', 'files' => true, 'class' => "form-horizontal"]) }}
                 @if (count($errors) > 0)
                 <ul>
@@ -19,18 +20,15 @@
                 @endif
                 <div class="form-group row">
                     <div class="col-md-2">
-                        {{ Form::label('image', __('messages.image')) }}
+                        {{ __('messages.image') }}
                     </div>
                     <div class="col-md-10">
-                        <div class="custom-file">
-                            <!--リストにしたい-->
                         @for ($i = 1; $i <= 3; $i++)
                         <div class="col-md-6">
-                            {{ Form::file('image['.$i.']', ['class' => 'form-control custom-file-input', 'id' => 'customFile']) }}
-                            {{ Form::label('customFile', '写真を選択', ['class' => 'custom-file-label', 'data-browse' => '参照']) }}
+                            {{Form::file('image['.$i.']', ['class'=>'form-control custom-file-input','id'=>'fileImage-'.$i])}}
+                            {{ Form::label('file-'.$i, '写真を選択', ['class' => 'custom-file-label', 'data-browse' => '参照']) }}
                         </div>
                         @endfor
-                        </div>
                     </div>
                 </div>
                 <!--名前-->
@@ -65,12 +63,6 @@
                     <div class="col-md-8">
                         {{ Form::text('birthday', old('birthday'), ['class'=>'form-control datepicker'])}}
                     </div>
-                    {{--<!--<div class="col-md-3">-->
-                    <!--    {{ Form::selectMonth('birth_month', old('birth_month'), ['class'=>'form-control'])}}-->
-                    <!--</div>-->
-                    <!--<div class="col-md-3">-->
-                    <!--    {{ Form::selectRange('birth_ day' , 1, 31, old('birth_day'), ['class'=>'form-control'])}}-->
-                    <!--</div>-->--}}
                 </div>
                 <!--性別 -->
                 <div class="form-group row">
@@ -131,7 +123,7 @@
                     </div>
                 </div>
                 <!--登録ボタン-->
-                {{ Form::submit('register', ['class' => 'btn btn-success']) }}
+                {{ Form::submit( __('messages.register'), ['class' => 'btn btn-primary']) }}
                 @csrf
                 {{ Form::close() }}
             </div>

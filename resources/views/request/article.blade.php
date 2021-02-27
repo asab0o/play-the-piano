@@ -77,16 +77,20 @@
                         </div>
                     </li>
                 </ul>
+                <!--要確認-->
+                <div class="col-md-4 row">
+                    @for($i = 1; $i <= 5; $i++)
+                    @if($request->{"image_path_".$i})
+                    <div class="image col-md-4">
+                        <img src="{{ asset('storage/image/'.$request->{'image_path_'.$i}) }}">
+                    </div>
+                    @endif
+                    @endfor
+                </div>
             </div>
-            @for($i = 1; $i <= 5; $i++)
-            @if($request->{"image_path_".$i})
-            <div class="image col-md-4">
-                <img src="{{ asset('storage/image/'.$request->{'image_path_'.$i}) }}">
-            </div>
-            @endif
-            @endfor
-            <div class="card-footer">
-                {{ __('messages.display_term') }} :{{ $request->display_date_from }} ~ {{ $request->display_date_to }}
+            <div class="card-footer upDateTime row">
+                <i class="fas fa-clock"></i>
+                <p>{{ __('messages.display_term') }} :{{ $request->display_date_from }} ~ {{ $request->display_date_to }}</p>
             </div>
         </div>
     </div>
