@@ -96,7 +96,7 @@
                 <!--駐車場-->
                 <div class="form-group row">
                     <div class="col-md-2">
-                        {{ Form::label('parking_lots', __('messages.parking_lot')) }}
+                        {{ Form::label('parking_lots', __('messages.parking_lots')) }}
                     </div>
                     <div class="col-md-8">
                         <div class="form-group form-check form-check-inline">
@@ -112,7 +112,7 @@
                 <!--ジャンル-->
                 <div class="form-group row">
                     <div class="col-md-2">
-                        {{ Form::label('genres', __('messages.genre')) }}
+                        {{ Form::label('genres', __('messages.genres')) }}
                     </div>
                     <div class="col-md-8">
                         @foreach ($genres as $key => $genre)

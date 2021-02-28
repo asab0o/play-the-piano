@@ -8,21 +8,22 @@
         <div class="chat-area col-md-10 mx-auto mt-3">
             <div class="card">
                 <div class="card-header">通知</div>
-                <div class="card-body chat-card">
                     @if(empty($chats))
-                    <p>現在メッセージはありません</p>
+                    <div class="card-body">
+                        <p>現在メッセージはありません</p>
+                    </div>
                     @else
-                        <div class="list-group">
+                    <div class="list-group">
                         @foreach($chats as $chat)
-                            <a href="{{ action('Admin\ChatController@show', ['user_id' => $chat->id]) }}" class="list-group-item list-group-item-action">
-                                <p>{{ $chat->updated_at->format('Y/m/d') }}</p>
-                                <p>{{ $chat->name }}</p>
-                                @if($chat->request_name)
-                                <p>{{ $chat->request_name }}</p>
-                                @endif
-                            </a>
+                        <a href="{{ action('Admin\ChatController@show', ['user_id' => $chat->id]) }}" class="list-group-item list-group-item-action">
+                            <p>{{ $chat_msg_date->format('Y/m/d') }}</p>
+                            <p>{{ $chat->name }}<small> さん</small></p>
+                            @if($chat->request_name)
+                            <p>{{ $chat->request_name }}</p>
+                            @endif
+                        </a>
                         @endforeach
-                        </div>
+                    </div>
                     @endif
                 </div>
             </div>
@@ -79,15 +80,15 @@
                     </ul>
                 </div>
                 <div class="card-footer">
-                    <a href="{{ action('Admin\PlayerController@edit', ['id' => $player->id]) }}" class="updateBtn btn btn-secondary">なおす</a>
-                    <a href="{{ action('Admin\PlayerController@delete', ['id' => $player->id]) }}" class="deleteBtn btn btn-primary">けす</a>
+                    <a href="{{ action('Admin\PlayerController@edit', ['id' => $player->id]) }}" class="updateBtn btn btn-secondary">{{ __('messages.update') }}</a>
+                    <a href="{{ action('Admin\PlayerController@delete', ['id' => $player->id]) }}" class="deleteBtn btn btn-primary">{{ __('messages.delete') }}</a>
                 </div>
             </div>
         </div>
         @endif
         
         <!--演奏依頼表示-->
-        @if($requests)
+        @if($requests->isNotEmpty())
         <div class="col-md-10 mx-auto mt-5">
             <h3>演奏依頼の投稿一覧</h3>
             <hr color="">
@@ -165,8 +166,8 @@
                 @endfor
                 </div>
                 <div class="card-footer">
-                    <a href="{{ action('Admin\RequestController@edit', ['id' => $request->id]) }}" class="updateBtn btn btn-secondary">なおす</a>
-                    <a href="{{ action('Admin\RequestController@delete', ['id' => $request->id]) }}" class="deleteBtn btn btn-primary">けす</a>
+                    <a href="{{ action('Admin\RequestController@edit', ['id' => $request->id]) }}" class="updateBtn btn btn-secondary">{{ __('messages.update') }}</a>
+                    <a href="{{ action('Admin\RequestController@delete', ['id' => $request->id]) }}" class="deleteBtn btn btn-primary">{{ __('messages.delete') }}</a>
                 </div>
             </div>  
             @endforeach

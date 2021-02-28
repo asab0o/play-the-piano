@@ -64836,10 +64836,10 @@ $(document).ready(function () {
 
     if (e.message.user_id === user_id) {
       console.log(true);
-      $('.messages').append('<div class="message"><span>' + current_user_name + ':</span><div class="commonMessage"><div>' + e.message.message + '</div></div></div>');
+      $('.messages').append('<div class="message justify-content-end row"><div class="text-right"><span>' + current_user_name + '</span><small> now</small><p>' + e.message.message + '</p></div></div>');
     } else {
       console.log(false);
-      $('.messages').append('<div class="message"><span>' + chat_room_user_name + ':</span><div class="commonMessage"><div>' + e.message.message + '</div></div></div>');
+      $('.messages').append('<div class="message justify-content-start row"><div class="text-left"><span>' + chat_room_user_name + '</span><small> now</small><p>' + e.message.message + '</p></div></div>');
     }
   });
 });
@@ -65028,27 +65028,15 @@ $(document).on("change", ".inputFile", function (e) {
 
 /***/ }),
 
-/***/ "./resources/sass/auth.scss":
-/*!**********************************!*\
-  !*** ./resources/sass/auth.scss ***!
-  \**********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
 /***/ 0:
-/*!****************************************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/auth.scss ***!
-  \****************************************************************************************/
+/*!*************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/app.scss ***!
+  \*************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! /home/ec2-user/environment/playThePiano/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /home/ec2-user/environment/playThePiano/resources/sass/app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! /home/ec2-user/environment/playThePiano/resources/sass/auth.scss */"./resources/sass/auth.scss");
+module.exports = __webpack_require__(/*! /home/ec2-user/environment/playThePiano/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

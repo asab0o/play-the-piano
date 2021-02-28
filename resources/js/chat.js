@@ -27,12 +27,12 @@ $(document).ready(function() {
         if(e.message.user_id === user_id){
             console.log(true);
             $('.messages').append(
-                '<div class="message"><span>' + current_user_name + ':</span><div class="commonMessage"><div>' +e.message.message + '</div></div></div>'
+                '<div class="message justify-content-end row"><div class="text-right"><span>' + current_user_name + '</span><small> now</small><p>' +e.message.message + '</p></div></div>'
                 );
         } else {
             console.log(false);
             $('.messages').append(
-                '<div class="message"><span>' + chat_room_user_name + ':</span><div class="commonMessage"><div>' + e.message.message + '</div></div></div>'
+                '<div class="message justify-content-start row"><div class="text-left"><span>' + chat_room_user_name + '</span><small> now</small><p>' + e.message.message + '</p></div></div>'
                 );    
         }
     });

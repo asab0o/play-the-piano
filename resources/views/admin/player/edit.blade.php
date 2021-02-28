@@ -128,8 +128,8 @@
                 </div>
                 <!--登録ボタン-->
                 {{ Form::hidden('id', $player_form->id) }}
-                <a href="{{ action('Admin\RequestController@edit', ['id' => $player_form->id]) }}" class="updateBtn btn btn-secondary">更新</a>
-                <a href="{{ action('Admin\RequestController@delete', ['id' => $player_form->id]) }}" class="deleteBtn btn btn-primary">削除</a>
+                {{ Form::submit( __('messages.update'), ['class'=>'updateBtn btn btn-secondary']) }}
+                <a href="{{ action('Admin\PlayerController@delete', ['id' => $player_form->id]) }}" class="deleteBtn btn btn-primary">{{ __('messages.delete') }}</a>
                 @csrf
                 {{ Form::close() }}
             </div>

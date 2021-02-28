@@ -88,7 +88,7 @@
                 <!--駐車場-->
                 <div class="form-group row">
                     <div class="col-md-2">
-                        {{ Form::label('parking_lots', __('messages.parking_lot')) }}
+                        {{ Form::label('parking_lots', __('messages.parking_lots')) }}
                     </div>
                     <div class="col-md-8">
                         <div class="form-group form-check form-check-inline">
@@ -104,7 +104,7 @@
                 <!--ジャンル-->
                 <div class="form-group row">
                     <div class="col-md-2">
-                        {{ Form::label('genres', __('messages.genre')) }}
+                        {{ Form::label('genres', __('messages.genres')) }}
                     </div>
                     <div class="col-md-8">
                         @foreach ($genres as $key => $genre)
@@ -170,8 +170,8 @@
                 <!--登録ボタン-->
                 <!--hiddenについて-->
                 {{ Form::hidden('id', $request_form->id) }}
-                <a href="{{ action('Admin\RequestController@edit', ['id' => $request_form->id]) }}" class="updateBtn btn btn-secondary">更新</a>
-                <a href="{{ action('Admin\RequestController@delete', ['id' => $request_form->id]) }}" class="deleteBtn btn btn-primary">削除</a>
+                {{ Form::submit( __('messages.update'), ['class'=>'btn btn-secondary']) }}
+                <a href="{{ action('Admin\RequestController@delete', ['id' => $request_form->id]) }}" class="deleteBtn btn btn-primary">{{ __('messages.delete') }}</a>
                 @csrf
                 {{ Form::close() }}
             </div>
