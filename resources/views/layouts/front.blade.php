@@ -13,9 +13,10 @@
         <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
         
         <!--Fontの設定-->
-        <link rel="" href=""> 
-        <link rel="" href="" type="">
-        
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300&display=swap" rel="stylesheet">
+
+        <!--CSS取り込み-->
         <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
         
         
@@ -40,8 +41,11 @@
                         </li>
                         
                         @guest
-                        <li class="nab-item">
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}">{{ __('messages.login') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('messages.register') }}</a>
                         </li>
                         @else
                         <li class="nav-item">

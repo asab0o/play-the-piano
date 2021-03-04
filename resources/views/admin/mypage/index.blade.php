@@ -8,7 +8,7 @@
         <div class="chat-area col-md-10 mx-auto mt-3">
             <div class="card">
                 <div class="card-header">通知</div>
-                    @if(empty($chats))
+                    @if(empty($chats) || empty($chat_msg_date))
                     <div class="card-body">
                         <p>現在メッセージはありません</p>
                     </div>
@@ -18,9 +18,6 @@
                         <a href="{{ action('Admin\ChatController@show', ['user_id' => $chat->id]) }}" class="list-group-item list-group-item-action">
                             <p>{{ $chat_msg_date->format('Y/m/d') }}</p>
                             <p>{{ $chat->name }}<small> さん</small></p>
-                            @if($chat->request_name)
-                            <p>{{ $chat->request_name }}</p>
-                            @endif
                         </a>
                         @endforeach
                     </div>
@@ -28,7 +25,7 @@
                 </div>
             </div>
         </div>
-        <!--ユーザーが投稿したものを確認-->
+        <!--ユーザーが投稿したものを確認
         <!--プロフィール表示-->
         @if($player)
         <div class="col-md-10 mx-auto mt-5">

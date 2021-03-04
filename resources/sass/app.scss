@@ -1,9 +1,10 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+
 
 // Variables
 @import 'variables';
 
+// Bootstrapの色指定
 $theme-colors: (
     primary: #ce6168,
     secondary: #e7c88f,
@@ -34,3 +35,4 @@ $theme-colors: (
 // 新規scss読み込む
 @import "create";
 @import "view";
+@import "home";

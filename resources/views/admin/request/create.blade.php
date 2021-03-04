@@ -26,8 +26,8 @@
                     <div class="col-md-10">
                         @for ($i = 1; $i <= 5; $i++)
                         <div class="col-md-6">
-                            {{Form::file('image['.$i.']', ['class'=>'form-control custom-file-input','id'=>'fileImage-'.$i])}}
-                            {{ Form::label('file-'.$i, '写真を選択', ['class' => 'custom-file-label', 'data-browse' => '参照']) }}
+                            {{Form::file('image['.$i.']', ['class'=>'form-control custom-file-input mt-1','id'=>'fileImage-'.$i])}}
+                            {{ Form::label('file-'.$i, '写真を選択（'.$i.'枚目）', ['class' => 'custom-file-label', 'data-browse' => '参照']) }}
                         </div>
                         @endfor
                     </div>
@@ -164,9 +164,11 @@
                     {{ Form::label('display_term', __('messages.display_term')) }}
 
                     </div>
-                    <div class="col-md-8"> 
-                    {{ Form::text('display_date_from', old('display_date_from'), ['class' => 'form-control datepicker']) }}
-                    {{ Form::text('display_date_to', old('display_date_to'), ['class' => 'form-control datepicker']) }}
+                    <div class="col-md-8">
+                        <div class="form-inline">
+                            {{ Form::text('display_date_from', old('display_date_from'), ['class' => 'form-control datepicker']) }}
+                            {{ Form::text('display_date_to', old('display_date_to'), ['class' => 'form-control datepicker']) }}
+                        </div> 
                     </div>
                 </div>
                 <!--応募期間-->

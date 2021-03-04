@@ -33,6 +33,7 @@ class MypageController extends Controller
         $request_model = RequestModel::where('user_id', Auth::id())->get();
         // ログインユーザーがもっているチャットルームのid取得
         $chat_room_id = ChatUser::where('user_id', Auth::id())->pluck('chat_id');
+        // dd($chat_room_id);
         // General error: 2031の解消のため条件分岐追記
         if ($chat_room_id->isEmpty()) {
             $chat_partner = null;
@@ -46,10 +47,10 @@ class MypageController extends Controller
                     $chat_partner[] = User::find($chat_user_id);
                 }
             }
-            
             $chat_msg_date = ChatMessage::where('chat_id', $chat_room_id)->latest('updated_at')->value('updated_at');
+            
         }
-
+        
         return view('admin.mypage.index', [
             'player' => $player,
             'requests' => $request_model,
