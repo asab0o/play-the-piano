@@ -1,5 +1,5 @@
 @extends('layouts.front')
-@section('title', 'pia-match')
+@section('title', 'playThePiano')
 
 @section('content')
 
@@ -17,33 +17,21 @@
                     <li data-target="#example3" data-slide-to="2"></li>
                 </ol>
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        @if($requests[0]->image_path_1)
-                        <img src="{{ secure_asset('storage/image/'.$requests[0]->image_path_1) }}" alt="Slide" class="d-block w-100" >
+                    @for ($i = 0; $i < 3; $i++)
+                    <div class="carousel-item{{ $i == 0 ? ' active' :  ''}} ">
+                        <!--投稿がない場合の条件分岐-->
+                        @if(empty($requests[$i]))
+                        <img src="images/carousel_test/現在の募集はありません.png" alt="Slide" class="d-block w-100">
                         @else
-                        <img src="{{ secure_asset('images/non_image/piano_neko.png') }}" alt="Slide" class="d-block w-100" >
-                        @endif
-                        <div class="carousel-caption d-none d-md-block" style="top:50px">
-                            <h5 class="card-title">{{ $requests[0]->title }}</h5>
-                            <p class="card-text">{{ str_limit($requests[0]->introduction, 20) }}</p>
-                            <p class="card-text"><small class="text-muted">{{ $requests[0]->updated_at->format('Y/m/d') }}</small></p>
-                            <a href="{{ action('RequestController@showArticle', ['id' => $requests[0]->id]) }}" class="btn btn-primary">詳細をみる</a>
-                        </div>
-                    </div>
-                    
-                    @for ($i = 1; $i < 3; $i++)
-                    <div class="carousel-item">
-                        @if($requests[$i]->image_path_1)
-                        <img src="{{ secure_asset('storage/image/'.$requests[$i]->image_path_1) }}" alt="Slide" class="d-block w-100" >
-                        @else
-                        <img src="{{ secure_asset('images/non_image/piano_neko.png') }}" alt="Slide" class="d-block w-100" >
-                        @endif
-                        <div class="carousel-caption d-none d-md-block" style="top:50px">
-                            <h5 class="card-title">{{ $requests[$i]->title }}</h5>
-                            <p class="card-text">{{ str_limit($requests[$i]->introduction, 20) }}</p>
+                        <!--投稿はあるが表示させる画像がなかった場合の条件分岐（三項演算子）-->
+                        <img src="{{ secure_asset( $requests[$i]->image_path_1 ? 'storage/image/'.$requests[$i]->image_path_1 : 'images/non_image/piano_neko.png') }}" alt="Slide" class="d-block w-100" width="711" height="400">
+                        <div class="carousel-caption text-left" style="top:50px">
                             <p class="card-text"><small class="text-muted">{{ $requests[$i]->updated_at->format('Y/m/d') }}</small></p>
+                            <h1 class="card-title">{{ $requests[$i]->title }}</h1>
+                            <p class="card-text">{{ str_limit($requests[$i]->introduction, 50) }}</p>
                             <a href="{{ action('RequestController@showArticle', ['id' => $requests[$i]->id]) }}" class="btn btn-primary">詳細をみる</a>
                         </div>
+                        @endif
                     </div>
                     @endfor
                     <a class="carousel-control-prev" href="#example2" role="button" data-slide="prev">

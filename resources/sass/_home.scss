@@ -1,3 +1,4 @@
+
 .requestHead {
     display: flex;
     flex-direction: row;
@@ -9,4 +10,13 @@
     align-items: flex-end;
 }
 
+.carousel-item {
+    background-color:#aaa;
+    height: 100%;
+    img {
+        background-color:$body-bg;
+        object-fit: cover;
+        margin: 0 auto;
+    }
+}
 
