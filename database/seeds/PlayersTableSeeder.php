@@ -21,7 +21,7 @@ class PlayersTableSeeder extends Seeder
             ['type' => 'other', 'name' => 'その他'],
             ['type' => 'none', 'name' => '未回答'],
          ]);
-         
+        
         DB::table('prefectures')->insert([
             ['type' => 'hokkaido', 'name' => '北海道'],
             ['type' => 'aomori', 'name' => '青森'],
@@ -71,6 +71,18 @@ class PlayersTableSeeder extends Seeder
             ['type' => 'kagoshima', 'name' => '鹿児島'],
             ['type' => 'okinawa', 'name' => '沖縄'],
          ]);
+        
+         
+        //  DB::table('prefectures')->insert(
+        //     '北海道' => array('hokkaido'=>'北海道'),
+        //     '東北' => array('aomori'=>'青森県','iwate'=>'岩手県','miyagi'=>'宮城県','akita'=>'秋田県','yamagata'=>'山形県','fukushima'=>'福島県'),
+        //     '関東' => array('ibaraki'=>'茨城県','tochigi'=>'栃木県','gunma'=>'群馬県','saitama'=>'埼玉県','chiba'=>'千葉県','tokyo'=>'東京都','kanagawa'=>'神奈川県'),
+        //     '中部' => array('niigata'=>'新潟県','yamanashi'=>'富山県','nagano'=>'石川県','toyama'=>'福井県','ishikawa'=>'山梨県','fukui'=>'長野県','gifu'=>'岐阜県','shizuoka'=>'静岡県','aichi'=>'愛知県'),
+        //     '近畿' => array('mie'=>'三重県','shiga'=>'滋賀県','kyoto'=>'京都府','osaka'=>'大阪府','hyogo'=>'兵庫県','nara'=>'奈良県','wakayama'=>'和歌山県'),
+        //     '中国' => array('tottori'=>'鳥取県','shimane'=>'島根県','oakayama'=>'岡山県','hiroshima'=>'広島県','yamaguchi'=>'山口県'),
+        //     '四国' => array('tokushima'=>'徳島県','kagawa'=>'香川県','ehime'=>'愛媛県','kochi'=>'高知県'),
+        //     '九州沖縄' => array('fukuoka'=>'福岡県','saga'=>'佐賀県','nagasaki'=>'長崎県','kumamoto'=>'熊本県','oita'=>'大分県','miyazaki'=>'宮崎県','kagoshima'=>'鹿児島県','okinawa'=>'沖縄県')
+        // );
          
          
     }

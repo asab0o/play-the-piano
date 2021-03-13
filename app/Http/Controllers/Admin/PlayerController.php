@@ -13,28 +13,23 @@ use Storage;
 
 class PlayerController extends Controller
 {
-    // private $genders = [];
-    // 調べる
+    private $genders = [];
+    private $prefectures = [];
+    
     public function __construct()
     {
-        // 201223 Seederの初期値をどうもってくるか
-        // $this->genders = new PlayersTableSeed;
+        // 配列を初期化
         $this->genders = $this->getGenders();
         $this->prefectures = $this->getPrefectures();
     }
     
     public function add()
     {
-        $gendersList = [
-                'genders' => $this->genders,
-                ];
-                
-        $prefList = [
-                'prefectures' => $this->prefectures,
-                ];
-        // $prefNameList = $prefList->pluck(“name”);
-        // compact関数を使って配列渡せなかった        
-        return view('admin.player.create', $gendersList, $prefList);
+        $genders = $this->genders;
+        $prefectures = $this->prefectures;
+        
+        return view('admin.player.create', compact('genders', 'prefectures'));
+        // return view('admin.player.create', $gendersList, $prefList);
     }
     
     public function create(Request $request) {
@@ -43,13 +38,15 @@ class PlayerController extends Controller
         // 201230 user_idに値を入れる
         $player->user_id = $request->user()->id;
         $form = $request->all();
+        // 都道府県をvalue値（配列のインデックス値になっている）ではなくnameで保存したい
+        $pref = $this->prefectures[$form['prefecture']];
+        $form['prefecture'] = $pref;
+        
         
         for ($i = 1; $i <= 3; $i++) {
             if (isset($form['image'][$i])) {
                 $path = $request->file('image')[$i]->store('public/image');
                 $player->{"image_path_{$i}"} = basename($path);
-                // $player->{'image_path_'.$i} = basename($path);
-                // $player->image_path_.$i = basename($path);
             } else {
                 $player->{"image_path_{$i}"} = null;
             }
@@ -88,6 +85,9 @@ class PlayerController extends Controller
         $player = Player::find($request->id);
         $player_form = $request->all();
         
+        $pref = $this->prefectures[$player_form['prefecture']];
+        $player_form['prefecture'] = $pref;
+        
         for ($i = 1; $i <= 3; $i++) {
             if (isset($player_form['image'][$i])) {
                 $path = $request->file('image')[$i]->store('public/image');
@@ -122,19 +122,17 @@ class PlayerController extends Controller
         return redirect('admin/mypage');
     }
     
-    // クラス内だけで使う関数
+    
     private function getGenders()
     {
-        // 201227 訂正
+        // seederファイル通して配列を保存、とってくる
         $result = \DB::table('genders')->get()->all();
-        // dd($result);
         return $result;
     }
     
     private function getPrefectures()
     {
         $result = \DB::table('prefectures')->get()->pluck("name");
-        // dd($result);
         return $result;
     }
 }

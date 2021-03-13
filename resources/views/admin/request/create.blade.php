@@ -81,7 +81,7 @@
                         {{ Form::label('area', __('messages.area')) }}
                     </div>
                     <div class="col-md-8">
-                        {{ Form::select('area', $prefectures, null, ['class' => 'form-control'])}}
+                        {{ Form::select('area', $prefectures, '12', ['class' => 'form-control'])}}
                     </div>
                 </div>
                 <!--報酬-->
@@ -117,8 +117,9 @@
                     <div class="col-md-8">
                         @foreach ($genres as $key => $genre)
                         <!--横に並べたい-->
+                        {{ $key." ".$genre }}
                         <div class="form-group form-check form-check-inline">
-                        {{ Form::checkbox('genres', $key, false, ['class' => 'form-check-input', 'id' => 'genre-'.$key]) }}
+                        {{ Form::checkbox('genres', $genre, false, ['class' => 'form-check-input', 'id' => 'genre-'.$key]) }}
                         {{ Form::label('genre-'.$key, $genre,  ['class' => 'form-check-label']) }}
                         </div>
                         @endforeach

@@ -12,8 +12,8 @@ use Storage;
 
 class RequestController extends Controller
 {
-    // .で区切る
     private $genres = [];
+    private $prefectures = [];
     
     public function __construct()
     {
@@ -22,13 +22,11 @@ class RequestController extends Controller
     }
     
     public function add() {
-        $prefectures = $this->prefectures;
-        $genres = $this->genres;
         
-        return view('admin.request.create', [
-            'genres' => $genres,
-            'prefectures' => $prefectures,
-            ]);
+        $genres = $this->genres;
+        $prefectures = $this->prefectures;
+        
+        return view('admin.request.create', compact('genres', 'prefectures'));
     }
     
     public function create(Request $request) {
@@ -37,6 +35,9 @@ class RequestController extends Controller
         $request_model = new RequestModel;
         $request_model->user_id = $request->user()->id;
         $form = $request->all();
+        
+        $pref = $this->prefectures[$form['area']];
+        $form['area'] = $pref;
         // for ($i = 0; $i < 5; $i++) {
         //     if (isset($form['image'])) {
         //         $path = Storage::disk('s3')->putFile('/',$form['image'], 'public');
@@ -89,7 +90,9 @@ class RequestController extends Controller
         $this->validate($request, RequestModel::$rules);
         $request_model = RequestModel::find($request->id);
         $request_form = $request->all();
-        // $request_formと$request_modelについて
+        
+        $pref = $this->prefectures[$request_form['area']];
+        $request_form['area'] = $pref;
         
         for ($i = 1; $i <= 5; $i++) {
             if ($request->remove) {

@@ -4,10 +4,11 @@
 @section('content')
     <div class="container-fluid">
         <div class="col-md-10 mx-auto mt-3">
-            <h1>演奏者の一覧</h1>
+            <h3>演奏者の一覧</h3>
             @if($posts->isEmpty())
-                    <h3>現在の登録者はいません</h3>
-                @else
+                <h3>現在の登録者はいません</h3>
+            @else
+            <p>「詳細をみる」からチャットできます</p>
                 <!--カードで表示したい-->
                 <div class="player-post">
                     <div class="row row-cols-2">

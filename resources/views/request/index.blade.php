@@ -4,10 +4,11 @@
 @section('content')
     <div class="container-fluid">
             <div class="col-md-10 mx-auto mt-3">
-                <h1>依頼の一覧</h1>
+                <h3>依頼の一覧</h3>
                 @if($posts->isEmpty())
-                    <h3>現在の募集はありません</h3>
+                    <p>現在の募集はありません</p>
                 @else
+                <p>「詳細をみる」からチャットできます</p>
                     <div class="request-post">
                         @foreach($posts as $post)
                         <div class="card mt-3">

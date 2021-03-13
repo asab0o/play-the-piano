@@ -6,7 +6,7 @@
     <div class="container">
         <div class="col-md-12 mx-auto mt-3">
             <div class="requestHead justify-content-between mx-1 row" style="inline">
-                <h2 class="mb-0">演奏者求人</h2>
+                <h3 class="mb-0">演奏者求人</h3>
                 <a href="{{ action('RequestController@index') }}"><i class="fas fa-arrow-alt-circle-right"></i>一覧をみる</a>
             </div>
             <!--以下カルーセル-->
@@ -49,7 +49,7 @@
         <div class="row">
             <div class="col-md-12 mx-auto mt-5">
                 <div class="playerHead justify-content-between mx-1 row" style="inline">
-                    <h2 class="mb-0">演奏者</h2>
+                    <h3 class="mb-0">演奏者</h3>
                     <a href="{{ action('PlayerController@index') }}"><i class="fas fa-arrow-alt-circle-right"></i>一覧をみる</a>
                 </div>
                 <div class="playerList mt-2 justify-content-between row">

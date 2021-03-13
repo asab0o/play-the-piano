@@ -75,7 +75,7 @@
                         <!--クラスを再確認-->
                         <div class="form-group form-check form-check-inline">
                             <!--201227 訂正-->
-                            {{ Form::radio('gender', $gender->type, false, ['class'=>'form-check-input','id'=>'gender-'.$gender->type])}}
+                            {{ Form::radio('gender', $gender->name, false, ['class'=>'form-check-input','id'=>'gender-'.$gender->type])}}
                             {{ Form::label('gender-'.$gender->type, $gender->name, ['class' => 'form-check-label']) }}
                         </div>
                         @endforeach
@@ -97,11 +97,10 @@
                 <div class="form-group row">
                     <div class="col-md-2">
                         {{ Form::label('prefecture', '活動エリア') }}
-                        <!--選択にするか入力にするか-->
                     </div>
                     <div class="col-md-8">
                         <!--初期値を東京にしたい-->
-                        {{ Form::select('prefecture', $prefectures, null, ['class'=>'form-control']) }}
+                        {{ Form::select('prefecture', $prefectures, '12', ['class'=>'form-control']) }}
                     </div>
                 </div>
                 <!--自己紹介-->

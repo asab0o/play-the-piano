@@ -6,11 +6,8 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreatePrefecturesTable extends Migration
 {
-    // テーブル名をareaに変更済み
     public function up()
     {
-        // Schema::rename('area', 'prefectures');
-        
         Schema::create('prefectures', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('type');
@@ -26,7 +23,6 @@ class CreatePrefecturesTable extends Migration
      */
     public function down()
     {
-        // Schema::rename('prefectures', 'area');
         Schema::dropIfExists('prefectures');
     }
 }

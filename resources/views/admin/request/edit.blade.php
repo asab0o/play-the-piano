@@ -110,7 +110,7 @@
                         @foreach ($genres as $key => $genre)
                         <!--横に並べたい-->
                         <div class="form-group form-check form-check-inline">
-                        {{ Form::checkbox('genres', $key, false, ['class' => 'form-check-input', 'id' => 'genre-'.$key]) }}
+                        {{ Form::checkbox('genres', $genre, false, ['class' => 'form-check-input', 'id' => 'genre-'.$key]) }}
                         {{ Form::label('genre-'.$key, $genre,  ['class' => 'form-check-label']) }}
                         </div>
                         @endforeach
