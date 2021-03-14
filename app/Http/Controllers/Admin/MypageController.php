@@ -28,25 +28,30 @@ class MypageController extends Controller
         $prefectures = $this->prefectures;
         $genres = $this->genres;
         
+        // id = 1
         $user = User::find(Auth::id());
+        // プロフィール取得
         $player = Player::where('user_id', Auth::id())->first();
+        // 依頼記事取得
         $request_model = RequestModel::where('user_id', Auth::id())->get();
         // ログインユーザーがもっているチャットルームのid取得
         $chat_room_id = ChatUser::where('user_id', Auth::id())->pluck('chat_id');
-        // dd($chat_room_id);
+        
         // General error: 2031の解消のため条件分岐追記
         if ($chat_room_id->isEmpty()) {
             $chat_partner = null;
             $chat_msg_date = null;
         } else {
             // 現在進行形のチャットルームのid取得
-            $chat_user = ChatUser::where('chat_id', $chat_room_id)->pluck('user_id');
+            // dd($chat_room_id);
+            // 第二引数が配列なのでwhereInとする
+            $chat_user_id = ChatUser::whereIn('chat_id', $chat_room_id)
+                // 自分のidは除く
+                ->where('user_id', '!=', Auth::id())
+                ->pluck('user_id');
             
-            foreach($chat_user as $chat_user_id) {
-                if($chat_user_id != $request->id) {
-                    $chat_partner[] = User::find($chat_user_id);
-                }
-            }
+            $chat_user = User::find($chat_user_id);
+            
             $chat_msg_date = ChatMessage::where('chat_id', $chat_room_id)->latest('updated_at')->value('updated_at');
             
         }
@@ -57,7 +62,7 @@ class MypageController extends Controller
             'genders' => $genders,
             'prefectures' => $prefectures,
             'genres' => $genres,
-            'chats' => $chat_partner,
+            'chats' => $chat_user,
             'chat_msg_date' => $chat_msg_date,
         ]);
     }

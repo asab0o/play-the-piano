@@ -17,7 +17,7 @@ class PlayerController extends Controller
     {
         // $posts = Player::select('id', 'firstname_1', 'introduction', 'created_at')->get()->sortByDesc('created_at');
         $posts = Player::all()->sortByDesc('created_at');
-        return view('player.index', comment('posts'));
+        return view('player.index', compact('posts'));
     }
     
     public function showProfile(Request $request)
