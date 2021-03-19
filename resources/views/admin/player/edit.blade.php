@@ -26,7 +26,7 @@
                         @for ($i = 1; $i <= 3; $i++)
                         <div class="col-md-6">
                             {{ Form::file('image['.$i.']', ['class'=>'form-control custom-file-input mt-1','id'=>'fileImage-'.$i])}}
-                            {{ Form::label('file-'.$i, '写真を選択（'.$i.'枚目） 600 × 600以内', ['class' => 'custom-file-label', 'data-browse' => '参照']) }}
+                            {{ Form::label('file-'.$i, '写真を選択（'.$i.'枚目） 600 × 600px以内', ['class' => 'custom-file-label', 'data-browse' => '参照']) }}
                         </div>
                         @endfor
                     </div>
@@ -61,7 +61,7 @@
                         {{ Form::label('birthday', __('messages.birthday')) }}
                     </div>
                     <div class="col-md-8">
-                        {{ Form::text('birthday', $player_form->birthday, ['class'=>'form-control datepicker'])}}
+                        {{ Form::text('birthday', $player_form->birthday, ['class'=>'form-control', 'id'=>'birthday_datepicker'])}}
                     </div>
                 </div>
                 <!--性別 -->
@@ -91,7 +91,7 @@
                         {{ Form::label('experience', __('messages.experience')) }}
                     </div>
                     <div class="col-md-6">
-                        {{ Form::number('experience', $player_form->experience, ['class' => 'form-control', 'placeholder' => '半角数字で入力']) }}
+                        {{ Form::number('experience', $player_form->experience, ['class' => 'form-control', 'placeholder' => '半角数字で入力', 'min' => '0']) }}
                     </div>
                     <div class="col-md-2">
                         <label>年</label>

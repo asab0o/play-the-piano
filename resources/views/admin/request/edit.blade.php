@@ -153,8 +153,8 @@
                     {{ Form::label('display_term', __('messages.display_term')) }}
                     </div>
                     <div class="col-md-8">
-                    {{ Form::text('display_from', $request_form->display_from, ['class' => 'form-control datepicker']) }}
-                    {{ Form::text('display_to', $request_form->display_to, ['class' => 'form-control datepicker']) }}
+                    {{ Form::text('display_date_from', $request_form->display_from, ['class' => 'form-control', 'id' => 'display_datepicker_from']) }}
+                    {{ Form::text('display_date_to', $request_form->display_to, ['class' => 'form-control', 'id' => 'display_datepicker_to']) }}
                     </div>
                 </div>
                 <!--応募期間-->
@@ -163,8 +163,8 @@
                     {{ Form::label('application_term', __('messages.application_term')) }}
                     </div>
                     <div class="col-md-8">
-                    {{ Form::text('application_from', $request_form->application_from, ['class' => 'form-control datepicker']) }}
-                    {{ Form::text('application_to', $request_form->application_to, ['class' => 'form-control datepicker']) }}
+                    {{ Form::text('application_date_from', $request_form->application_from, ['class' => 'form-control', 'id' => 'application_datepicker_from']) }}
+                    {{ Form::text('application_date_to', $request_form->application_to, ['class' => 'form-control', 'id' => 'application_datepicker_to']) }}
                     </div>
                 </div>
                 <!--登録ボタン-->

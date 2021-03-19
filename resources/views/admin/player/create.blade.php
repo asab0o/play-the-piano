@@ -11,13 +11,13 @@
             <div class="card-body">
                 <!--フォームタグ-->
                 {{ Form::open(['action' => 'Admin\PlayerController@create', 'files' => true, 'class' => "form-horizontal"]) }}
-                @if (count($errors) > 0)
-                <ul>
-                    @foreach($errors->all() as $e)
-                    <li>{{ $e }}</li>
-                    @endforeach
-                </ul>
-                @endif
+                {{--<!--@if (count($errors) > 0)-->
+                <!--<ul>-->
+                <!--    @foreach($errors->all() as $e)-->
+                <!--    <li>{{ $e }}</li>-->
+                <!--    @endforeach-->
+                <!--</ul>-->
+                <!--@endif-->--}}
                 <div class="form-group row">
                     <div class="col-md-2">
                         {{ __('messages.image') }}
@@ -26,7 +26,7 @@
                         @for ($i = 1; $i <= 3; $i++)
                         <div class="col-md-6">
                             {{ Form::file('image['.$i.']', ['class'=>'form-control custom-file-input mt-1','id'=>'fileImage-'.$i])}}
-                            {{ Form::label('file-'.$i, '写真を選択（'.$i.'枚目） 600 × 600以内', ['class' => 'custom-file-label', 'data-browse' => '参照']) }}
+                            {{ Form::label('file-'.$i, '写真を選択（'.$i.'枚目） 600 × 600px以内', ['class' => 'custom-file-label', 'data-browse' => '参照']) }}
                         </div>
                         @endfor
                     </div>
@@ -38,6 +38,11 @@
                     </div>
                     <div class="col-md-4">
                         {{ Form::text('firstname_1', old('firstname_1'), ['class' => 'form-control', 'placeholder' => '山田']) }}
+                        @if($errors->has('firstname_1'))
+                        <div class="invalid-feedback">{{ $errors->first('firstname_1') }}</div>
+                        @else
+                        <div class="valid-feedback">OK</div>
+                        @endif
                     </div>
                     <div class="col-md-4">
                         {{ Form::text('lastname_1', old('lastname_1'), ['class' => 'form-control', 'placeholder' => '太郎']) }}
@@ -61,7 +66,7 @@
                         {{ Form::label('birthday', __('messages.birthday')) }}
                     </div>
                     <div class="col-md-8">
-                        {{ Form::text('birthday', old('birthday'), ['class'=>'form-control datepicker'])}}
+                        {{ Form::text('birthday', old('birthday'), ['class'=>'form-control', 'id'=>'birthday_datepicker'])}}
                     </div>
                 </div>
                 <!--性別 -->
@@ -87,7 +92,7 @@
                         {{ Form::label('experience', __('messages.experience')) }}
                     </div>
                     <div class="col-md-6">
-                        {{ Form::number('experience', old('experience'), ['class' => 'form-control', 'placeholder' => '半角数字で入力']) }}
+                        {{ Form::number('experience', old('experience'), ['class' => 'form-control', 'placeholder' => '半角数字で入力', 'min' => '0']) }}
                     </div>
                     <div class="col-md-2">
                         <label>年</label>

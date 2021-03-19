@@ -21,7 +21,7 @@
                     <div class="carousel-item{{ $i == 0 ? ' active' :  ''}} ">
                         <!--投稿がない場合の条件分岐-->
                         @if(empty($requests[$i]))
-                        <img src="images/carousel_test/現在の募集はありません.png" alt="Slide" class="d-block w-100">
+                        <img src="images/carousel_test/投稿お待ちしております。.png" alt="Slide" class="d-block w-100" height="400">
                         @else
                         <!--投稿はあるが表示させる画像がなかった場合の条件分岐（三項演算子）-->
                         <img src="{{ secure_asset( $requests[$i]->image_path_1 ? 'storage/image/'.$requests[$i]->image_path_1 : 'images/non_image/piano_neko.png') }}" alt="Slide" class="d-block w-100" width="711" height="400">

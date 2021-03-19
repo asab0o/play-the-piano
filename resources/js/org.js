@@ -1,91 +1,85 @@
-// datetimepicker導入
-// jQuery.datetimepicker.setLocale('ja');
-
-// jQuery('.datetimepicker').datetimepicker({
-//     minDate:'-1970/01/02'
-// });
-
-// jQuery('#datepicker').datetimepicker({
-//     timepicker:false,
-//     maxDate:'+1970/01/01',
-//     format:'Y年 m月 d日'
-// });
-
 // jquery-uiのdatepicker
 $(".datepicker").datepicker();
 
-$(".datepicker_1").datepicker({
-    dateFormat: 'yy/mm/dd',
+
+// 誕生日のdatepicker
+$("#birthday_datepicker").datepicker({
+  changeMonth: true,
+  changeYear: true
+})
+
+
+// from X to Yのdatepicker
+$( function() {
+  // dateFormatがto_datepickerのminDate
+  var dateFormat = "yy/mm/dd",
+  
+  from = $( "#application_datepicker_from" ).datepicker({
+    defaultDate: "+1w",
     changeMonth: true,
-    changeYear: true,
-    yearRnage: '1910:'
+    numberOfMonths: 2
+  })
+  .on( "change", function(){
+    to.datepicker( "option", "minDate", getDate( this ) );
+    }),
+    
+  to = $( "#application_datepicker_to" ).datepicker({
+      defaultDate: "+1w",
+      changeMonth: true,
+      numberOfMonths: 2
+    })
+    // to_datepickerの入力値がfrom_datepickerのmaxDate
+    .on( "change", function() {
+      from.datepicker( "option", "maxDate", getDate( this ) );
+    });
+ 
+    function getDate( element ) {
+      var date;
+      // try…catch文
+      try {
+        // 例外エラーが発生するかもしれない処理
+        date = $.datepicker.parseDate( dateFormat, element.value );
+      } catch( error ) {
+        // 例外エラーが起きた時の処理
+        date = null;
+      }
+ 
+      return date;
+    }
 });
 
-$(".datepicker_2").datepicker({
-    dateFormat: 'yy/mm/dd',
+$( function() {
+  var dateFormat = "yy/mm/dd",
+  from = $( "#display_datepicker_from" ).datepicker({
+    defaultDate: "+1w",
     changeMonth: true,
-    minDate: -1,
+    numberOfMonths: 2
+  })
+  .on( "change", function(){
+    to.datepicker( "option", "minDate", getDate( this ) );
+  }),
+    
+  to = $( "#display_datepicker_to" ).datepicker({
+    defaultDate: "+1w",
+    changeMonth: true,
+    numberOfMonths: 2
+  })
+  .on( "change", function() {
+    from.datepicker( "option", "maxDate", getDate( this ) );
+  });
+ 
+  function getDate( element ) {
+    var date;
+    try {
+      date = $.datepicker.parseDate( dateFormat, element.value );
+    } catch( error ) {
+      date = null;
+    }
+    return date;
+  }
 });
 
-// 画像設定時の反応
-// $('#customFile').on('change',function(){
-//     $(this).next('.custom-file-label').html($(this)[0].file[0].name);
-// });
 
-// $('#customFile').on('change', ':file', function() {
-//     var input = $(this),
-//     numFiles = input.get(0).files ? input.get(0).files.length : 1,
-//     label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-//     input.parent().parent().next(':text').val(label);
-// });
-
-// from-toのdatepicker
-// $(".datepicker_3").datepicker({
-//     var dateFormat = 'yy/mm/dd',
-//         from = $("#from").datepicker({
-//               changeMonth: true,
-//         })
-//         .on( "change", function(){
-//             to.datepicker( "option", "minDate", getDate(this) );
-//         }),
-
-//         to = $("#to").datepicker({
-//             defaultDate: "+1w",
-//             changeMonth: true,
-//         })
-//         .on( "change", function(){
-//             to.datepicker( "option", "maxDate", getDate(this) );
-//         });
-
-//     function getDate(element) {
-//         var date;
-//         try {
-//             date = $.datepicker.parseDate( dateFormat, element.value );
-//         } catch(error) {
-//             date = null;
-//         }
-//         return date;
-//     } 
-// } );
-
-// ファイルのプレビュー機能実装
-// function previewFile(e) {
-//     for (var i = 0; i <= 5; i++) {
-//         if (e.target.files.length) {
-//             var file = document.getElementById('filePreview'&i);
-            
-//             // 読み込み成功
-//             let reader = new FileReader();
-//             reader.onload = function(e) {
-//                 let imgUrl = e.target.result;
-//                 let userPreview;
-//                 userPreview = document.getElementById('filePreview');
-//                 userPreview.setAttribute('src', imgUrl);
-//             }
-//         }
-        
-//     }
-// }
 
 // うまくいってない
 $(document).on("change", ".inputFile", function(e) {

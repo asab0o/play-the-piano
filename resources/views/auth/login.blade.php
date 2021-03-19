@@ -18,9 +18,9 @@
 
                             <div class="col-md-6">
                                 <!--required autofocusどこにいれるか-->
-                                {{ Form::email('email', old('email'), ['id' => 'email', 'class' => "form-control $errors->has('email') ? ' is-invalid' : ''"]) }}
-                                {{--<!--<input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>-->--}}
+                                {{--<!--{{ Form::email('email', old('email'), ['id' => 'email', 'class' => "form-control $errors->has('email') ? ' is-invalid' : ''"]) }}-->--}}
                                 {{--<!--もしエラーがなければ$errors->has('email')はnullを返す-->--}}
+                                <input id="email" type="email" class="form-control $errors->has('email') ? ' is-invalid' : ' is-valid'" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                                 @if ($errors->has('email'))
                                 <span class="invalid-feedback">
                                     <span class="invalid-feedback">
@@ -39,7 +39,7 @@
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
                                 {{--<!--<input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">-->--}}
-
+                                
                                 @if($errors->has('password'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('password') }}</strong>
