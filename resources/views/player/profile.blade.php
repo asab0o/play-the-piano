@@ -10,10 +10,10 @@
                 <h3>{{ $player->firstname_1 }} {{ $player->lastname_1 }} さん</h3>
                 <div class="goToChat">
                     @guest
-                        <a href="{{ action('Admin\ChatController@show', ['user_id' => $player->user_id]) }}"><span class="fas fa-comment fa-2x"></span></a>
+                        <a href="{{ action('Admin\ChatController@show', ['user_id' => $player->user_id]) }}">チャットで話を聞いてみる<span class="fas fa-comment fa-2x"></span></a>
                     @else
                         @if($player->user_id != Auth::user()->id)
-                        <a href="{{ action('Admin\ChatController@show', ['user_id' => $player->user_id]) }}"><span class="fas fa-comment fa-2x"></span></a>
+                        <a href="{{ action('Admin\ChatController@show', ['user_id' => $player->user_id]) }}">チャットで話を聞いてみる<span class="fas fa-comment fa-2x"></span></a>
                         @endif
                     @endguest
                 </div>

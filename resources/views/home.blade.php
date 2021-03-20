@@ -21,7 +21,7 @@
                     <div class="carousel-item{{ $i == 0 ? ' active' :  ''}} ">
                         <!--投稿がない場合の条件分岐-->
                         @if(empty($requests[$i]))
-                        <img src="images/carousel_test/投稿お待ちしております。.png" alt="Slide" class="d-block w-100" height="400">
+                        <img src="images/carousel_test/投稿お待ちしております。.png" alt="Slide" class="d-block w-100" weight="100%" height="400">
                         @else
                         <!--投稿はあるが表示させる画像がなかった場合の条件分岐（三項演算子）-->
                         <img src="{{ secure_asset( $requests[$i]->image_path_1 ? 'storage/image/'.$requests[$i]->image_path_1 : 'images/non_image/piano_neko.png') }}" alt="Slide" class="d-block w-100" width="711" height="400">
@@ -57,12 +57,12 @@
                         <P>現在の登録者はいません</P>
                     @else
                     @foreach($players as $player)
-                    <div class="col-md-4 col-sm-12">
+                    <div class="col-md-4 col-sm-12 mb-2">
                         <div class="card h-100">
                             @if($player->image_path_1)
-                            <img class="card-img-top" src="{{ asset('storage/image/'.$player->image_path_1) }}" >
+                            <img class="card-img-top" src="{{ asset('storage/image/'.$player->image_path_1) }}" weight="100%" height="180">
                             @else
-                            <img class="card-img-top" src="{{ asset('images/non_image/animal_hamster.png') }}" >
+                            <img class="card-img-top" src="{{ asset('images/non_image/animal_hamster.png') }}" weight="100%" height="180">
                             @endif
                             <div class="card-body">
                                 <h5 class="card-title">{{ $player->firstname_1 }} {{ $player->lastname_1 }} <small>さん</small></h5>

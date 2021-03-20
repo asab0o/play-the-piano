@@ -18,7 +18,7 @@
                 @if ($msg->user_id == Auth::id())
                 <div class="message justify-content-end row">
                     <div class="text-right">
-                        <span>{{ Auth::user()->name }}</span>
+                        <span>{{ Auth::user()->name }}</span><small> さん</small>
                         <small>{{ $msg->created_at->format('m/d H:i') }}</small>
                         <p>{{ $msg->message }}</p>
                     </div>
@@ -27,7 +27,7 @@
                 @else
                 <div class="message justify-content-start row">
                     <div class="text-left">
-                        <span class='justify-content-start'>{{ $chat_room_user_name }}</span>
+                        <span class='justify-content-start'>{{ $chat_room_user_name }}</span><small> さん</small>
                         <small>{{ $msg->created_at->format('m/d H:i') }}</small>
                         <p>{{ $msg->message }}</p>
                     </div>

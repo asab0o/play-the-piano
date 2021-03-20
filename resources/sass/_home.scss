@@ -20,3 +20,10 @@
     }
 }
 
+.playerList {
+    .card {
+        .card-img-top {
+            object-fit: contain;
+        }
+    }
+}

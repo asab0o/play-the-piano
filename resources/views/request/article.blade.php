@@ -11,10 +11,10 @@
                 <div class="goToChat">
                     <!--if文使うためのguest-->
                     @guest
-                        <a href="{{ action('Admin\ChatController@show', ['user_id' => $request->user_id]) }}"><span class="fas fa-comment fa-2x"></span></a>
+                        <a href="{{ action('Admin\ChatController@show', ['user_id' => $request->user_id]) }}">チャットで話を聞いてみる<span class="fas fa-comment fa-2x"></span></a>
                     @else
                         @if($request->user_id != Auth::user()->id)
-                        <a href="{{ action('Admin\ChatController@show', ['user_id' => $request->user_id]) }}"><span class="fas fa-comment fa-2x"></span></a>
+                        <a href="{{ action('Admin\ChatController@show', ['user_id' => $request->user_id]) }}">チャットで話を聞いてみる<span class="fas fa-comment fa-2x"></span></a>
                         @endif
                     @endguest
                 </div>

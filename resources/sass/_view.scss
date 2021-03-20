@@ -1,6 +1,13 @@
 $main: #fd7f14;
 $sub: #fff;
 
+.requestView {
+    .goToChat {
+        margin: 0 0 0 auto;
+        display: flex;
+    }
+}
+
 .profileView {
     .goToChat {
         // height: 50px;
@@ -16,3 +23,10 @@ $sub: #fff;
     }
 }
 
+.playerPost {
+    .card {
+        img {
+            object-fit: contain;
+        }
+    }
+} 

@@ -95,72 +95,73 @@
                     <h3>{{ $request->title }}</h3>
                     <small>{{ __('messages.display_term') }} :{{ $request->display_date_from }} ~ {{ $request->display_date_to }}</small>
                 </div>
-                <div class="card-body row">
-                    <div class="col-md-3">
-                        {{ __('messages.name') }}
-                    </div>
-                    <div class="col-md-9">
-                        {{ $request->name }}
-                    </div>
-                    <div class="col-md-3">
-                        {{ __('messages.date_time') }}
-                    </div>
-                    <div class="col-md-9">
-                        {{ $request->date_time }}
-                    </div>
-                    <div class="col-md-3">
-                        {{ __('messages.area') }}
-                    </div>
-                    <div class="col-md-9">
-                        {{ $request->area }}
-                    </div>
-                    <div class="col-md-3">
-                        {{ __('messages.rewards') }}
-                    </div>
-                    <div class="col-md-9">
-                        {{ $request->rewards }}
-                    </div>
-                    <div class="col-md-3">
-                        {{ __('messages.parking_lots') }}
-                    </div>
-                    <div class="col-md-9">
-                        {{ $request->parking_lots }}
-                    </div>
-                    <div class="col-md-3">
-                        {{ __('messages.genres') }}
-                    </div>
-                    <div class="col-md-9">
-                        {{ $request->genres }}
-                    </div>
-                    <div class="col-md-3">
-                        {{ __('messages.dress') }}
-                    </div>
-                    <div class="col-md-9">
-                        {{ $request->dress }}
-                    </div>
-                    <div class="col-md-3">
-                        {{ __('messages.introduction') }}
-                    </div>
-                    <div class="col-md-9">
-                        {{ str_limit($request->introduction, 300) }}
-                    </div>
-                    @if($request->tel_number)
-                    <div class="col-md-3">
-                        {{ __('messages.tel_number') }}
-                    </div>
-                    <div class="col-md-9">
-                        {{ $request->tel_number }}
-                    </div>
-                    @endif
-                @for($i = 1; $i <= 5; $i++)
-                @if($request->{"image_path_".$i})
-                <div class="card-body col-md-6">
-                    <div class="image col-md-4 text-right mt-4">
-                        <img src="{{ asset('storage/image/'.$request->{'image_path_'.$i}) }}">
-                    </div>
-                </div>
-                @endif
-                @endfor
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="bmg-list-group-col">
+                                <p class="list-group-item-heading">{{ __('messages.name') }}</p>
+                                <p class="list-group-item-text">{{ $request->name }}</p>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="bmg-list-group-col">
+                                <p class="list-group-item-heading">{{ __('messages.date_time') }}</p>
+                                <p class="list-group-item-text">{{ $request->date_time }}</p>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="bmg-list-group-col">
+                                <p class="list-group-item-heading">{{ __('messages.area') }}</p>
+                                <p class="list-group-item-text">{{ $request->area }}</p>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="bmg-list-group-col">
+                                <p class="list-group-item-heading">{{ __('messages.rewards') }}</p>
+                                <p class="list-group-item-text">{{ $request->rewards }}</p>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="bmg-list-group-col">
+                                <p class="list-group-item-heading">{{ __('messages.parking_lots') }}</p>
+                                <p class="list-group-item-text">{{ $request->parking_lots }}</p>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="bmg-list-group-col">
+                                <p class="list-group-item-heading">{{ __('messages.genres') }}</p>
+                                <p class="list-group-item-text">{{ $request->genres }}</p>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="bmg-list-group-col">
+                                <p class="list-group-item-heading">{{ __('messages.dress') }}</p>
+                                <p class="list-group-item-text">{{ $request->dress }}</p>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="bmg-list-group-col">
+                                <p class="list-group-item-heading">{{ __('messages.introduction') }}</p>
+                                <p class="list-group-item-text">{{ str_limit($request->introduction, 300) }}</p>
+                            </div>
+                        </li>
+                        @if($request->tel_number)
+                        <li class="list-group-item">
+                            <div class="bmg-list-group-col">
+                                <p class="list-group-item-heading">{{ __('messages.tel_number') }}</p>
+                                <p class="list-group-item-text">{{ $request->tel_number }}</p>
+                            </div>
+                        </li>
+                        @endif
+                        <!--画像-->
+                        @for($i = 1; $i <= 5; $i++)
+                        @if($request->{"image_path_".$i})
+                            <div class="image col-auto mt-4">
+                                <img src="{{ asset('storage/image/'.$request->{'image_path_'.$i}) }}">
+                            </div>
+                        @endif
+                        @endfor
+                    </ul>
                 </div>
                 <div class="card-footer">
                     <a href="{{ action('Admin\RequestController@edit', ['id' => $request->id]) }}" class="updateBtn btn btn-secondary">{{ __('messages.update') }}</a>
