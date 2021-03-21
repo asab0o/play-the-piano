@@ -162,12 +162,11 @@
                 <div class="form-group row">
                     <div class="col-md-2">
                     {{ Form::label('display_term', __('messages.display_term')) }}
-
                     </div>
                     <div class="col-md-8">
                         <div class="form-inline">
-                            {{ Form::text('display_date_from', old('display_date_from'), ['class' => 'form-control', 'id' => 'display_datepicker_from']) }}
-                            {{ Form::text('display_date_to', old('display_date_to'), ['class' => 'form-control', 'id' => 'display_datepicker_to']) }}
+                            From: {{ Form::text('display_date_from', old('display_date_from'), ['class' => 'form-control mr-2', 'id' => 'display_datepicker_from']) }}
+                            To: {{ Form::text('display_date_to', old('display_date_to'), ['class' => 'form-control', 'id' => 'display_datepicker_to']) }}
                         </div> 
                     </div>
                 </div>
@@ -177,8 +176,10 @@
                     {{ Form::label('application_term', __('messages.application_term')) }}
                     </div>
                     <div class="col-md-8">
-                    {{ Form::text('application_date_from', old('application_date_from'), ['class' => 'form-control', 'id' => 'application_datepicker_from']) }}
-                    {{ Form::text('application_date_to', old('application_date_to'), ['class' => 'form-control', 'id' => 'application_datepicker_to']) }}
+                        <div class="form-inline">
+                            From: {{ Form::text('application_date_from', old('application_date_from'), ['class' => 'form-control mr-2', 'id' => 'application_datepicker_from']) }}
+                            To: {{ Form::text('application_date_to', old('application_date_to'), ['class' => 'form-control', 'id' => 'application_datepicker_to']) }}
+                        </div>
                     </div>
                 </div>
                 <!--登録ボタン-->

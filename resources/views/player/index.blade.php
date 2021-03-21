@@ -2,7 +2,7 @@
 @section('title', '演奏者の一覧')
     
 @section('content')
-    <div class="container-fluid">
+    <div class="container">
         <div class="col-md-10 mx-auto mt-3">
             <h3>演奏者の一覧</h3>
             @if($posts->isEmpty())
@@ -14,11 +14,11 @@
                     <div class="row row-cols-2">
                         @foreach ($posts as $post)
                             <div class="col-md-6 col-sm-12">
-                                <div class="card mr-1 mt-3">
+                                <div class="card mr-md-1 mt-3">
                                     @if($post->image_path_1)
-                                    <img class="card-img-top" src="{{ asset('storage/image/'.$post->image_path_1) }}" weight="100%" height="200" >
+                                    <img class="card-img-top" src="{{ asset('storage/image/'.$post->image_path_1) }}" width="100%" height="200" >
                                     @else
-                                    <img class="card-img-top" src="{{ asset('images/non_image/animal_hamster.png') }}"weight="100%" height="200">
+                                    <img class="card-img-top" src="{{ asset('images/non_image/animal_hamster.png') }}" width="100%" height="200">
                                     @endif
                                     <div class="card-body">
                                         <h5 class="card-title">{{ $post->firstname_1 }} {{ $post->lastname_1 }} </h5>

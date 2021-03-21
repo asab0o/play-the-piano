@@ -1,24 +1,54 @@
 
+$breakpoint-sp: 640px;
+
+// $break-point以下の時
+@mixin max-screen($break-point) {
+    @media screen and (max-width: $break-point) {
+        @content;
+    }
+}
+// $break-point以上の時
+@mixin min-screen($break-point) {
+    @media screen and (min-width: $break-point) {
+        @content;
+    }
+}
+
+.carousel-item {
+    background-color:#aaa;
+    .non_image {
+        background-color: #aaa;
+        height: 250px;
+        line-height: 250px;
+        text-align: center;
+    }
+    
+    img {
+        @include max-screen($breakpoint-sp) {
+            height: 250px;
+        }
+        @include min-screen($breakpoint-sp) {
+            height: 400px;
+        }
+        background-color:$body-bg;
+        object-fit: cover;
+        margin: 0 auto;
+    }
+}
+
 .requestHead {
     display: flex;
     flex-direction: row;
     align-items: flex-end;
 }
+
+
 .playerHead {
     display: flex;
     flex-direction: row;
     align-items: flex-end;
 }
 
-.carousel-item {
-    background-color:#aaa;
-    height: 100%;
-    img {
-        background-color:$body-bg;
-        object-fit: cover;
-        margin: 0 auto;
-    }
-}
 
 .playerList {
     .card {
@@ -27,3 +57,4 @@
         }
     }
 }
+

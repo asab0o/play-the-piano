@@ -28,7 +28,7 @@
         <!--ユーザーが投稿したものを確認
         <!--プロフィール表示-->
         @if($player)
-        <div class="col-md-10 mx-auto mt-5">
+        <div class="myProfile col-md-10 mx-auto mt-5">
             <h3>演奏者プロフィール</h3>
             <hr color="">
             <div class="card">
@@ -67,13 +67,15 @@
                                 <p class="list-group-item-text">{{ str_limit($player->introduction, 300) }}</p>
                             </div>
                         </li>
-                        @for($i = 1; $i <= 3; $i++)
-                        @if ($player->{"image_path_{$i}"})
-                        <div class="image col-auto mt-4">
-                            <img src="{{ asset('storage/image/'.$player->{"image_path_{$i}"}) }}">
+                        <div class="px-4 pt-2 justify-content-between row">
+                            @for($i = 1; $i <= 3; $i++)
+                            @if ($player->{"image_path_{$i}"})
+                            <div class="image mt-2 ">
+                                <img src="{{ asset('storage/image/'.$player->{"image_path_{$i}"}) }}" width="300" height="200">
+                            </div>
+                            @endif
+                            @endfor
                         </div>
-                        @endif
-                        @endfor
                     </ul>
                 </div>
                 <div class="card-footer">
@@ -86,7 +88,7 @@
         
         <!--演奏依頼表示-->
         @if($requests->isNotEmpty())
-        <div class="col-md-10 mx-auto mt-5">
+        <div class="myRequest col-md-10 mx-auto mt-5">
             <h3>演奏依頼の投稿一覧</h3>
             <hr color="">
             @foreach($requests as $request)
@@ -154,13 +156,15 @@
                         </li>
                         @endif
                         <!--画像-->
-                        @for($i = 1; $i <= 5; $i++)
-                        @if($request->{"image_path_".$i})
-                            <div class="image col-auto mt-4">
-                                <img src="{{ asset('storage/image/'.$request->{'image_path_'.$i}) }}">
-                            </div>
-                        @endif
-                        @endfor
+                        <div class="px-4 pt-2 justify-content-around row">
+                            @for($i = 1; $i <= 5; $i++)
+                            @if($request->{"image_path_".$i})
+                                <div class="mt-2 image">
+                                    <img src="{{ asset('storage/image/'.$request->{'image_path_'.$i}) }}" width="300" height="200">
+                                </div>
+                            @endif
+                            @endfor
+                        </div>
                     </ul>
                 </div>
                 <div class="card-footer">

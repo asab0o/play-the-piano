@@ -6,21 +6,25 @@ $sub: #fff;
         margin: 0 0 0 auto;
         display: flex;
     }
+    .image {
+        img {
+            object-fit: contain;
+        }
+    }
+    
 }
 
 .profileView {
     .goToChat {
-        // height: 50px;
-        // width: 50px;
-        // border-radius: 50%;
-        // background-color: $sub;
         margin: 0 0 0 auto;
-        // color : $sub;
         display: flex;
-        // // なかのアイコンの位置
-        // align-items: center;
-        // justify-content: center;
     }
+    .image {
+        img {
+            object-fit: contain;
+        }
+    }
+    
 }
 
 .playerPost {
@@ -30,3 +34,24 @@ $sub: #fff;
         }
     }
 } 
+
+.myProfile {
+    .image {
+        
+        img {
+            background-color: #fff;
+            object-fit: contain;
+        }
+    }
+}
+
+.myRequest {
+    .image {
+        text-align: center;
+        img {
+            background-color: #fff;
+            object-fit: contain;
+        }
+        
+    }
+}

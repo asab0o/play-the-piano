@@ -18844,14 +18844,70 @@ readers do not read off random characters that represent icons */
   display: flex;
 }
 
+.requestView .image img {
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
 .profileView .goToChat {
   margin: 0 0 0 auto;
   display: flex;
 }
 
+.profileView .image img {
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
 .playerPost .card img {
   -o-object-fit: contain;
      object-fit: contain;
+}
+
+.myProfile .image img {
+  background-color: #fff;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.myRequest .image {
+  text-align: center;
+}
+
+.myRequest .image img {
+  background-color: #fff;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.carousel-item {
+  background-color: #aaa;
+}
+
+.carousel-item .non_image {
+  background-color: #aaa;
+  height: 250px;
+  line-height: 250px;
+  text-align: center;
+}
+
+.carousel-item img {
+  background-color: #f6f5f4;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 640px) {
+  .carousel-item img {
+    height: 250px;
+  }
+}
+
+@media screen and (min-width: 640px) {
+  .carousel-item img {
+    height: 400px;
+  }
 }
 
 .requestHead {
@@ -18864,18 +18920,6 @@ readers do not read off random characters that represent icons */
   display: flex;
   flex-direction: row;
   align-items: flex-end;
-}
-
-.carousel-item {
-  background-color: #aaa;
-  height: 100%;
-}
-
-.carousel-item img {
-  background-color: #f6f5f4;
-  -o-object-fit: cover;
-     object-fit: cover;
-  margin: 0 auto;
 }
 
 .playerList .card .card-img-top {

@@ -18,7 +18,7 @@
                             <div class="card-image-top justify-content-around row">
                                 @for ($i = 1; $i <= 3; $i++)
                                 @if($post->{'image_path_'.$i})
-                                    <img src="{{ asset('storage/image/'.$post->{'image_path_'.$i}) }}" class="mt-3">
+                                    <img src="{{ asset('storage/image/'.$post->{'image_path_'.$i}) }}" class="mt-3" width="" height="">
                                 @endif
                                 @endfor
                                 <!--<hr color="">-->

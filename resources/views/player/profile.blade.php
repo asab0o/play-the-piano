@@ -56,11 +56,11 @@
                    </li>
                </ul> 
                 <!--要確認-->
-                <div class="col-md-4 row">
+                <div class="px-4 pt-2 justify-content-between row">
                     @for($i = 1; $i <= 3; $i++)
                     @if ($player->{"image_path_{$i}"})
-                    <div class="image mt-4">
-                        <img src="{{ asset('storage/image/'.$player->{"image_path_{$i}"}) }}">
+                    <div class="image mt-2">
+                        <img src="{{ asset('storage/image/'.$player->{"image_path_{$i}"}) }}" width="429" height="286">
                     </div>
                     @endif
                     @endfor

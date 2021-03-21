@@ -1,5 +1,5 @@
 @extends('layouts.front')
-@section('title', '演奏依頼の投稿作成')
+@section('title', '演奏依頼の投稿編集')
 
 @section('content')
 <div class="requestPages">  
@@ -108,10 +108,14 @@
                     </div>
                     <div class="col-md-8">
                         @foreach ($genres as $key => $genre)
-                        <!--横に並べたい-->
                         <div class="form-group form-check form-check-inline">
-                        {{ Form::checkbox('genres', $genre, false, ['class' => 'form-check-input', 'id' => 'genre-'.$key]) }}
-                        {{ Form::label('genre-'.$key, $genre,  ['class' => 'form-check-label']) }}
+                            @if($genre == $request_form->genres)
+                            {{ Form::checkbox('genres', $genre, true, ['class' => 'form-check-input', 'id' => 'genre-'.$key]) }}
+                            {{ Form::label('genre-'.$key, $genre,  ['class' => 'form-check-label']) }}
+                            @else
+                            {{ Form::checkbox('genres', $genre, false, ['class' => 'form-check-input', 'id' => 'genre-'.$key]) }}
+                            {{ Form::label('genre-'.$key, $genre,  ['class' => 'form-check-label']) }}
+                            @endif
                         </div>
                         @endforeach
                     </div>
@@ -153,8 +157,10 @@
                     {{ Form::label('display_term', __('messages.display_term')) }}
                     </div>
                     <div class="col-md-8">
-                    {{ Form::text('display_date_from', $request_form->display_from, ['class' => 'form-control', 'id' => 'display_datepicker_from']) }}
-                    {{ Form::text('display_date_to', $request_form->display_to, ['class' => 'form-control', 'id' => 'display_datepicker_to']) }}
+                        <div class="form-inline">
+                            From: {{ Form::text('display_date_from', $request_form->display_date_from, ['class' => 'form-control mr-2', 'id' => 'display_datepicker_from']) }}
+                            To: {{ Form::text('display_date_to', $request_form->display_date_to, ['class' => 'form-control', 'id' => 'display_datepicker_to']) }}
+                        </div>
                     </div>
                 </div>
                 <!--応募期間-->
@@ -163,8 +169,10 @@
                     {{ Form::label('application_term', __('messages.application_term')) }}
                     </div>
                     <div class="col-md-8">
-                    {{ Form::text('application_date_from', $request_form->application_from, ['class' => 'form-control', 'id' => 'application_datepicker_from']) }}
-                    {{ Form::text('application_date_to', $request_form->application_to, ['class' => 'form-control', 'id' => 'application_datepicker_to']) }}
+                        <div class="form-inline">
+                            From: {{ Form::text('application_date_from', $request_form->application_date_from, ['class' => 'form-control mr-2', 'id' => 'application_datepicker_from']) }}
+                            To: {{ Form::text('application_date_to', $request_form->application_date_to, ['class' => 'form-control', 'id' => 'application_datepicker_to']) }}
+                        </div>
                     </div>
                 </div>
                 <!--登録ボタン-->
