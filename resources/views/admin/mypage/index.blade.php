@@ -15,10 +15,12 @@
                     @else
                     <div class="list-group">
                         @foreach($chat_list as $key => $chat)
+                        @if($chat[2] != null)
                         <a href="{{ action('Admin\ChatController@show', ['user_id' => $chat[0]]) }}" class="list-group-item list-group-item-action">
                             <p>{{ $chat[2] }}</p>
                             <p>{{ $chat[1] }}<small> さん</small></p>
                         </a>
+                        @endif
                         @endforeach
                     </div>
                     @endif

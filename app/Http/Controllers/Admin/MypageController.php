@@ -38,12 +38,10 @@ class MypageController extends Controller
         $chat_room_id = ChatUser::where('user_id', Auth::id())->pluck('chat_id');
         
         // General error: 2031の解消のため条件分岐追記
+        $chat_list = [];
         if ($chat_room_id->isEmpty()) {
-            $chat_partner = null;
-            $chat_msg_date = null;
-            $chat_user = null;
+            $chat_list = null;
         } else {
-            $chat_list = [];
             $i = 0;
             foreach ($chat_room_id as $chat_id) {
                 // 現在進行形のチャットルームのid取得
@@ -54,11 +52,12 @@ class MypageController extends Controller
                 $chat_user = User::find($chat_user_id);
                 $chat_user_name = $chat_user->name;
                 // 最後にチャットした日付を取得
+                // 三項演算子かif文でmessageないときnull入れる必要がある
                 $latest_chat= ChatMessage::where('chat_id', $chat_id)
                     ->latest()
                     ->value('created_at');
-                // 三項演算子かif文でmessageないときnull入れる必要がある
-                $latest_chat_date = date('Y/m/d', strtotime($latest_chat));
+                $latest_chat_date = empty($latest_chat) ? null : date('Y/m/d', strtotime($latest_chat));
+                // $latest_chat_date = date('Y/m/d', strtotime($latest_chat));
                 // 配列にする
                 $chat_list[$i] = [$chat_user_id, $chat_user_name, $latest_chat_date];
                 $i ++;
