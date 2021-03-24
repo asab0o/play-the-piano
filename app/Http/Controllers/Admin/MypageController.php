@@ -43,18 +43,26 @@ class MypageController extends Controller
             $chat_msg_date = null;
             $chat_user = null;
         } else {
-            // 現在進行形のチャットルームのid取得
-            // dd($chat_room_id);
-            // 第二引数が配列なのでwhereInとする
-            $chat_user_id = ChatUser::whereIn('chat_id', $chat_room_id)
-                // 自分のidは除く
-                ->where('user_id', '!=', Auth::id())
-                ->pluck('user_id');
-            
-            $chat_user = User::find($chat_user_id);
-            
-            $chat_msg_date = ChatMessage::where('chat_id', $chat_room_id)->latest('updated_at')->value('updated_at');
-            
+            $chat_list = [];
+            $i = 0;
+            foreach ($chat_room_id as $chat_id) {
+                // 現在進行形のチャットルームのid取得
+                $chat_user_id = ChatUser::where('chat_id', $chat_id)
+                    ->where('user_id', '!=', Auth::id())
+                    ->value('user_id');
+                // 相手の名前取得
+                $chat_user = User::find($chat_user_id);
+                $chat_user_name = $chat_user->name;
+                // 最後にチャットした日付を取得
+                $latest_chat= ChatMessage::where('chat_id', $chat_id)
+                    ->latest()
+                    ->value('created_at');
+                // 三項演算子かif文でmessageないときnull入れる必要がある
+                $latest_chat_date = date('Y/m/d', strtotime($latest_chat));
+                // 配列にする
+                $chat_list[$i] = [$chat_user_id, $chat_user_name, $latest_chat_date];
+                $i ++;
+            }
         }
         
         return view('admin.mypage.index', [
@@ -63,8 +71,7 @@ class MypageController extends Controller
             'genders' => $genders,
             'prefectures' => $prefectures,
             'genres' => $genres,
-            'chats' => $chat_user,
-            'chat_msg_date' => $chat_msg_date,
+            'chat_list' => $chat_list,
         ]);
     }
     

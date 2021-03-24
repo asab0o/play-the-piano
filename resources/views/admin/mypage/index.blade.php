@@ -8,16 +8,16 @@
         <div class="chat-area col-md-10 mx-auto mt-3">
             <div class="card">
                 <div class="card-header">通知</div>
-                    @if(empty($chats) || empty($chat_msg_date))
+                    @if(empty($chat_list))
                     <div class="card-body">
                         <p>現在メッセージはありません</p>
                     </div>
                     @else
                     <div class="list-group">
-                        @foreach($chats as $chat)
-                        <a href="{{ action('Admin\ChatController@show', ['user_id' => $chat->id]) }}" class="list-group-item list-group-item-action">
-                            <p>{{ $chat_msg_date->format('Y/m/d') }}</p>
-                            <p>{{ $chat->name }}<small> さん</small></p>
+                        @foreach($chat_list as $key => $chat)
+                        <a href="{{ action('Admin\ChatController@show', ['user_id' => $chat[0]]) }}" class="list-group-item list-group-item-action">
+                            <p>{{ $chat[2] }}</p>
+                            <p>{{ $chat[1] }}<small> さん</small></p>
                         </a>
                         @endforeach
                     </div>
