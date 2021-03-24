@@ -12,16 +12,19 @@
                 <!--フォームタグ-->
                 {{ Form::open(['action' => 'Admin\RequestController@create', 'files' => true, 'class' => 'form-horizontal']) }}
                 @if (count($errors) > 0)
-                    <ul>
+                    <div class="alert alert-danger" role="alert">
+                        <h4>エラーメッセージ</h4>
+                        <hr>
                         @foreach($errors->all() as $e)
-                            <li>{{ $e }}</li>
+                            <p>{{ $e }}</p>
                         @endforeach
-                    </ul>
+                    </div>
                 @endif
              <!--画像の投稿-->
                 <div class="form-group row">
                     <div class="col-md-2">
                         {{ __('messages.image') }}
+                        <span class="badge badge-light">4 : 3</span>
                     </div>
                     <div class="col-md-10">
                         @for ($i = 1; $i <= 5; $i++)
@@ -40,8 +43,9 @@
                 </div>
                 <!--タイトル-->
                 <div class="form-group row">
-                    <div class="col-md-2">
+                    <div class="label col-md-2 d-md-flex justify-content-md-between w-100">
                         {{ Form::label('title', __('messages.title')) }}
+                        <span class="badge badge-primary">必須</span>
                     </div>
                     <div class="col-md-8">
                         {{ Form::text('title', old('title'), ['class' => 'form-control', 'placeholder' => '例：老人ホームでピアノ演奏してくれるボランティア募集！']) }} 
@@ -49,8 +53,9 @@
                 </div>
                 <!--名前-->
                 <div class="form-group row">
-                    <div class="col-md-2">
+                    <div class="label col-md-2 d-md-flex justify-content-md-between w-100">
                         {{ Form::label('name', __('messages.name_1')) }}
+                        <span class="badge badge-primary">必須</span>
                     </div>
                     <div class="col-md-8">
                         {{ Form::text('name', old('name'), ['class' => 'form-control', 'placeholder' => '店名、施設名など']) }} 
@@ -67,8 +72,9 @@
                 </div>
                 <!--日時-->
                 <div class="form-group row">
-                    <div class="col-md-2">
+                    <div class="label col-md-2 d-md-flex justify-content-md-between w-100">
                         {{ Form::label('date_time', __('messages.date_time')) }}
+                        <span class="badge badge-primary">必須</span>
                     </div>
                     <div class="col-md-8">
                         {{ Form::text('date_time', old('date_time'), ['class' => 'form-control datepicker']) }} 
@@ -77,8 +83,9 @@
                 </div>
                 <!--場所-->
                 <div class="form-group row">
-                    <div class="col-md-2">
+                    <div class="label col-md-2 d-md-flex justify-content-md-between w-100">
                         {{ Form::label('area', __('messages.area')) }}
+                        <span class="badge badge-primary">必須</span>
                     </div>
                     <div class="col-md-8">
                         {{ Form::select('area', $prefectures, '12', ['class' => 'form-control'])}}
@@ -86,8 +93,9 @@
                 </div>
                 <!--報酬-->
                 <div class="form-group row">
-                    <div class="col-md-2">
+                    <div class="label col-md-2 d-md-flex justify-content-md-between w-100">
                         {{ Form::label('rewards', __('messages.rewards')) }}
+                        <span class="badge badge-primary">必須</span>
                     </div>
                     <div class="col-md-8">
                         {{ Form::text('rewards', old('rewards'), ['class' => 'form-control']) }} 
@@ -95,8 +103,9 @@
                 </div>
                 <!--駐車場-->
                 <div class="form-group row">
-                    <div class="col-md-2">
+                    <div class="label col-md-2 d-md-flex justify-content-md-between w-100">
                         {{ Form::label('parking_lots', __('messages.parking_lots')) }}
+                        <span class="badge badge-primary">必須</span>
                     </div>
                     <div class="col-md-8">
                         <div class="form-group form-check form-check-inline">
@@ -111,8 +120,9 @@
                 </div>
                 <!--ジャンル-->
                 <div class="form-group row">
-                    <div class="col-md-2">
+                    <div class="label col-md-2 d-md-flex justify-content-md-between w-100">
                         {{ Form::label('genres', __('messages.genres')) }}
+                        <span class="badge badge-primary">必須</span>
                     </div>
                     <div class="col-md-8">
                         @foreach ($genres as $key => $genre)
@@ -126,8 +136,9 @@
                 </div>
                 <!--衣装-->
                 <div class="form-group row">
-                    <div class="col-md-2">
+                    <div class="label col-md-2 d-md-flex justify-content-md-between w-100">
                         {{ Form::label('dress', __('messages.dress')) }}
+                        <span class="badge badge-primary">必須</span>
                     </div>
                     <div class="col-md-8">
                         <div class="form-check form-check-inline">
@@ -151,8 +162,9 @@
                 </div>
                 <!--紹介文-->
                 <div class="form-group row">
-                    <div class="col-md-2">
+                    <div class="label col-md-2 d-md-flex justify-content-md-between w-100">
                     {{ Form::label('introduction', __('messages.introduction')) }}
+                    <span class="badge badge-primary">必須</span>
                     </div>
                     <div class="col-md-8">
                     {{ Form::textarea('introduction', old('introduction'), ['class' => 'form-control', 'rows' => '10']) }}
@@ -160,8 +172,9 @@
                 </div>
                 <!--表示期間-->
                 <div class="form-group row">
-                    <div class="col-md-2">
+                    <div class="label col-md-2 d-md-flex justify-content-md-between w-100">
                     {{ Form::label('display_term', __('messages.display_term')) }}
+                    <span class="badge badge-primary">必須</span>
                     </div>
                     <div class="col-md-8">
                         <div class="form-inline">
@@ -172,8 +185,9 @@
                 </div>
                 <!--応募期間-->
                 <div class="form-group row">
-                    <div class="col-md-2">
+                    <div class="label col-md-2 d-md-flex justify-content-md-between w-100">
                     {{ Form::label('application_term', __('messages.application_term')) }}
+                    <span class="badge badge-primary">必須</span>
                     </div>
                     <div class="col-md-8">
                         <div class="form-inline">

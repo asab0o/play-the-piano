@@ -9,7 +9,7 @@
                     <p>現在の募集はありません</p>
                 @else
                 <p>「詳細をみる」からチャットできます</p>
-                    <div class="request-post">
+                    <div class="requestList">
                         @foreach($posts as $post)
                         <div class="card mt-3">
                             <div class="card-header">
@@ -18,7 +18,7 @@
                             <div class="card-image-top justify-content-around row">
                                 @for ($i = 1; $i <= 3; $i++)
                                 @if($post->{'image_path_'.$i})
-                                    <img src="{{ asset('storage/image/'.$post->{'image_path_'.$i}) }}" class="mt-3" width="" height="">
+                                    <img src="{{ asset('storage/image/'.$post->{'image_path_'.$i}) }}" class="mt-3" width="400" height="300">
                                 @endif
                                 @endfor
                                 <!--<hr color="">-->

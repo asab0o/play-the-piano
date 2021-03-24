@@ -55,3 +55,32 @@ $sub: #fff;
         
     }
 }
+
+.requestList {
+    .card-image-top {
+        img {
+            object-fit: contain;
+        }
+    }
+}
+
+.playerPages {
+    .form-group {
+        .label {
+            span {
+                height: 15.38px;
+                margin-top: 2px;
+            }
+        }
+    }
+}
+.requestPages {
+    .form-group {
+        .label {
+            span {
+                height: 15.38px;
+                margin-top: 2px;
+            }
+        }
+    }
+}

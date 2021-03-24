@@ -67,7 +67,9 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ $player->firstname_1 }} {{ $player->lastname_1 }} <small>さん</small></h5>
                         <p class="card-text">{{ str_limit($player->introduction, 50) }}</p>
-                        <a href="{{ action('PlayerController@showProfile', ['id' => $player->id]) }}" class="btn btn-outline-primary">詳細をみる</a>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{{ action('PlayerController@showProfile', ['id' => $player->id]) }}" class="card-link">詳細をみる</a>
                     </div>
                 </div>
             </div>

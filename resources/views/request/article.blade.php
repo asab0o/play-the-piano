@@ -83,7 +83,7 @@
                     @for($i = 1; $i <= 5; $i++)
                     @if($request->{"image_path_".$i})
                     <div class="image mt-4">
-                        <img src="{{ asset('storage/image/'.$request->{'image_path_'.$i}) }}" width="429" height="286">
+                        <img src="{{ asset('storage/image/'.$request->{'image_path_'.$i}) }}" width="400" height="300">
                     </div>
                     @endif
                     @endfor

@@ -41,6 +41,7 @@ class MypageController extends Controller
         if ($chat_room_id->isEmpty()) {
             $chat_partner = null;
             $chat_msg_date = null;
+            $chat_user = null;
         } else {
             // 現在進行形のチャットルームのid取得
             // dd($chat_room_id);

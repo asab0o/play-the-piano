@@ -11,10 +11,10 @@
             <p>「詳細をみる」からチャットできます</p>
                 <!--カードで表示したい-->
                 <div class="playerPost">
-                    <div class="row row-cols-2">
+                    <div class="row row-cols-1 row-cols-md-2">
                         @foreach ($posts as $post)
-                            <div class="col-md-6 col-sm-12">
-                                <div class="card mr-md-1 mt-3">
+                            <div class="col mt-3">
+                                <div class="card h-100">
                                     @if($post->image_path_1)
                                     <img class="card-img-top" src="{{ asset('storage/image/'.$post->image_path_1) }}" width="100%" height="200" >
                                     @else

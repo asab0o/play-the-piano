@@ -10,17 +10,20 @@
             </div>
             <div class="card-body">
                 {{ Form::open(['action' => 'Admin\RequestController@update', 'files' => true, 'class' => 'form-horizontal']) }}
-                @if (count($errors) > 0)
-                    <ul>
+               @if (count($errors) > 0)
+                    <div class="alert alert-danger" role="alert">
+                        <h4>エラーメッセージ</h4>
+                        <hr>
                         @foreach($errors->all() as $e)
-                            <li>{{ $e }}</li>
+                            <p>{{ $e }}</p>
                         @endforeach
-                    </ul>
+                    </div>
                 @endif
                 <!--画像の投稿-->
                 <div class="form-group row">
                     <div class="col-md-2">
                         {{ __('messages.image') }}
+                        <span class="badge badge-light">4 : 3</span>
                     </div>
                     <div class="col-md-10">
                         @for ($i = 1; $i <= 5; $i++)

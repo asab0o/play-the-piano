@@ -24,7 +24,7 @@
     <body>
         <div id="app">
             <!--ここからナビゲーションバー-->
-            <nav class="navbar navbar-expand-sm navbar-dark bg-test">
+            <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     HOME
                 </a>

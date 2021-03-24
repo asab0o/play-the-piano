@@ -18880,6 +18880,21 @@ readers do not read off random characters that represent icons */
      object-fit: contain;
 }
 
+.requestList .card-image-top img {
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.playerPages .form-group .label span {
+  height: 15.38px;
+  margin-top: 2px;
+}
+
+.requestPages .form-group .label span {
+  height: 15.38px;
+  margin-top: 2px;
+}
+
 .carousel-item {
   background-color: #aaa;
 }
