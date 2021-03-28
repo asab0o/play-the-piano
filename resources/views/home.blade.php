@@ -25,7 +25,12 @@
                     <div class="non_image w-100 d-sm-none">投稿お待ちしてます！</div>
                     @else
                     <!--投稿はあるが表示させる画像がなかった場合の条件分岐（三項演算子）-->
-                    <img src="{{ $requests[$i]->image_path_1 ? $requests[$i]->image_path_1 : secure_asset('images/non_image/piano_neko.png')) }}" alt="Slide" class="d-block w-100">
+                    @if($requests[$i]->image_path_1)
+                    <img src="{{ $requests[$i]->image_path_1 }}" alt="Slide" class="d-block w-100">
+                    @else
+                    <img src="{{ secure_asset('images/non_image/piano_neko.png') }}" alt="Slide" class="d-block w-100">
+                    @endif
+                    {{--<!--<img src="{{ $requests[$i]->image_path_1 ? $requests[$i]->image_path_1 : secure_asset('images/non_image/piano_neko.png')) }}" alt="Slide" class="d-block w-100">-->--}}
                     <div class="carousel-caption text-left d-none d-md-block" style="top:50px">
                         <p class="card-text"><small class="text-muted">{{ $requests[$i]->updated_at->format('Y/m/d') }}</small></p>
                         <h1 class="card-title">{{ $requests[$i]->title }}</h1>

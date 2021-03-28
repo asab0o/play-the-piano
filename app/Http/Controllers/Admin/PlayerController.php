@@ -45,7 +45,7 @@ class PlayerController extends Controller
         
         for ($i = 1; $i <= 3; $i++) {
             if (isset($form['image'][$i])) {
-                $path = Storage::disk('s3')->putFile('/', $form['image'], 'public');
+                $path = Storage::disk('s3')->putFile('/', $form['image'][$i], 'public');
                 $player->{'image_path_'.$i} = Storage::disk('s3')->url($path);
                 // $path = $request->file('image')[$i]->store('public/image');
                 // $player->{"image_path_{$i}"} = basename($path);
@@ -92,8 +92,8 @@ class PlayerController extends Controller
         
         for ($i = 1; $i <= 3; $i++) {
             if (isset($player_form['image'][$i])) {
-                $path = Storage::disk('s3')->putFile('/', $form['image'], 'public');
-                $player->{'image_path_'.$i} = Storage::disk('s3')->url($path);
+                $path = Storage::disk('s3')->putFile('/', $player_form['image'][$i], 'public');
+                $player_form['image_path_'.$i] = Storage::disk('s3')->url($path);
                 // $path = $request->file('image')[$i]->store('public/image');
                 // $player_form['image_path_'.$i] = basename($path);
             } elseif ($request->remove == 'true'){

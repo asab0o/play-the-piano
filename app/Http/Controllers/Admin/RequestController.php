@@ -100,8 +100,8 @@ class RequestController extends Controller
             if ($request->remove) {
                 $request_form['image_path_'.$i] = null;
             } elseif (isset($request_form['image'][$i])) {
-                $path = Storage::disk('s3')->putFile('/', $form['image'], 'public');
-                $request_form->{'image_path_'.$i} = Storage::disk('s3')->url($path);
+                $path = Storage::disk('s3')->putFile('/', $request_form['image'][$i], 'public');
+                $request_form['image_path_'.$i] = Storage::disk('s3')->url($path);
                 // $path = $request->file('image')[$i]->store('public/image');
                 // $request_form['image_path_'.$i] = basename($path);
             } else {
