@@ -107,7 +107,6 @@
                         <!--選択にするか入力にするか-->
                     </div>
                     <div class="col-md-6">
-                        <!--初期値を東京にしたい-->
                         {{ Form::select('prefecture', $prefectures, $player_form->prefecture, ['class'=>'form-control']) }}
                     </div>
                 </div>

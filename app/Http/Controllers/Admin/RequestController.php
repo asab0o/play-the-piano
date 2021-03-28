@@ -76,6 +76,7 @@ class RequestController extends Controller
         $genres = $this->genres;
         $prefectures = $this->prefectures;
         $request_model = RequestModel::find($request->id);
+        $request_model->area = array_search($request_model->area, $prefectures);
         
         if (empty($request_model)) {
             return view('admin.request.create');
@@ -105,7 +106,7 @@ class RequestController extends Controller
                 // $path = $request->file('image')[$i]->store('public/image');
                 // $request_form['image_path_'.$i] = basename($path);
             } else {
-                $request_form['image_path_'.$i] = $request_model->{'image_path_'.$i};
+                $request_form['image_path_'.$i] = $request_model->{"image_path_{$i}"};
             }
         }
         

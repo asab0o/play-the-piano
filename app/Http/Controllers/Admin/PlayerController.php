@@ -96,7 +96,7 @@ class PlayerController extends Controller
                 $player_form['image_path_'.$i] = Storage::disk('s3')->url($path);
                 // $path = $request->file('image')[$i]->store('public/image');
                 // $player_form['image_path_'.$i] = basename($path);
-            } elseif ($request->remove == 'true'){
+            } elseif ($request->remove){
                 $player_form['image_path_'.$i] = null;
             } else {
                 $player_form['image_path_'.$i]  = $player->{"image_path_{$i}"};

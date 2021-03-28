@@ -28,8 +28,8 @@
                     <div class="col-md-10">
                         @for ($i = 1; $i <= 5; $i++)
                         <div class="col-md-6">
-                            {{Form::file('image['.$i.']', ['class'=>'form-control custom-file-input','id'=>'fileImage-'.$i])}}
-                            {{ Form::label('file-'.$i, '写真を選択', ['class' => 'custom-file-label', 'data-browse' => '参照']) }}
+                            {{Form::file('image['.$i.']', ['class'=>'form-control custom-file-input mt-1','id'=>'fileImage-'.$i])}}
+                            {{ Form::label('file-'.$i, '写真を選択（'.$i.'）', ['class' => 'custom-file-label', 'data-browse' => '参照']) }}
                         </div>
                         @endfor
                     </div>
