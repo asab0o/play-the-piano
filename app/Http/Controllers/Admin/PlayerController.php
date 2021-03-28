@@ -45,8 +45,10 @@ class PlayerController extends Controller
         
         for ($i = 1; $i <= 3; $i++) {
             if (isset($form['image'][$i])) {
-                $path = $request->file('image')[$i]->store('public/image');
-                $player->{"image_path_{$i}"} = basename($path);
+                $path = Storage::disk('s3')->putFile('/', $form['image'], 'public');
+                $player->{'image_path_'.$i} = Storage::disk('s3')->url($path);
+                // $path = $request->file('image')[$i]->store('public/image');
+                // $player->{"image_path_{$i}"} = basename($path);
             } else {
                 $player->{"image_path_{$i}"} = null;
             }
@@ -90,23 +92,16 @@ class PlayerController extends Controller
         
         for ($i = 1; $i <= 3; $i++) {
             if (isset($player_form['image'][$i])) {
-                $path = $request->file('image')[$i]->store('public/image');
-                // dd($path);
-                $player_form['image_path_'.$i] = basename($path);
+                $path = Storage::disk('s3')->putFile('/', $form['image'], 'public');
+                $player->{'image_path_'.$i} = Storage::disk('s3')->url($path);
+                // $path = $request->file('image')[$i]->store('public/image');
+                // $player_form['image_path_'.$i] = basename($path);
             } elseif ($request->remove == 'true'){
                 $player_form['image_path_'.$i] = null;
             } else {
                 $player_form['image_path_'.$i]  = $player->{"image_path_{$i}"};
             }
         }
-        // if ($request->remove == 'true') {
-        //     $player_form['image_path'] = null;
-        // } elseif (isset($player_form["image"])) {
-        //     $path = Storage::disk('s3')->putFile('/', $player_form['image'], 'public');
-        //     $player_form['image_path'] = Storage::disk('s3')->url($path);
-        // } else {
-        //     $player_form['image_path'] = $player->image_path;
-        // }
         
         unset($player_form['image']);
         unset($player_form['remove']);

@@ -2,7 +2,7 @@
 @section('title', '依頼の一覧')
     
 @section('content')
-    <div class="container-fluid">
+    <div class="container">
             <div class="col-md-10 mx-auto mt-3">
                 <h3>依頼の一覧</h3>
                 @if($posts->isEmpty())
@@ -18,7 +18,7 @@
                             <div class="card-image-top justify-content-around row">
                                 @for ($i = 1; $i <= 3; $i++)
                                 @if($post->{'image_path_'.$i})
-                                    <img src="{{ asset('storage/image/'.$post->{'image_path_'.$i}) }}" class="mt-3" width="400" height="300">
+                                    <img src="{{ $post->{'image_path_'.$i} }}" class="mt-3" width="400" height="300">
                                 @endif
                                 @endfor
                                 <!--<hr color="">-->

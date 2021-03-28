@@ -25,7 +25,7 @@
                     <div class="non_image w-100 d-sm-none">投稿お待ちしてます！</div>
                     @else
                     <!--投稿はあるが表示させる画像がなかった場合の条件分岐（三項演算子）-->
-                    <img src="{{ secure_asset( $requests[$i]->image_path_1 ? 'storage/image/'.$requests[$i]->image_path_1 : 'images/non_image/piano_neko.png') }}" alt="Slide" class="d-block w-100">
+                    <img src="{{ $requests[$i]->image_path_1 ? $requests[$i]->image_path_1 : secure_asset('images/non_image/piano_neko.png')) }}" alt="Slide" class="d-block w-100">
                     <div class="carousel-caption text-left d-none d-md-block" style="top:50px">
                         <p class="card-text"><small class="text-muted">{{ $requests[$i]->updated_at->format('Y/m/d') }}</small></p>
                         <h1 class="card-title">{{ $requests[$i]->title }}</h1>
@@ -52,7 +52,7 @@
             <h3 class="mb-0">演奏者</h3>
             <a href="{{ action('PlayerController@index') }}"><i class="fas fa-arrow-alt-circle-right"></i>一覧をみる</a>
         </div>
-        <div class="playerList mt-2 justify-content-between row">
+        <div class="playerList mt-2 row">
             @if($players->isEmpty())
                 <P>現在の登録者はいません</P>
             @else
@@ -60,7 +60,7 @@
             <div class="col-md-4 col-sm-12 mb-2">
                 <div class="card h-100">
                     @if($player->image_path_1)
-                    <img class="card-img-top" src="{{ asset('storage/image/'.$player->image_path_1) }}" width="100%" height="180">
+                    <img class="card-img-top" src="{{ $player->image_path_1 }}" width="100%" height="180">
                     @else
                     <img class="card-img-top" src="{{ asset('images/non_image/animal_hamster.png') }}" widht="100%" height="180">
                     @endif

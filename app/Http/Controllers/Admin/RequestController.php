@@ -48,8 +48,10 @@ class RequestController extends Controller
         // }
         for ($i = 1; $i <= 5; $i++) {
             if (isset($form['image'][$i])) {
-                $path = $request->file('image')[$i]->store('public/image');
-                $request_model->{'image_path_'.$i} = basename($path);
+                $path = Storage::disk('s3')->putFile('/', $form['image'], 'public');
+                $request_model->{'image_path_'.$i} = Storage::disk('s3')->url($path);
+                // $path = $request->file('image')[$i]->store('public/image');
+                // $request_model->{'image_path_'.$i} = basename($path);
               } else {
                   $request_model->{'image_path_'.$i} = null;
               }
@@ -98,8 +100,10 @@ class RequestController extends Controller
             if ($request->remove) {
                 $request_form['image_path_'.$i] = null;
             } elseif (isset($request_form['image'][$i])) {
-                $path = $request->file('image')[$i]->store('public/image');
-                $request_form['image_path_'.$i] = basename($path);
+                $path = Storage::disk('s3')->putFile('/', $form['image'], 'public');
+                $request_form->{'image_path_'.$i} = Storage::disk('s3')->url($path);
+                // $path = $request->file('image')[$i]->store('public/image');
+                // $request_form['image_path_'.$i] = basename($path);
             } else {
                 $request_form['image_path_'.$i] = $request_model->{'image_path_'.$i};
             }

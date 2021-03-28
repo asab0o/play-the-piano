@@ -60,7 +60,7 @@
                     @for($i = 1; $i <= 3; $i++)
                     @if ($player->{"image_path_{$i}"})
                     <div class="image mt-2">
-                        <img src="{{ asset('storage/image/'.$player->{"image_path_{$i}"}) }}" width="429" height="286">
+                        <img src="{{ $player->{"image_path_{$i}"} }}" width="429" height="286">
                     </div>
                     @endif
                     @endfor

@@ -6,7 +6,7 @@
         <div class="col-md-10 mx-auto mt-3">
             <h3>演奏者の一覧</h3>
             @if($posts->isEmpty())
-                <h3>現在の登録者はいません</h3>
+                <p>現在の登録者はいません</p>
             @else
             <p>「詳細をみる」からチャットできます</p>
                 <!--カードで表示したい-->
@@ -16,7 +16,7 @@
                             <div class="col mt-3">
                                 <div class="card h-100">
                                     @if($post->image_path_1)
-                                    <img class="card-img-top" src="{{ asset('storage/image/'.$post->image_path_1) }}" width="100%" height="200" >
+                                    <img class="card-img-top" src="{{ $post->image_path_1 }}" width="100%" height="200" >
                                     @else
                                     <img class="card-img-top" src="{{ asset('images/non_image/animal_hamster.png') }}" width="100%" height="200">
                                     @endif

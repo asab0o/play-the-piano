@@ -72,7 +72,7 @@
                                 @for($i = 1; $i <= 3; $i++)
                                 @if ($player->{"image_path_{$i}"})
                                 <div class="image mt-2 ">
-                                    <img src="{{ asset('storage/image/'.$player->{"image_path_{$i}"}) }}" width="300" height="200">
+                                    <img src="{{ $player->{"image_path_{$i}"} }}" width="300" height="200">
                                 </div>
                                 @endif
                                 @endfor
@@ -161,7 +161,7 @@
                                 @for($i = 1; $i <= 5; $i++)
                                 @if($request->{"image_path_".$i})
                                     <div class="mt-2 image">
-                                        <img src="{{ asset('storage/image/'.$request->{'image_path_'.$i}) }}" width="300" height="200">
+                                        <img src="{{ $request->{'image_path_'.$i} }}" width="300" height="200">
                                     </div>
                                 @endif
                                 @endfor
