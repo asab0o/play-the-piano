@@ -67,7 +67,7 @@
                         {{ Form::label('date_time', __('messages.date_time')) }}
                     </div>
                     <div class="col-md-8">
-                        {{ Form::text('date_time',  $request_form->date_time, ['class' => 'form-control datepicker']) }} 
+                        {{ Form::text('date_time',  $request_form->date_time, ['class' => 'form-control', 'id' => 'request_datepicker']) }} 
                     </div>
                 </div>
                 <!--場所-->

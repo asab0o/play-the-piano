@@ -48,7 +48,7 @@ class RequestController extends Controller
         // }
         for ($i = 1; $i <= 5; $i++) {
             if (isset($form['image'][$i])) {
-                $path = Storage::disk('s3')->putFile('/', $form['image'], 'public');
+                $path = Storage::disk('s3')->putFile('/', $form['image'][$i], 'public');
                 $request_model->{'image_path_'.$i} = Storage::disk('s3')->url($path);
                 // $path = $request->file('image')[$i]->store('public/image');
                 // $request_model->{'image_path_'.$i} = basename($path);

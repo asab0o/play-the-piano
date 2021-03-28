@@ -18907,9 +18907,9 @@ readers do not read off random characters that represent icons */
 }
 
 .carousel-item img {
-  background-color: #f6f5f4;
-  -o-object-fit: cover;
-     object-fit: cover;
+  background-color: #aaa;
+  -o-object-fit: contain;
+     object-fit: contain;
   margin: 0 auto;
 }
 

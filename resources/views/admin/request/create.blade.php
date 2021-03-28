@@ -24,7 +24,7 @@
                 <div class="form-group row">
                     <div class="col-md-2">
                         {{ __('messages.image') }}
-                        <span class="badge badge-light">4 : 3</span>
+                        <span class="badge badge-light">3：2</span>
                     </div>
                     <div class="col-md-10">
                         @for ($i = 1; $i <= 5; $i++)
@@ -77,7 +77,7 @@
                         <span class="badge badge-primary">必須</span>
                     </div>
                     <div class="col-md-8">
-                        {{ Form::text('date_time', old('date_time'), ['class' => 'form-control datepicker']) }} 
+                        {{ Form::text('date_time', old('date_time'), ['class' => 'form-control', 'id' => 'request_datepicker']) }} 
                         
                     </div>
                 </div>

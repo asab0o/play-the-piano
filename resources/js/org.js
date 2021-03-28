@@ -1,6 +1,6 @@
 // jquery-uiのdatepicker
 $( function() {
-  $(".datepicker").datepicker({
+  $("#request_datepicker").datepicker({
     changeMonth: true
   })
 });

@@ -30,8 +30,8 @@ $breakpoint-sp: 640px;
         @include min-screen($breakpoint-sp) {
             height: 400px;
         }
-        background-color:$body-bg;
-        object-fit: cover;
+        background-color:#aaa;
+        object-fit: contain;
         margin: 0 auto;
     }
 }

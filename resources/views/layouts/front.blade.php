@@ -34,10 +34,10 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ action('RequestController@index')}}">演奏場所を探す <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="{{ action('RequestController@index')}}">演奏場所の一覧 <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ action('PlayerController@index') }}">演奏者を探す <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="{{ action('PlayerController@index') }}">演奏者の一覧 <span class="sr-only">(current)</span></a>
                         </li>
                         
                         @guest
@@ -69,7 +69,7 @@
                 </div>
             </nav>
             <!--ここまでナビゲーションバー-->
-            <main class="">
+            <main>
                 @yield('content')
             </main>
         </div>

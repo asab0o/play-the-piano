@@ -64924,7 +64924,7 @@ __webpack_require__.r(__webpack_exports__);
 
 // jquery-uiのdatepicker
 $(function () {
-  $(".datepicker").datepicker({
+  $("#request_datepicker").datepicker({
     changeMonth: true
   });
 }); // 誕生日のdatepicker
