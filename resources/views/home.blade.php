@@ -33,7 +33,7 @@
                     {{--<!--<img src="{{ $requests[$i]->image_path_1 ? $requests[$i]->image_path_1 : secure_asset('images/non_image/piano_neko.png')) }}" alt="Slide" class="d-block w-100">-->--}}
                     <div class="carousel-caption text-left d-none d-md-block" style="top:50px">
                         <p class="card-text"><small class="text-muted">{{ $requests[$i]->updated_at->format('Y/m/d') }}</small></p>
-                        <h1 class="card-title">{{ $requests[$i]->title }}</h1>
+                        <h1 class="card-title">{{ str_limit($requests[$i]->title,30) }}</h1>
                         <p class="card-text">{{ str_limit($requests[$i]->introduction, 50) }}</p>
                         <a href="{{ action('RequestController@showArticle', ['id' => $requests[$i]->id]) }}" class="btn btn-primary">詳細をみる</a>
                     </div>

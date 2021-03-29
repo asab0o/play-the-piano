@@ -76,8 +76,7 @@ class RequestController extends Controller
         $genres = $this->genres;
         $prefectures = $this->prefectures;
         $request_model = RequestModel::find($request->id);
-        $request_model->area = array_search($request_model->area, $prefectures);
-        
+
         if (empty($request_model)) {
             return view('admin.request.create');
         } else {

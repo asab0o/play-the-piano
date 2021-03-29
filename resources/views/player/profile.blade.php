@@ -48,7 +48,7 @@
                        <div class="bmd-list-group-col">
                            <p class="list-group-item-heading">{{ __('messages.performance') }}</p>
                            @if ($player->performance)
-                           <p class="list-group-item-text">{{ $player->performance }}</p>
+                           <a href="{{ $player->performance }}" target="_blank"  class="list-group-item-text">{{ $player->performance }}</a>
                            @else
                            <p class="list-group-item-text">登録なし</p>
                            @endif
