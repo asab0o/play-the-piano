@@ -18885,6 +18885,18 @@ readers do not read off random characters that represent icons */
      object-fit: contain;
 }
 
+@media screen and (max-width: 767px) {
+  .requestList .card-image-top img {
+    height: 250px;
+  }
+}
+
+@media screen and (min-width: 767px) {
+  .requestList .card-image-top img {
+    height: 400px;
+  }
+}
+
 .playerPages .form-group .label span {
   height: 15.38px;
   margin-top: 2px;
@@ -18913,13 +18925,13 @@ readers do not read off random characters that represent icons */
   margin: 0 auto;
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 767px) {
   .carousel-item img {
     height: 250px;
   }
 }
 
-@media screen and (min-width: 640px) {
+@media screen and (min-width: 767px) {
   .carousel-item img {
     height: 400px;
   }

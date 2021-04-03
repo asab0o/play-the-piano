@@ -1,6 +1,20 @@
 $main: #fd7f14;
 $sub: #fff;
 
+$breakpoint-sp: 767px;
+
+@mixin max-screen($break-point) {
+    @media screen and (max-width: $break-point) {
+        @content;
+    }
+}
+
+@mixin min-screen($break-point) {
+    @media screen and (min-width: $break-point) {
+        @content;
+    }
+}
+
 .requestView {
     .goToChat {
         margin: 0 0 0 auto;
@@ -11,7 +25,6 @@ $sub: #fff;
             object-fit: contain;
         }
     }
-    
 }
 
 .profileView {
@@ -59,6 +72,12 @@ $sub: #fff;
 .requestList {
     .card-image-top {
         img {
+            @include max-screen($breakpoint-sp) {
+                height: 250px;
+            }
+            @include min-screen($breakpoint-sp) {
+                height: 400px;
+            }
             object-fit: contain;
         }
     }
