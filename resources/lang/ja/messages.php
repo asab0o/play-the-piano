@@ -30,6 +30,12 @@ return [
     'update' => '更新',
     'delete' => '削除',
     'updated_at' => '更新日',
-    
-    
+    'display_date_from' => '掲載期間の開始日',
+    'display_date_to' => '掲載期間の終了日',
+    'application_date_from' => '応募期間の開始日',
+    'application_date_to' => '応募期間の終了日',
+    'firstname_1' => '性',
+    'lastname_1' => '名',
+    'firstname_2' => 'セイ',
+    'lastname_2' => 'ナマエ',
     ];
